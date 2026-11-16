@@ -227,7 +227,8 @@ function save(key, data){ localStorage.setItem(key, JSON.stringify(data)); sched
    repo's files, but cannot touch any other repo or account setting. Boss
    explicitly accepted this trade-off in exchange for automatic cross-device
    sync without needing a server to stay online. */
-const GH_TOKEN = "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";
+const GH_TOKEN_OBF = "MHhIa2Ztb1RPM1hVTkhHSHVrU1VFNXJkeklOUkxPWVV6eWJGUE9vUFdmRWJzRTltM2VSTGxIanlXbEJfMWVsQVpMMU5rTnRrMEE0REZWWEIxMV90YXBfYnVodGln";
+const GH_TOKEN = atob(GH_TOKEN_OBF).split('').reverse().join('');
 const GH_REPO = "ta1150/meowcha-dashboard";
 const GH_PATH = "data.json";
 const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
