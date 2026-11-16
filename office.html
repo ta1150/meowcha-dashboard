@@ -52,6 +52,16 @@
     position:absolute; top:0; left:46%; width:8%; height:12%;
     background:#2e1f16; border:3px solid var(--wall-trim); border-top:none; border-radius:0 0 4px 4px;
   }
+  .peek{
+    position:absolute; top:1%; left:8%; width:9%; aspect-ratio:1/1;
+    display:flex; align-items:center; justify-content:center; font-size:22px;
+    animation:peek 3.4s ease-in-out infinite; z-index:3;
+  }
+  @keyframes peek{
+    0%,60%,100%{ transform:translateY(0); opacity:1; }
+    75%{ transform:translateY(-120%); opacity:0; }
+    90%{ transform:translateY(0); opacity:1; }
+  }
   .floor{
     position:absolute; top:14%; left:0; right:0; bottom:0;
     background-image:
@@ -150,12 +160,15 @@
 <body>
 
 <h1>🐾 Meow Cha <span>HQ</span></h1>
-<p class="sub">ห้องทำงานของทีมพ่อบ้าน — แตะที่ใครก็ได้ในห้อง</p>
+<p class="sub">มุมมองบอส — แอบมองทีมพ่อบ้านทำงานผ่านหน้าต่าง แตะที่ใครก็ได้ในห้อง</p>
 
 <div class="room-wrap" id="room">
   <div class="room-bg">
-    <div class="wall"></div>
-    <div class="door"></div>
+    <div name="wall-group">
+      <div class="wall"></div>
+      <div class="door"></div>
+      <div class="peek" title="บอสแอบมอง 👀">🫣</div>
+    </div>
     <div class="floor"></div>
     <div class="rug"></div>
   </div>
@@ -167,20 +180,18 @@
 
 <script>
 const TEAM = [
-  { emoji:'🤵', name:'พ่อบ้าน', title:'หัวหน้าทีม', head:'#e8b48a', body:'#2b2b2b',
-    x:50, y:38, line:'<b>พ่อบ้าน</b>สวัสดีครับบอส ผมดูแลภาพรวม แล้วส่งงานต่อให้คนที่เหมาะสมครับ' },
   { emoji:'🔍', name:'นักวิจัย', title:'Researcher', head:'#f0c9a0', body:'#3a6b8a',
-    x:18, y:26, line:'<b>นักวิจัย</b>เช็คให้ก่อนว่าวิธีนี้จะมีปัญหาอะไรไหม กันพลาดไว้ก่อนครับ' },
+    x:20, y:30, line:'<b>นักวิจัย</b>เช็คให้ก่อนว่าวิธีนี้จะมีปัญหาอะไรไหม กันพลาดไว้ก่อนครับ' },
   { emoji:'🛡️', name:'ผู้ตรวจงาน', title:'QA', head:'#e8c49a', body:'#6a3a3a',
-    x:82, y:26, line:'<b>ผู้ตรวจงาน</b>ตรวจงานก่อนส่งให้บอส จับบั๊ก/จุดเสี่ยงไว้ก่อนครับ' },
+    x:80, y:30, line:'<b>ผู้ตรวจงาน</b>ตรวจงานก่อนส่งให้บอส จับบั๊ก/จุดเสี่ยงไว้ก่อนครับ' },
   { emoji:'📊', name:'นักวิเคราะห์', title:'Data Analyst', head:'#eecb9f', body:'#3a6a4a',
-    x:18, y:62, line:'<b>นักวิเคราะห์</b>ดูแลต้นทุน-กำไรร้าน Meow Cha คอยเตือนถ้าเมนูไหนขาดทุนครับ' },
+    x:20, y:58, line:'<b>นักวิเคราะห์</b>ดูแลต้นทุน-กำไรร้าน Meow Cha คอยเตือนถ้าเมนูไหนขาดทุนครับ' },
   { emoji:'🎨', name:'ดีไซน์เนอร์', title:'Designer', head:'#f0c0b0', body:'#8a4a6a',
-    x:82, y:62, line:'<b>ดีไซน์เนอร์</b>เรื่องสวยๆอ่านง่ายๆ ยกให้ผมครับ' },
+    x:80, y:58, line:'<b>ดีไซน์เนอร์</b>เรื่องสวยๆอ่านง่ายๆ ยกให้ผมครับ' },
   { emoji:'⏰', name:'เลขาฯ', title:'Scheduler', head:'#eccfa0', body:'#8a7a3a',
-    x:35, y:80, line:'<b>เลขาฯ</b>ดูแลตารางเวลาประจำวันของบอสครับ' },
+    x:35, y:82, line:'<b>เลขาฯ</b>ดูแลตารางเวลาประจำวันของบอสครับ' },
   { emoji:'🧪', name:'นักทดลอง', title:'Spike Tester', head:'#e0c9a8', body:'#4a8a7a',
-    x:65, y:80, line:'<b>นักทดลอง</b>อยากลองของใหม่ก่อนใช้จริง ให้ผมทดลองหลายทางให้ก่อนครับ' },
+    x:65, y:82, line:'<b>นักทดลอง</b>อยากลองของใหม่ก่อนใช้จริง ให้ผมทดลองหลายทางให้ก่อนครับ' },
 ];
 
 const room = document.getElementById('room');
