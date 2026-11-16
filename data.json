@@ -4,7 +4,7 @@
       "cat": "☕ กาแฟ",
       "name": "Americano",
       "price": 65,
-      "cost": 19.92,
+      "cost": 9,
       "gross": 45.08,
       "grossPct": 69.4,
       "net": 43.42,
@@ -1073,7 +1073,7 @@
     "Americano": [
       {
         "ing": "coffeeBeans",
-        "qty": 0
+        "qty": 18
       }
     ],
     "Coconut Americano": [
@@ -1892,5 +1892,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-16T15:50:55.118Z"
+  "updatedAt": "2026-11-16T15:50:59.123Z"
 }
