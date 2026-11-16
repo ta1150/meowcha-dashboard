@@ -3,132 +3,211 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Meow Cha HQ — ทีมพ่อบ้าน</title>
+<title>Meow Cha HQ — ห้องทำงานพ่อบ้าน</title>
 <style>
   :root{
-    --bg:#f6f1e9;
-    --surface:#ffffff;
+    --floor-a:#e8c89a;
+    --floor-b:#dcb986;
+    --wall:#6b4a36;
+    --wall-trim:#4a3224;
+    --desk:#8a5a3a;
+    --desk-top:#a06b45;
+    --screen:#3a5a6a;
+    --screen-glow:#6fb3c9;
     --ink:#2b1d14;
-    --ink-muted:#7a6a5a;
-    --border:#e6dcc9;
+    --paper:#fff8ec;
     --accent:#b5502f;
   }
   *{box-sizing:border-box;}
-  html,body{margin:0;padding:0;}
+  html,body{margin:0;padding:0;height:100%;}
   body{
-    background:var(--bg);
+    background:#1d1510;
     color:var(--ink);
     font-family:-apple-system,'Noto Sans Thai','Segoe UI',sans-serif;
-    min-height:100vh;
+    display:flex; flex-direction:column; align-items:center;
+    min-height:100vh; padding:18px 10px 40px;
   }
-  header{
-    text-align:center;
-    padding:48px 20px 28px;
+  h1{
+    color:#fff8ec; font-size:20px; margin:4px 0 2px; text-align:center;
   }
-  header h1{
-    font-size:30px; margin:0 0 6px; font-weight:800;
-  }
-  header h1 span{color:var(--accent);}
-  header p{color:var(--ink-muted); margin:0; font-size:14.5px;}
+  h1 span{ color:#e8a266; }
+  p.sub{ color:#cdb9a3; font-size:12.5px; margin:0 0 16px; text-align:center; }
 
+  /* ================= ROOM ================= */
+  .room-wrap{
+    width:100%; max-width:920px; aspect-ratio:16/10;
+    position:relative; border-radius:10px;
+    box-shadow:0 14px 40px rgba(0,0,0,.45);
+    image-rendering:pixelated;
+  }
+  .room-bg{
+    position:absolute; inset:0; border-radius:10px; overflow:hidden; z-index:0;
+  }
+  .wall{
+    position:absolute; top:0; left:0; right:0; height:14%;
+    background:repeating-linear-gradient(90deg, var(--wall) 0 28px, var(--wall-trim) 28px 30px);
+    border-bottom:4px solid var(--wall-trim);
+  }
+  .door{
+    position:absolute; top:0; left:46%; width:8%; height:12%;
+    background:#2e1f16; border:3px solid var(--wall-trim); border-top:none; border-radius:0 0 4px 4px;
+  }
   .floor{
-    max-width:1040px; margin:0 auto; padding:10px 20px 70px;
-    display:grid; grid-template-columns:repeat(auto-fit,minmax(230px,1fr)); gap:18px;
+    position:absolute; top:14%; left:0; right:0; bottom:0;
+    background-image:
+      repeating-linear-gradient(0deg, var(--floor-a) 0 40px, var(--floor-b) 40px 80px),
+      repeating-linear-gradient(90deg, rgba(0,0,0,.03) 0 40px, rgba(0,0,0,0) 40px 80px);
   }
+  .rug{
+    position:absolute; left:50%; top:62%; width:46%; height:30%; transform:translate(-50%,-50%);
+    background:#b5502f22; border:3px solid #b5502f55; border-radius:16px;
+  }
+
+  /* ================= DESK + CHARACTER UNIT ================= */
+  .spot{
+    position:absolute; width:13%; aspect-ratio:1/1.35; transform:translate(-50%,-50%);
+    display:flex; flex-direction:column; align-items:center; cursor:pointer;
+    user-select:none; z-index:1;
+  }
+  .nameplate{
+    font-size:10.5px; color:#fff8ec; background:#00000066; border-radius:5px;
+    padding:1px 6px; margin-bottom:3px; white-space:nowrap; font-weight:700;
+  }
+  .char{
+    position:relative; width:46%; height:40%; margin-bottom:-6%;
+    animation:idle 2.6s ease-in-out infinite;
+    z-index:2;
+  }
+  .char .head{
+    position:absolute; top:0; left:50%; width:68%; aspect-ratio:1/1; transform:translateX(-50%);
+    border-radius:50%; border:2px solid #0000002a;
+  }
+  .char .body{
+    position:absolute; bottom:0; left:50%; width:85%; height:62%; transform:translateX(-50%);
+    border-radius:40% 40% 20% 20%; border:2px solid #0000002a;
+  }
+  .char .leg{
+    position:absolute; bottom:-10%; width:16%; height:16%; background:#3a2a1f; border-radius:3px;
+  }
+  .char .leg.l{ left:28%; }
+  .char .leg.r{ right:28%; }
+  @keyframes idle{
+    0%,100%{ transform:translateY(0) rotate(0deg); }
+    50%{ transform:translateY(-6%) rotate(-1.5deg); }
+  }
+  .spot:nth-child(2) .char{ animation-delay:.2s; }
+  .spot:nth-child(3) .char{ animation-delay:.4s; }
+  .spot:nth-child(4) .char{ animation-delay:.6s; }
+  .spot:nth-child(5) .char{ animation-delay:.8s; }
+  .spot:nth-child(6) .char{ animation-delay:1.0s; }
+  .spot:nth-child(7) .char{ animation-delay:1.2s; }
+  .spot:nth-child(8) .char{ animation-delay:1.4s; }
+
   .desk{
-    background:var(--surface); border:1px solid var(--border); border-radius:16px;
-    padding:22px 18px 20px; text-align:center; position:relative; cursor:pointer;
-    transition:transform .18s ease, box-shadow .18s ease;
+    width:88%; height:30%; background:var(--desk); border-radius:6px 6px 3px 3px;
+    position:relative; z-index:1; border:2px solid #00000022;
   }
-  .desk:hover{ transform:translateY(-4px); box-shadow:0 10px 24px rgba(43,29,20,.08); }
-  .desk.lead{ border-color:var(--accent); background:linear-gradient(180deg,#fff,#fdf6f2); }
+  .desk::before{ /* desktop surface highlight */
+    content:''; position:absolute; top:-6%; left:4%; right:4%; height:22%;
+    background:var(--desk-top); border-radius:4px;
+  }
+  .monitor{
+    position:absolute; top:-46%; left:50%; width:36%; aspect-ratio:1/0.8; transform:translateX(-50%);
+    background:#2e2018; border-radius:3px; border:2px solid #1a110b; z-index:1;
+  }
+  .monitor i{
+    position:absolute; inset:10%; background:var(--screen); border-radius:1px;
+    box-shadow:0 0 6px var(--screen-glow);
+    animation:flicker 2.4s ease-in-out infinite;
+  }
+  @keyframes flicker{ 0%,100%{opacity:.9;} 50%{opacity:1;} }
 
-  .avatar{
-    width:72px; height:72px; border-radius:50%; margin:0 auto 12px;
-    display:flex; align-items:center; justify-content:center; font-size:32px;
-    background:var(--bg); border:2px solid var(--border);
-    animation:bob 3.2s ease-in-out infinite;
+  .status-dot{
+    position:absolute; bottom:4px; right:14%; width:8px; height:8px; border-radius:50%;
+    background:#58c76a; border:1.5px solid #fff; z-index:3; animation:pulse 1.6s ease-in-out infinite;
   }
-  @keyframes bob{
-    0%,100%{ transform:translateY(0); }
-    50%{ transform:translateY(-5px); }
-  }
-  .desk:nth-child(2) .avatar{ animation-delay:.3s; }
-  .desk:nth-child(3) .avatar{ animation-delay:.6s; }
-  .desk:nth-child(4) .avatar{ animation-delay:.9s; }
-  .desk:nth-child(5) .avatar{ animation-delay:1.2s; }
-  .desk:nth-child(6) .avatar{ animation-delay:1.5s; }
-  .desk:nth-child(7) .avatar{ animation-delay:1.8s; }
+  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.3;} }
 
-  .name{ font-weight:800; font-size:15.5px; margin-bottom:2px; }
-  .title{ font-size:12.5px; color:var(--accent); font-weight:700; margin-bottom:10px; }
-  .status{
-    display:inline-flex; align-items:center; gap:5px; font-size:11.5px; color:var(--ink-muted);
-    background:var(--bg); border-radius:999px; padding:3px 10px; margin-bottom:12px;
-  }
-  .status i{ width:7px; height:7px; border-radius:50%; background:#3f7d4f; display:inline-block; animation:pulse 1.6s ease-in-out infinite; }
-  @keyframes pulse{ 0%,100%{opacity:1;} 50%{opacity:.35;} }
-
+  /* ================= SPEECH BUBBLE ================= */
   .bubble{
-    font-size:12.5px; color:var(--ink-muted); line-height:1.5; min-height:38px;
-    border-top:1px dashed var(--border); padding-top:10px; display:none;
+    position:absolute; bottom:108%; left:50%; transform:translateX(-50%) scale(.85);
+    width:150px; background:var(--paper); border:2px solid var(--ink); border-radius:10px;
+    padding:8px 10px; font-size:11px; line-height:1.45; color:var(--ink);
+    opacity:0; pointer-events:none; transition:opacity .15s ease, transform .15s ease;
+    z-index:5; text-align:left;
   }
-  .desk.open .bubble{ display:block; animation:fadeIn .25s ease; }
-  @keyframes fadeIn{ from{opacity:0; transform:translateY(-4px);} to{opacity:1; transform:translateY(0);} }
+  .bubble::after{
+    content:''; position:absolute; bottom:-8px; left:50%; transform:translateX(-50%);
+    border-width:8px 7px 0 7px; border-style:solid; border-color:var(--ink) transparent transparent transparent;
+  }
+  .bubble b{ display:block; color:var(--accent); font-size:11.5px; margin-bottom:2px; }
+  .spot.open{ z-index:4; }
+  .spot.open .bubble{ opacity:1; transform:translateX(-50%) scale(1); }
 
-  footer{
-    text-align:center; padding:24px 20px 50px; color:var(--ink-muted); font-size:12px;
-  }
-  @media (prefers-reduced-motion: reduce){
-    .avatar{ animation:none; }
-    .status i{ animation:none; }
-  }
+  footer{ color:#cdb9a3; font-size:11.5px; text-align:center; margin-top:14px; max-width:600px; }
 </style>
 </head>
 <body>
 
-<header>
-  <h1>🐾 Meow Cha <span>HQ</span></h1>
-  <p>ออฟฟิศของพ่อบ้าน — กดที่โต๊ะใครก็ได้เพื่อดูว่าเขาทำอะไร</p>
-</header>
+<h1>🐾 Meow Cha <span>HQ</span></h1>
+<p class="sub">ห้องทำงานของทีมพ่อบ้าน — แตะที่ใครก็ได้ในห้อง</p>
 
-<div class="floor" id="floor"></div>
+<div class="room-wrap" id="room">
+  <div class="room-bg">
+    <div class="wall"></div>
+    <div class="door"></div>
+    <div class="floor"></div>
+    <div class="rug"></div>
+  </div>
+</div>
 
 <footer>
-  หน้านี้เป็นภาพรวมทีมเฉยๆ ไม่ใช่แชท AI สด — คุยงานจริงกับทีมได้ในแชท Telegram กับพ่อบ้านตามปกติ
+  หน้านี้เป็นภาพรวมทีมแบบเกม ไม่ใช่แชท AI สด — คุยงานจริงกับทีมได้ในแชท Telegram กับพ่อบ้านตามปกติ
 </footer>
 
 <script>
 const TEAM = [
-  { emoji:'🤵', name:'พ่อบ้าน', title:'หัวหน้าทีม · ดูแลบอสโดยตรง', lead:true,
-    line:'สวัสดีครับบอส ผมดูแลภาพรวมทุกงาน แล้วส่งต่อให้คนที่เหมาะกับงานนั้นๆ ในทีมครับ' },
-  { emoji:'🔍', name:'นักวิจัย', title:'Researcher',
-    line:'ก่อนลงมือทำอะไรเสี่ยงๆ ผมเช็คให้ก่อนครับ เช่น "วิธีนี้จะมีปัญหาอะไรไหม" กันพลาดไว้ก่อน' },
-  { emoji:'🛡️', name:'ผู้ตรวจงาน', title:'Code Reviewer / QA',
-    line:'งานไหนที่พ่อบ้านทำเสร็จ ผมช่วยตรวจทานก่อนส่งให้บอส จับบั๊ก/จุดเสี่ยงไว้ก่อนที่บอสจะเจอเอง' },
-  { emoji:'📊', name:'นักวิเคราะห์ตัวเลข', title:'Data Analyst (Meow Cha)',
-    line:'ดูแลต้นทุน กำไร ยอดขายของร้าน คอยเตือนถ้าเมนูไหนเริ่มขาดทุนครับ' },
-  { emoji:'🎨', name:'ดีไซน์เนอร์', title:'Designer',
-    line:'เรื่องสวยๆ อ่านง่ายๆ ยกให้ผมครับ ไม่ปนกับงาน logic เพื่อให้แต่ละงานโฟกัสเต็มที่' },
-  { emoji:'⏰', name:'เลขาฯส่วนตัว', title:'Scheduler',
-    line:'ดูแลตารางเวลาประจำวันของบอส ถามว่า "ตอนนี้ต้องทำอะไร" ผมตอบได้ทันทีครับ' },
-  { emoji:'🧪', name:'นักทดลอง', title:'Spike / Prototype Tester',
-    line:'อยากลองของใหม่ก่อนใช้จริง ให้ผมลองหลายๆทางให้ก่อน แล้วบอกว่าทางไหนดีที่สุดครับ' },
+  { emoji:'🤵', name:'พ่อบ้าน', title:'หัวหน้าทีม', head:'#e8b48a', body:'#2b2b2b',
+    x:50, y:38, line:'<b>พ่อบ้าน</b>สวัสดีครับบอส ผมดูแลภาพรวม แล้วส่งงานต่อให้คนที่เหมาะสมครับ' },
+  { emoji:'🔍', name:'นักวิจัย', title:'Researcher', head:'#f0c9a0', body:'#3a6b8a',
+    x:18, y:26, line:'<b>นักวิจัย</b>เช็คให้ก่อนว่าวิธีนี้จะมีปัญหาอะไรไหม กันพลาดไว้ก่อนครับ' },
+  { emoji:'🛡️', name:'ผู้ตรวจงาน', title:'QA', head:'#e8c49a', body:'#6a3a3a',
+    x:82, y:26, line:'<b>ผู้ตรวจงาน</b>ตรวจงานก่อนส่งให้บอส จับบั๊ก/จุดเสี่ยงไว้ก่อนครับ' },
+  { emoji:'📊', name:'นักวิเคราะห์', title:'Data Analyst', head:'#eecb9f', body:'#3a6a4a',
+    x:18, y:62, line:'<b>นักวิเคราะห์</b>ดูแลต้นทุน-กำไรร้าน Meow Cha คอยเตือนถ้าเมนูไหนขาดทุนครับ' },
+  { emoji:'🎨', name:'ดีไซน์เนอร์', title:'Designer', head:'#f0c0b0', body:'#8a4a6a',
+    x:82, y:62, line:'<b>ดีไซน์เนอร์</b>เรื่องสวยๆอ่านง่ายๆ ยกให้ผมครับ' },
+  { emoji:'⏰', name:'เลขาฯ', title:'Scheduler', head:'#eccfa0', body:'#8a7a3a',
+    x:35, y:80, line:'<b>เลขาฯ</b>ดูแลตารางเวลาประจำวันของบอสครับ' },
+  { emoji:'🧪', name:'นักทดลอง', title:'Spike Tester', head:'#e0c9a8', body:'#4a8a7a',
+    x:65, y:80, line:'<b>นักทดลอง</b>อยากลองของใหม่ก่อนใช้จริง ให้ผมทดลองหลายทางให้ก่อนครับ' },
 ];
 
-const floor = document.getElementById('floor');
-floor.innerHTML = TEAM.map((p, i) => `
-  <div class="desk ${p.lead?'lead':''}" data-i="${i}">
-    <div class="avatar">${p.emoji}</div>
-    <div class="name">${p.name}</div>
-    <div class="title">${p.title}</div>
-    <div class="status"><i></i> ว่าง / พร้อมรับงาน</div>
+const room = document.getElementById('room');
+TEAM.forEach((p, i) => {
+  const el = document.createElement('div');
+  el.className = 'spot';
+  el.style.left = p.x + '%';
+  el.style.top = p.y + '%';
+  el.innerHTML = `
     <div class="bubble">${p.line}</div>
-  </div>
-`).join('');
-
-floor.querySelectorAll('.desk').forEach(d => {
-  d.addEventListener('click', () => d.classList.toggle('open'));
+    <div class="nameplate">${p.emoji} ${p.name}</div>
+    <div class="char">
+      <div class="head" style="background:${p.head}"></div>
+      <div class="body" style="background:${p.body}"></div>
+      <div class="leg l"></div>
+      <div class="leg r"></div>
+    </div>
+    <div class="desk">
+      <div class="monitor"><i></i></div>
+    </div>
+    <div class="status-dot"></div>
+  `;
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.spot').forEach(s => { if(s !== el) s.classList.remove('open'); });
+    el.classList.toggle('open');
+  });
+  room.appendChild(el);
 });
 </script>
 </body>
