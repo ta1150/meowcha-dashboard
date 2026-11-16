@@ -189,6 +189,7 @@
     <input type="search" id="search" placeholder="ค้นหา...">
     <button class="btn" id="exportBtn">⬇ Export JSON</button>
     <button class="btn" id="resetBtn">↺ รีเซ็ตเป็นข้อมูลเดิม</button>
+    <span id="syncStatus" style="font-size:12px;color:var(--ink-muted);white-space:nowrap;">●</span>
   </div>
 </header>
 
@@ -216,7 +217,109 @@ function load(key, seed){
   if(raw){ try{ return JSON.parse(raw); }catch(e){} }
   return JSON.parse(JSON.stringify(seed));
 }
-function save(key, data){ localStorage.setItem(key, JSON.stringify(data)); }
+function save(key, data){ localStorage.setItem(key, JSON.stringify(data)); scheduleSync(); }
+
+/* ================= GITHUB SYNC (data.json in this repo) =================
+   This dashboard is a static page (GitHub Pages), so there's no private
+   backend to hide a secret behind. The token below is a GitHub fine-grained
+   PAT scoped ONLY to this one repo's Contents (read/write) — nothing else
+   on the account. Anyone who finds it in the page source could edit this
+   repo's files, but cannot touch any other repo or account setting. Boss
+   explicitly accepted this trade-off in exchange for automatic cross-device
+   sync without needing a server to stay online. */
+const GH_TOKEN = "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";
+const GH_REPO = "ta1150/meowcha-dashboard";
+const GH_PATH = "data.json";
+const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
+let ghSha = null;        // last known file sha, for optimistic-concurrency updates
+let syncTimer = null;
+let syncing = false;
+
+function b64encodeUtf8(str){ return btoa(unescape(encodeURIComponent(str))); }
+function b64decodeUtf8(str){ return decodeURIComponent(escape(atob(str))); }
+
+function setSyncStatus(text, color){
+  const el = document.getElementById('syncStatus');
+  if(el){ el.textContent = text; el.style.color = color || 'var(--ink-muted)'; }
+}
+
+async function fetchRemoteState(){
+  setSyncStatus('🔄 กำลังโหลด...', 'var(--warn)');
+  try{
+    const res = await fetch(GH_API, {
+      headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github+json' },
+      cache: 'no-store',
+    });
+    if(res.status === 404){ setSyncStatus('🟡 ยังไม่มีข้อมูลกลาง', 'var(--warn)'); return null; }
+    if(!res.ok){ setSyncStatus('⚠️ โหลดไม่สำเร็จ', 'var(--bad)'); return null; }
+    const json = await res.json();
+    ghSha = json.sha;
+    const text = b64decodeUtf8(json.content.replace(/\n/g, ''));
+    const data = JSON.parse(text);
+    setSyncStatus('✅ ซิงก์แล้ว ' + new Date().toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'}), 'var(--good)');
+    return data;
+  }catch(e){
+    setSyncStatus('⚠️ ออฟไลน์ / โหลดไม่สำเร็จ', 'var(--bad)');
+    return null;
+  }
+}
+
+async function pushRemoteState(){
+  if(syncing) return; // avoid overlapping pushes
+  syncing = true;
+  setSyncStatus('🔄 กำลังซิงก์...', 'var(--warn)');
+  const payload = { menu, stock, recipes, raw, bases, updatedAt: new Date().toISOString() };
+  try{
+    const body = { message: 'Update from dashboard', content: b64encodeUtf8(JSON.stringify(payload, null, 2)) };
+    if(ghSha) body.sha = ghSha;
+    const res = await fetch(GH_API, {
+      method: 'PUT',
+      headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github+json', 'Content-Type': 'application/json' },
+      body: JSON.stringify(body),
+    });
+    if(res.status === 409){
+      // someone else (another device) pushed in between — refetch their
+      // version and let the user know, rather than silently overwriting it
+      setSyncStatus('⚠️ มีการแก้จากเครื่องอื่น กำลังโหลดล่าสุด...', 'var(--warn)');
+      const remote = await fetchRemoteState();
+      if(remote){ applyRemoteState(remote); renderAll(); }
+      syncing = false;
+      return;
+    }
+    if(!res.ok){ setSyncStatus('⚠️ ซิงก์ไม่สำเร็จ', 'var(--bad)'); syncing = false; return; }
+    const json = await res.json();
+    if(json.content) ghSha = json.content.sha;
+    setSyncStatus('✅ ซิงก์แล้ว ' + new Date().toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'}), 'var(--good)');
+  }catch(e){
+    setSyncStatus('⚠️ ออฟไลน์ / ซิงก์ไม่สำเร็จ (จะลองใหม่เมื่อแก้ไขครั้งถัดไป)', 'var(--bad)');
+  }
+  syncing = false;
+}
+
+function scheduleSync(){
+  // debounce: push ~1.2s after the user stops typing/editing, not on every keystroke
+  clearTimeout(syncTimer);
+  syncTimer = setTimeout(pushRemoteState, 1200);
+}
+
+function applyRemoteState(data){
+  if(data.menu) menu = data.menu;
+  if(data.stock) stock = data.stock;
+  if(data.recipes) recipes = data.recipes;
+  if(data.raw) raw = data.raw;
+  if(data.bases) bases = data.bases;
+  localStorage.setItem('meowcha_menu', JSON.stringify(menu));
+  localStorage.setItem('meowcha_stock', JSON.stringify(stock));
+  localStorage.setItem('meowcha_recipes', JSON.stringify(recipes));
+  localStorage.setItem('meowcha_raw', JSON.stringify(raw));
+  localStorage.setItem('meowcha_bases', JSON.stringify(bases));
+}
+
+function renderAll(){
+  renderMenu(document.getElementById('search').value);
+  renderIngredients(document.getElementById('search').value);
+  renderStock(document.getElementById('search').value);
+}
 
 let menu = load('meowcha_menu', MENU_SEED);
 let stock = load('meowcha_stock', STOCK_SEED);
@@ -771,24 +874,36 @@ document.getElementById('exportBtn').addEventListener('click', () => {
   a.click();
 });
 document.getElementById('resetBtn').addEventListener('click', () => {
-  if(!confirm('รีเซ็ตข้อมูลทั้งหมดกลับเป็นค่าเดิมที่ดึงจากชีต? (การแก้ไขที่ทำในเว็บนี้จะหายไป)')) return;
+  if(!confirm('รีเซ็ตข้อมูลทั้งหมดกลับเป็นค่าเดิมที่ดึงจากชีต? (การแก้ไขที่ทำในเว็บนี้ และที่ซิงก์ไว้จะหายไป)')) return;
   menu = JSON.parse(JSON.stringify(MENU_SEED));
   stock = JSON.parse(JSON.stringify(STOCK_SEED));
   recipes = JSON.parse(JSON.stringify(RECIPES_SEED));
   raw = JSON.parse(JSON.stringify(RAW_SEED));
   bases = JSON.parse(JSON.stringify(BASES_SEED));
   openRecipeIdx = null; openBaseId = null;
-  save('meowcha_menu', menu);
-  save('meowcha_stock', stock);
-  save('meowcha_recipes', recipes);
-  save('meowcha_raw', raw);
-  save('meowcha_bases', bases);
-  renderMenu(''); renderIngredients(''); renderStock('');
+  localStorage.setItem('meowcha_menu', JSON.stringify(menu));
+  localStorage.setItem('meowcha_stock', JSON.stringify(stock));
+  localStorage.setItem('meowcha_recipes', JSON.stringify(recipes));
+  localStorage.setItem('meowcha_raw', JSON.stringify(raw));
+  localStorage.setItem('meowcha_bases', JSON.stringify(bases));
+  renderAll();
+  scheduleSync();
 });
+document.getElementById('syncStatus').title = 'คลิกเพื่อซิงก์ตอนนี้เลย';
+document.getElementById('syncStatus').style.cursor = 'pointer';
+document.getElementById('syncStatus').addEventListener('click', () => { clearTimeout(syncTimer); pushRemoteState(); });
 
 renderMenu('');
 renderIngredients('');
 renderStock('');
+
+// On load: pull the shared state from GitHub so every device starts in
+// sync. If it fails (offline, token issue, etc.) we just keep whatever
+// was already in localStorage and let the user keep working locally.
+(async () => {
+  const remote = await fetchRemoteState();
+  if(remote){ applyRemoteState(remote); renderAll(); }
+})();
 </script>
 </body>
 </html>
