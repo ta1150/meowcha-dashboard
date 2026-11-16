@@ -1,0 +1,760 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Meow Cha — ต้นทุน & สต็อก</title>
+<style>
+  :root{
+    --bg:#f6f1e9;
+    --surface:#ffffff;
+    --surface-2:#fbf8f3;
+    --ink:#2b1d14;
+    --ink-muted:#7a6a5a;
+    --border:#e6dcc9;
+    --accent:#b5502f;
+    --accent-ink:#ffffff;
+    --good:#3f7d4f;
+    --good-bg:#e7f2e8;
+    --warn:#a9790f;
+    --warn-bg:#faefd7;
+    --bad:#b5402f;
+    --bad-bg:#fbe7e2;
+    --radius:10px;
+    --mono:'SF Mono', 'Menlo', monospace;
+  }
+  *{box-sizing:border-box;}
+  html,body{margin:0;padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:-apple-system, 'Noto Sans Thai', 'Segoe UI', sans-serif;
+    font-size:14px;
+    line-height:1.45;
+  }
+  header{
+    position:sticky; top:0; z-index:20;
+    background:var(--surface);
+    border-bottom:1px solid var(--border);
+    padding:14px 22px;
+    display:flex; align-items:center; gap:18px; flex-wrap:wrap;
+  }
+  header h1{
+    font-size:17px; margin:0; font-weight:700; white-space:nowrap;
+  }
+  header h1 span{color:var(--accent);}
+  nav.tabs{display:flex; gap:4px; background:var(--surface-2); border:1px solid var(--border); border-radius:999px; padding:3px;}
+  nav.tabs button{
+    border:none; background:transparent; padding:7px 16px; border-radius:999px;
+    font-size:13px; font-weight:600; cursor:pointer; color:var(--ink-muted);
+  }
+  nav.tabs button.active{background:var(--accent); color:var(--accent-ink);}
+  .spacer{flex:1;}
+  .toolbar{display:flex; gap:8px; align-items:center;}
+  input[type=search]{
+    border:1px solid var(--border); border-radius:8px; padding:7px 10px;
+    font-size:13px; min-width:180px; background:var(--surface-2); color:var(--ink);
+  }
+  select{
+    border:1px solid var(--border); border-radius:8px; padding:7px 10px;
+    font-size:13px; background:var(--surface-2); color:var(--ink);
+  }
+  button.btn{
+    border:1px solid var(--border); background:var(--surface); color:var(--ink);
+    padding:7px 13px; border-radius:8px; font-size:13px; font-weight:600; cursor:pointer;
+  }
+  button.btn:hover{border-color:var(--accent); color:var(--accent);}
+  button.btn.primary{background:var(--accent); color:var(--accent-ink); border-color:var(--accent);}
+
+  main{padding:18px 22px 60px;}
+
+  /* ===== summary strip ===== */
+  .stats{display:flex; gap:12px; margin-bottom:18px; flex-wrap:wrap;}
+  .stat{
+    background:var(--surface); border:1px solid var(--border); border-radius:var(--radius);
+    padding:12px 18px; min-width:140px;
+  }
+  .stat .v{font-size:22px; font-weight:800; font-family:var(--mono);}
+  .stat .l{font-size:12px; color:var(--ink-muted); margin-top:2px;}
+  .stat.good .v{color:var(--good);}
+  .stat.warn .v{color:var(--warn);}
+  .stat.bad .v{color:var(--bad);}
+
+  /* ===== menu table ===== */
+  .cat-group{margin-bottom:22px;}
+  .cat-title{font-size:13px; font-weight:700; color:var(--ink-muted); margin:0 0 8px 2px; text-transform:none;}
+  table{width:100%; border-collapse:collapse; background:var(--surface); border-radius:var(--radius); overflow:hidden; border:1px solid var(--border);}
+  .table-wrap{overflow-x:auto; -webkit-overflow-scrolling:touch; border-radius:var(--radius);}
+  .table-wrap table{min-width:560px;}
+  thead th{
+    text-align:left; font-size:11.5px; font-weight:700; color:var(--ink-muted);
+    padding:9px 12px; border-bottom:1px solid var(--border); background:var(--surface-2);
+    white-space:nowrap;
+  }
+  td{padding:9px 12px; border-bottom:1px solid var(--border); font-size:13.5px; vertical-align:middle;}
+  tbody tr:last-child td{border-bottom:none;}
+  tbody tr:hover{background:var(--surface-2);}
+  td.num, th.num{text-align:right; font-family:var(--mono);}
+  .name-cell{font-weight:600;}
+  .note{font-size:11.5px; color:var(--ink-muted); font-weight:400; display:block;}
+  .badge{
+    display:inline-block; padding:3px 9px; border-radius:999px; font-size:11.5px; font-weight:700;
+  }
+  .badge.good{background:var(--good-bg); color:var(--good);}
+  .badge.warn{background:var(--warn-bg); color:var(--warn);}
+  .badge.bad{background:var(--bad-bg); color:var(--bad);}
+  input.edit{
+    width:64px; border:1px solid transparent; border-radius:6px; background:transparent;
+    padding:4px 6px; font-family:var(--mono); font-size:13px; text-align:right; color:var(--ink);
+  }
+  input.edit:hover{border-color:var(--border);}
+  input.edit:focus{border-color:var(--accent); background:var(--surface); outline:none;}
+
+  /* bar for margin visualization */
+  .bar-cell{width:90px;}
+  .bar{height:6px; border-radius:3px; background:var(--border); overflow:hidden;}
+  .bar i{display:block; height:100%; border-radius:3px;}
+
+  /* ===== stock table ===== */
+  .stock-section{margin-bottom:10px;}
+  .pill-row{display:flex; gap:6px; flex-wrap:wrap; margin-bottom:14px;}
+  .pill{
+    border:1px solid var(--border); background:var(--surface); border-radius:999px;
+    padding:5px 12px; font-size:12px; font-weight:600; cursor:pointer; color:var(--ink-muted);
+  }
+  .pill.active{background:var(--ink); color:#fff; border-color:var(--ink);}
+
+  footer{padding:20px 22px 40px; color:var(--ink-muted); font-size:12px;}
+
+  /* ===== recipe editor ===== */
+  .chev-btn{
+    border:none; background:transparent; cursor:pointer; color:var(--ink-muted);
+    font-size:12px; width:20px; height:20px; padding:0; margin-right:4px; vertical-align:middle;
+  }
+  .chev-btn.open{color:var(--accent);}
+  tr.recipe-row{display:none; background:var(--surface-2);}
+  tr.recipe-row.open{display:table-row;}
+  tr.recipe-row td{padding:14px 16px;}
+  .recipe-box{border:1px solid var(--border); border-radius:8px; background:var(--surface); padding:12px 14px;}
+  .recipe-box table{border:none; box-shadow:none;}
+  .recipe-box thead th{background:transparent; padding:4px 8px; font-size:11px;}
+  .recipe-box td{padding:5px 8px; border-bottom:1px solid var(--border);}
+  .recipe-box select{font-size:12.5px; padding:5px 7px; min-width:170px;}
+  .recipe-box input.qty-edit{width:60px; font-size:12.5px; padding:5px 7px; border:1px solid var(--border); border-radius:6px; text-align:right;}
+  .mini-btn{
+    border:none; background:transparent; color:var(--bad); cursor:pointer; font-size:14px; padding:2px 6px;
+  }
+  .add-ing-row{display:flex; gap:6px; margin-top:8px; align-items:center;}
+  .recipe-summary{
+    display:flex; justify-content:space-between; align-items:center; margin-top:10px;
+    padding-top:10px; border-top:1px dashed var(--border); font-size:13px;
+  }
+  .recipe-summary b{font-family:var(--mono); font-size:15px;}
+  .sync-btn{background:var(--good); color:#fff; border:none; border-radius:7px; padding:6px 12px; font-size:12.5px; font-weight:700; cursor:pointer;}
+  .sync-btn:hover{opacity:.9;}
+  .recipe-empty{color:var(--ink-muted); font-size:12.5px; padding:4px 0;}
+
+  @media (max-width:720px){
+    body{font-size:15px;}
+    header{padding:10px 12px; gap:10px;}
+    header h1{font-size:16px;}
+    nav.tabs{overflow-x:auto; -webkit-overflow-scrolling:touch; max-width:100%; flex-shrink:0;}
+    nav.tabs button{padding:8px 14px; white-space:nowrap; font-size:12.5px;}
+    .spacer{display:none;}
+    .toolbar{width:100%; order:3; flex-wrap:wrap;}
+    input[type=search]{flex:1; min-width:0;}
+    main{padding:10px 10px 60px;}
+    .stats{gap:8px;}
+    .stat{min-width:unset; flex:1 1 44%; padding:10px 12px;}
+    .stat .v{font-size:19px;}
+    table{font-size:12.5px;}
+    .table-wrap table{min-width:480px;}
+    input.edit{min-height:30px;}
+    button.btn, .sync-btn, .chev-btn{min-height:36px;}
+    .recipe-box select, .recipe-box input.qty-edit{min-height:36px;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🐾 Meow <span>Cha</span></h1>
+  <nav class="tabs">
+    <button data-view="menu" class="active">เมนู &amp; ต้นทุน</button>
+    <button data-view="ingredients">วัตถุดิบ &amp; เบส</button>
+    <button data-view="stock">สต็อกวัตถุดิบ</button>
+  </nav>
+  <div class="spacer"></div>
+  <div class="toolbar">
+    <input type="search" id="search" placeholder="ค้นหา...">
+    <button class="btn" id="exportBtn">⬇ Export JSON</button>
+    <button class="btn" id="resetBtn">↺ รีเซ็ตเป็นข้อมูลเดิม</button>
+  </div>
+</header>
+
+<main>
+  <div id="view-menu"></div>
+  <div id="view-ingredients" style="display:none"></div>
+  <div id="view-stock" style="display:none"></div>
+</main>
+
+<footer>
+  ข้อมูลต้นทุน/สต็อกดึงมาจาก Google Sheet "Meow Cha ข้อมูลร้าน" (เมื่อวันที่ดึงข้อมูล) — แก้ไขที่นี่จะบันทึกไว้ในเบราว์เซอร์นี้เท่านั้น (localStorage) ไม่ย้อนไปแก้ชีตต้นฉบับ กด Export เพื่อเอาข้อมูลไปใช้ต่อ
+</footer>
+
+<script>
+const MENU_SEED = [{"cat": "☕ กาแฟ", "name": "Americano", "price": 65.0, "cost": 19.92, "gross": 45.08, "grossPct": 69.4, "net": 43.42, "netPct": 66.8, "note": ""}, {"cat": "☕ กาแฟ", "name": "Coconut Americano", "price": 80.0, "cost": 33.55, "gross": 46.45, "grossPct": 58.1, "net": 44.78, "netPct": 56.0, "note": ""}, {"cat": "☕ กาแฟ", "name": "Americano Peach Soda", "price": 75.0, "cost": 24.43, "gross": 50.57, "grossPct": 67.4, "net": 48.9, "netPct": 65.2, "note": ""}, {"cat": "☕ กาแฟ", "name": "Cappuccino", "price": 65.0, "cost": 25.67, "gross": 39.33, "grossPct": 60.5, "net": 37.67, "netPct": 58.0, "note": ""}, {"cat": "☕ กาแฟ", "name": "Mocca", "price": 75.0, "cost": 29.61, "gross": 45.39, "grossPct": 60.5, "net": 43.72, "netPct": 58.3, "note": ""}, {"cat": "☕ กาแฟ", "name": "Latte", "price": 65.0, "cost": 27.03, "gross": 37.97, "grossPct": 58.4, "net": 36.31, "netPct": 55.9, "note": ""}, {"cat": "☕ กาแฟ", "name": "Caramel Macchiato", "price": 75.0, "cost": 28.53, "gross": 46.47, "grossPct": 62.0, "net": 44.8, "netPct": 59.7, "note": ""}, {"cat": "🧋 ชา/นมสด", "name": "Thai tea (ชาไทยชีส)", "price": 59.0, "cost": 18.25, "gross": 40.75, "grossPct": 69.1, "net": 39.08, "netPct": 66.2, "note": ""}, {"cat": "🧋 ชา/นมสด", "name": "Iced Cocoa (โกโก้เย็น)", "price": 69.0, "cost": 18.13, "gross": 50.87, "grossPct": 73.7, "net": 49.21, "netPct": 71.3, "note": ""}, {"cat": "🧋 ชา/นมสด", "name": "Green Tea (ชาเขียวชีส)", "price": 59.0, "cost": 19.3, "gross": 39.7, "grossPct": 67.3, "net": 38.04, "netPct": 64.5, "note": ""}, {"cat": "🧋 ชา/นมสด", "name": "Iced Pink Milk (นมเย็นชมพู)", "price": 59.0, "cost": 14.6, "gross": 44.4, "grossPct": 75.3, "net": 42.73, "netPct": 72.4, "note": ""}, {"cat": "🍵 มัทฉะ", "name": "Coconut Foam Matcha", "price": 89.0, "cost": 54.49, "gross": 34.51, "grossPct": 38.8, "net": 32.85, "netPct": 36.9, "note": ""}, {"cat": "🍵 มัทฉะ", "name": "Matcha Latte", "price": 79.0, "cost": 32.61, "gross": 46.39, "grossPct": 58.7, "net": 44.73, "netPct": 56.6, "note": ""}, {"cat": "🍵 มัทฉะ", "name": "Biscoff Matcha", "price": 129.0, "cost": 48.76, "gross": 80.24, "grossPct": 62.2, "net": 78.58, "netPct": 60.9, "note": ""}, {"cat": "🍵 มัทฉะ", "name": "Matcha Strawberry", "price": 109.0, "cost": 41.14, "gross": 67.86, "grossPct": 62.3, "net": 66.19, "netPct": 60.7, "note": ""}, {"cat": "🍵 มัทฉะ", "name": "Earl Grey Matcha", "price": 89.0, "cost": 39.46, "gross": 49.54, "grossPct": 55.7, "net": 47.87, "netPct": 53.8, "note": ""}, {"cat": "🥤 โซดา", "name": "ลิ้นจี่โซดา", "price": 49.0, "cost": 14.13, "gross": 34.87, "grossPct": 71.2, "net": 33.2, "netPct": 67.8, "note": ""}, {"cat": "🥤 โซดา", "name": "สตอเบอร์รี่โซดา", "price": 49.0, "cost": 14.71, "gross": 34.29, "grossPct": 70.0, "net": 32.62, "netPct": 66.6, "note": ""}, {"cat": "🥤 โซดา", "name": "บลูอาวายโซดา", "price": 49.0, "cost": 15.05, "gross": 33.95, "grossPct": 69.3, "net": 32.28, "netPct": 65.9, "note": ""}, {"cat": "🥤 โซดา", "name": "แดงโซดา", "price": 49.0, "cost": 15.35, "gross": 33.65, "grossPct": 68.7, "net": 31.98, "netPct": 65.3, "note": ""}, {"cat": "🥤 โซดา", "name": "พีชโซดา", "price": 49.0, "cost": 14.72, "gross": 34.28, "grossPct": 70.0, "net": 32.61, "netPct": 66.6, "note": ""}, {"cat": "🥤 โซดา", "name": "น้ำเปล่า", "price": 10.0, "cost": 11.08, "gross": -1.08, "grossPct": -10.8, "net": -2.74, "netPct": -27.4, "note": ""}, {"cat": "🥤 โซดา", "name": "แก้วน้ำแข็งเปล่า", "price": 10.0, "cost": 6.8, "gross": 3.2, "grossPct": 32.0, "net": 1.53, "netPct": 15.3, "note": ""}, {"cat": "➕ ท็อปปิ้งเสริม", "name": "วุ้นชาเอิร์ลเกรย์", "price": 40.0, "cost": 12.52, "gross": 27.48, "grossPct": 68.7, "net": 25.81, "netPct": 64.5, "note": ""}, {"cat": "➕ ท็อปปิ้งเสริม", "name": "ซอฟครีม", "price": 10.0, "cost": 2.39, "gross": 7.61, "grossPct": 76.1, "net": 5.94, "netPct": 59.4, "note": ""}, {"cat": "➕ ท็อปปิ้งเสริม", "name": "ครีมชีส", "price": 10.0, "cost": 3.19, "gross": 6.81, "grossPct": 68.1, "net": 5.15, "netPct": 51.5, "note": ""}, {"cat": "➕ ท็อปปิ้งเสริม", "name": "บิสคอฟ บิสกิต", "price": 15.0, "cost": 4.36, "gross": 10.65, "grossPct": 71.0, "net": 8.98, "netPct": 59.9, "note": ""}, {"cat": "➕ ท็อปปิ้งเสริม", "name": "นมโอ๊ต", "price": 10.0, "cost": 1.78, "gross": 8.22, "grossPct": 82.2, "net": 6.55, "netPct": 65.5, "note": ""}, {"cat": "🍚 เมนูข้าว/ของทอด", "name": "กะเพราไข่ดาว", "price": 69.0, "cost": 31.79, "gross": 37.21, "grossPct": 53.9, "net": 35.54, "netPct": 51.5, "note": ""}, {"cat": "🍚 เมนูข้าว/ของทอด", "name": "เฟรนช์ฟราย", "price": 49.0, "cost": 19.13, "gross": 29.87, "grossPct": 61.0, "net": 28.21, "netPct": 57.6, "note": ""}, {"cat": "🍚 เมนูข้าว/ของทอด", "name": "ไส้กรอกแดงทอด", "price": 49.0, "cost": 22.2, "gross": 26.8, "grossPct": 54.7, "net": 25.14, "netPct": 51.3, "note": ""}, {"cat": "🍰 เบเกอรี่/ของหวาน", "name": "ชีสพายสตอเบอร์รี่", "price": 79.0, "cost": 3.0, "gross": 76.0, "grossPct": null, "net": 74.33, "netPct": null, "note": "ยังไม่มีสูตร"}, {"cat": "🍰 เบเกอรี่/ของหวาน", "name": "ชีสพายบลูเบอร์รี่", "price": 79.0, "cost": 3.0, "gross": 76.0, "grossPct": null, "net": 74.33, "netPct": null, "note": "ยังไม่มีสูตร"}, {"cat": "🍰 เบเกอรี่/ของหวาน", "name": "บานอฟฟี่", "price": 89.0, "cost": 3.0, "gross": 86.0, "grossPct": null, "net": 84.33, "netPct": null, "note": "ยังไม่มีสูตร"}, {"cat": "🍰 เบเกอรี่/ของหวาน", "name": "พุดดิ้งคาราเมล", "price": 69.0, "cost": 3.0, "gross": 66.0, "grossPct": null, "net": 64.33, "netPct": null, "note": "ยังไม่มีสูตร"}, {"cat": "🍰 เบเกอรี่/ของหวาน", "name": "ชีสเค้กหน้าไหม้", "price": 59.0, "cost": 3.0, "gross": 56.0, "grossPct": null, "net": 54.33, "netPct": null, "note": "ยังไม่มีสูตร"}];
+const STOCK_SEED = [{"group": "☕ กาแฟ — ใช้เฉพาะหมวดนี้", "code": "coffeeBeans", "name": "เมล็ดกาแฟPOPULAR(กลางเข้ม)", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "☕ กาแฟ — ใช้เฉพาะหมวดนี้", "code": "mikawaCoconutSquash", "name": "MIKAWA Coconut Squash เข้มข้น", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "☕ กาแฟ — ใช้เฉพาะหมวดนี้", "code": "caramelSauce", "name": "ซอสคาราเมล", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "☕ กาแฟ — ใช้เฉพาะหมวดนี้", "code": "custom_1_1791541825193", "name": "อ็มมิลค์ นมสด 2 ล", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "☕ กาแฟ — ใช้เฉพาะหมวดนี้", "code": "custom_2_1791543579490", "name": "ลองบีช ไซรัป กลิ่นคาราเมล 740 มล.", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "☕ กาแฟ — ใช้เฉพาะหมวดนี้", "code": "custom_2_1792677002921", "name": "เมล็ดกาแฟ แม่จันใต้ (อ่อน)", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "☕ กาแฟ — ใช้เฉพาะหมวดนี้", "code": "custom_1_import", "name": "จูนิเปอร์ ซันเดย์ ท็อปปิ้งกลิ่นช็อกโกแลต", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "choiceDutchCocoa", "name": "ทิวลิป ผงโกโก้สีเข้ม", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "chaTraMueOriginal", "name": "Cha Tra Mue ชาไทย แดง", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "chaTraMueGreenTea", "name": "ChaTraMue ชาเขียวมิกซ์สำหรับชงชาเขียวนม", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "chaTraMueGold", "name": "Cha Tra Mue ชาไทย Extra Gold", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "milkPowder", "name": "นมผง (สำหรับเบสชาไทย/ชาเขียว)", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "caneSugar", "name": "น้ำตาลอ้อย (สำหรับเบสชาไทย/ชาเขียว)", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "chaTai", "name": "ชาใต้ HERE36", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🧋 ชา/นมสด — ใช้เฉพาะหมวดนี้", "code": "custom_1_1792674257718", "name": "ชาเขียว HERE36", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍵 มัทฉะ — ใช้เฉพาะหมวดนี้", "code": "matcha", "name": "มัทฉะอูจิ เกียวโต เกรด Ceremonial", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍵 มัทฉะ — ใช้เฉพาะหมวดนี้", "code": "pinpinCoconutSyrup", "name": "PinPin ไซรัปหญ้าหวานรสมะพร้าว", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍵 มัทฉะ — ใช้เฉพาะหมวดนี้", "code": "biscoffSpread", "name": "Lotus Biscoff Spread Smooth", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍵 มัทฉะ — ใช้เฉพาะหมวดนี้", "code": "biscoffCrumble", "name": "Lotus Biscoff Crumble", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍵 มัทฉะ — ใช้เฉพาะหมวดนี้", "code": "custom_3_1792751235641", "name": "สีสรร Maple syrup", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 โซดา — ใช้เฉพาะหมวดนี้", "code": "lycheeSyrup", "name": "ไซรัปลิ้นจี่", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 โซดา — ใช้เฉพาะหมวดนี้", "code": "blueHawaiiSyrup", "name": "ไซรัปบลูฮาวาย/บลูอาวาย", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 โซดา — ใช้เฉพาะหมวดนี้", "code": "redSyrup", "name": "ไซรัปแดง (น้ำแดง)", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 โซดา — ใช้เฉพาะหมวดนี้", "code": "waterBottle", "name": "น้ำดื่มขวด (ขายทั้งขวด)", "usedIn": "", "unit": "ชิ้น/ลูก", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 โซดา — ใช้เฉพาะหมวดนี้", "code": "custom_4_1792757258123", "name": "ไซรับสตอเบอรี่(ทำโซดา)", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "sugarWhite", "name": "น้ำตาลทราย", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_1_1792652407971", "name": "ข้าว", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_2_1792652437538", "name": "หมูสับ", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_3_1792652453339", "name": "ผงชูรส", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_4_1792652533155", "name": "รสดี", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_9_1792652717878", "name": "น้ำมันพืช", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_10_1792652748028", "name": "ซอสกระเพรา", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_11_1792652896360", "name": "เฟรนฟราย", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_12_1792653019709", "name": "เกลือ", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_13_1792653036509", "name": "ซอสมะเขือเทส", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_14_1792653058110", "name": "ชีตดรีป", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_15_1792653088159", "name": "กระดาษรอง", "usedIn": "", "unit": "ชิ้น/ลูก", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_16_1792653114108", "name": "ไม้จิ้มฟัน", "usedIn": "", "unit": "ชิ้น/ลูก", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_17_1792653151325", "name": "ใส้กรอกแดง", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_18_1792653180008", "name": "น้ำจิ่มลูกชิ้น", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_19_1792654421766", "name": "พริก", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_20_1792654564417", "name": "กระเทียม", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_21_1792654642798", "name": "ใบกระเพรา", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🍚 เมนูข้าว/ของทอด — ใช้เฉพาะหมวดนี้", "code": "custom_22_1792656378814", "name": "ไข่เบอร์ 2", "usedIn": "", "unit": "ชิ้น/ลูก", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "freshMilk", "name": "เมจิ เรย์ นมสด", "usedIn": "☕ กาแฟ, 🧋 ชา/นมสด, 🍵 มัทฉะ, ➕ ท็อปปิ้งเสริม", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "condensedMilk", "name": "Carnation นมข้นหวาน", "usedIn": "☕ กาแฟ, 🧋 ชา/นมสด, ➕ ท็อปปิ้งเสริม", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "evaporatedMilk", "name": "Carnation นมข้นจืด", "usedIn": "☕ กาแฟ, 🧋 ชา/นมสด", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "oatMilk", "name": "โอ๊ตไซด์ นมข้าวโอ๊ต บาริสต้า", "usedIn": "🍵 มัทฉะ, ➕ ท็อปปิ้งเสริม", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "freshCoconut", "name": "น้ำมะพร้าวลูกสด", "usedIn": "☕ กาแฟ, 🍵 มัทฉะ", "unit": "ชิ้น/ลูก", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "cream", "name": "ไชน์โรด ซอฟท์ วิป", "usedIn": "🍵 มัทฉะ, ➕ ท็อปปิ้งเสริม", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "strawberrySyrup", "name": "ไซรัปสตรอเบอร์รี่ เฟรชชี่", "usedIn": "🧋 ชา/นมสด, 🍵 มัทฉะ", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "twiningsTea", "name": "Twinings Earl Grey (ใบชา)", "usedIn": "🍵 มัทฉะ, ➕ ท็อปปิ้งเสริม", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "gelatinPowder", "name": "ผงวุ้น/เจลาตินทำวุ้น Earl Grey", "usedIn": "🍵 มัทฉะ, ➕ ท็อปปิ้งเสริม", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "dreamyCreamCheese", "name": "ดรีมมี่ ผงครีมชีส", "usedIn": "🧋 ชา/นมสด, ➕ ท็อปปิ้งเสริม", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "peachSyrup", "name": "ไซรัปพีช", "usedIn": "☕ กาแฟ, 🥤 โซดา", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "biscoffCookieWhole", "name": "คุกกี้ Biscoff (ชิ้น)", "usedIn": "🍵 มัทฉะ, ➕ ท็อปปิ้งเสริม", "unit": "ชิ้น/ลูก", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🔄 ใช้ร่วมหลายหมวด", "code": "sodaWater", "name": "น้ำโซดา", "usedIn": "☕ กาแฟ, 🥤 โซดา", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 บรรจุภัณฑ์", "code": "pkg_cup", "name": "แก้ว 14oz", "usedIn": "", "unit": "ชิ้น", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 บรรจุภัณฑ์", "code": "pkg_lid", "name": "ฝาแก้ว", "usedIn": "", "unit": "ชิ้น", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 บรรจุภัณฑ์", "code": "pkg_straw", "name": "หลอด", "usedIn": "", "unit": "ชิ้น", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 บรรจุภัณฑ์", "code": "pkg_bag", "name": "ถุงหิ้ว / สายหิ้ว", "usedIn": "", "unit": "ชิ้น", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 บรรจุภัณฑ์", "code": "pkg_sticker", "name": "สติ๊กเกอร์โลโก้ / ปลอกกันร้อน", "usedIn": "", "unit": "ชิ้น", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 บรรจุภัณฑ์", "code": "pkg_foodbox", "name": "กล่องข้าว/ถุงกระดาษ", "usedIn": "", "unit": "ชิ้น", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "🥤 บรรจุภัณฑ์", "code": "pkg_dessertbox", "name": "กล่อง/ภาชนะของหวาน", "usedIn": "", "unit": "ชิ้น", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "📦 ยังไม่ได้ใช้ในเมนูไหน", "code": "plainSyrup", "name": "ไซรัปเปล่า (น้ำเชื่อมทั่วไป)", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "📦 ยังไม่ได้ใช้ในเมนูไหน", "code": "hersheySyrup", "name": "Hershey's Chocolate Syrup", "usedIn": "", "unit": "มล.", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}, {"group": "📦 ยังไม่ได้ใช้ในเมนูไหน", "code": "spirulina", "name": "เมล็ดกาแฟเจ้าสัวน้อย (กลางเข้ม)", "usedIn": "", "unit": "กรัม", "qty": 0.0, "reorder": 0.0, "status": "ยังไม่ได้นับ"}];
+const RAW_SEED = [{"id": "condensedMilk", "label": "Carnation นมข้นหวาน", "type": "liquid", "packPrice": 124, "packSize": 2, "packUnit": "kg", "yieldMl": null}, {"id": "evaporatedMilk", "label": "Carnation นมข้นจืด", "type": "liquid", "packPrice": 66, "packSize": 1, "packUnit": "kg", "yieldMl": null}, {"id": "freshMilk", "label": "เมจิ เรย์ นมสด", "type": "liquid", "packPrice": 105, "packSize": 2, "packUnit": "L", "yieldMl": null}, {"id": "oatMilk", "label": "โอ๊ตไซด์ นมข้าวโอ๊ต บาริสต้า", "type": "liquid", "packPrice": 57, "packSize": 1, "packUnit": "L", "yieldMl": null}, {"id": "coffeeBeans", "label": "เมล็ดกาแฟคั่ว (POPULAR กลางเข้ม)", "type": "solid", "packPrice": 500, "packSize": 1, "packUnit": "kg", "yieldMl": null}, {"id": "matcha", "label": "มัทฉะอูจิ เกียวโต Ceremonial", "type": "solid", "packPrice": 339, "packSize": 50, "packUnit": "g", "yieldMl": null}, {"id": "plainSyrup", "label": "ไซรัปเปล่า (น้ำเชื่อม)", "type": "liquid", "packPrice": 37, "packSize": 800, "packUnit": "ml", "yieldMl": null}, {"id": "hersheySyrup", "label": "Hershey's Chocolate Syrup", "type": "liquid", "packPrice": 165, "packSize": 623, "packUnit": "ml", "yieldMl": null}, {"id": "freshCoconut", "label": "น้ำมะพร้าวลูกสด", "type": "each", "packPrice": 12, "packSize": null, "packUnit": null, "yieldMl": 250}, {"id": "mikawaCoconutSquash", "label": "MIKAWA Coconut Squash เข้มข้น", "type": "liquid", "packPrice": 82, "packSize": 740, "packUnit": "ml", "yieldMl": null}, {"id": "pinpinCoconutSyrup", "label": "PinPin ไซรัปหญ้าหวานรสมะพร้าว", "type": "liquid", "packPrice": 99, "packSize": 320, "packUnit": "ml", "yieldMl": null}, {"id": "cream", "label": "ไชน์โรด ซอฟท์ วิป", "type": "liquid", "packPrice": 159, "packSize": 1, "packUnit": "L", "yieldMl": null}, {"id": "strawberrySyrup", "label": "ไซรัปสตรอเบอร์รี่ เฟรชชี่", "type": "liquid", "packPrice": 73, "packSize": 710, "packUnit": "ml", "yieldMl": null}, {"id": "spirulina", "label": "สไปรูลิน่าสีน้ำเงิน", "type": "solid", "packPrice": 229, "packSize": 50, "packUnit": "g", "yieldMl": null}, {"id": "biscoffSpread", "label": "Lotus Biscoff Spread", "type": "solid", "packPrice": 467, "packSize": 1, "packUnit": "kg", "yieldMl": null}, {"id": "biscoffCrumble", "label": "Lotus Biscoff Crumble", "type": "solid", "packPrice": 231, "packSize": 750, "packUnit": "g", "yieldMl": null}, {"id": "choiceDutchCocoa", "label": "ทิวลิป ผงโกโก้สีเข้ม", "type": "solid", "packPrice": 174, "packSize": 420, "packUnit": "g", "yieldMl": null}, {"id": "chaTraMueOriginal", "label": "Cha Tra Mue ชาไทย แดง", "type": "solid", "packPrice": 50, "packSize": 190, "packUnit": "g", "yieldMl": null}, {"id": "chaTraMueGreenTea", "label": "ChaTraMue ชาเขียวมิกซ์", "type": "solid", "packPrice": 80, "packSize": 200, "packUnit": "g", "yieldMl": null}, {"id": "chaTraMueGold", "label": "Cha Tra Mue ชาไทย Extra Gold", "type": "solid", "packPrice": 110, "packSize": 400, "packUnit": "g", "yieldMl": null}, {"id": "twiningsTea", "label": "Twinings Earl Grey (ใบชา)", "type": "solid", "packPrice": 10, "packSize": 2, "packUnit": "g", "yieldMl": null}, {"id": "sugarWhite", "label": "น้ำตาลทราย", "type": "solid", "packPrice": 27, "packSize": 1, "packUnit": "kg", "yieldMl": null}, {"id": "gelatinPowder", "label": "ผงวุ้น/เจลาติน Earl Grey", "type": "solid", "packPrice": 99, "packSize": 100, "packUnit": "g", "yieldMl": null}, {"id": "milkPowder", "label": "นมผง (เบสชาไทย/ชาเขียว)", "type": "solid", "packPrice": 0, "packSize": 400, "packUnit": "g", "yieldMl": null}, {"id": "caneSugar", "label": "น้ำตาลอ้อย", "type": "liquid", "packPrice": 0, "packSize": 1000, "packUnit": "ml", "yieldMl": null}, {"id": "chaTai", "label": "ชาใต้", "type": "solid", "packPrice": 0, "packSize": 200, "packUnit": "g", "yieldMl": null}, {"id": "dreamyCreamCheese", "label": "ดรีมมี่ ผงครีมชีส", "type": "solid", "packPrice": 139, "packSize": 500, "packUnit": "g", "yieldMl": null}, {"id": "peachSyrup", "label": "ไซรัปพีช", "type": "liquid", "packPrice": 73, "packSize": 700, "packUnit": "ml", "yieldMl": null}, {"id": "lycheeSyrup", "label": "ไซรัปลิ้นจี่", "type": "liquid", "packPrice": 65, "packSize": 700, "packUnit": "ml", "yieldMl": null}, {"id": "blueHawaiiSyrup", "label": "ไซรัปบลูฮาวาย", "type": "liquid", "packPrice": 83, "packSize": 700, "packUnit": "ml", "yieldMl": null}, {"id": "redSyrup", "label": "ไซรัปแดง (น้ำแดง)", "type": "liquid", "packPrice": 68, "packSize": 700, "packUnit": "ml", "yieldMl": null}, {"id": "caramelSauce", "label": "ซอสคาราเมล", "type": "liquid", "packPrice": 98, "packSize": 1000, "packUnit": "ml", "yieldMl": null}, {"id": "biscoffCookieWhole", "label": "คุกกี้ Biscoff (ชิ้น)", "type": "each", "packPrice": 67, "packSize": null, "packUnit": null, "yieldMl": 16}, {"id": "waterBottle", "label": "น้ำดื่มขวด", "type": "each", "packPrice": 0, "packSize": null, "packUnit": null, "yieldMl": 1}, {"id": "sodaWater", "label": "น้ำโซดา", "type": "liquid", "packPrice": 7.42, "packSize": 325, "packUnit": "ml", "yieldMl": null}];
+const BASES_SEED = {"base_thaitea": {"name": "เบสชาไทย", "rows": [{"ing": "chaTraMueGold", "qty": 26.7}, {"ing": "chaTraMueOriginal", "qty": 26.7}, {"ing": "chaTai", "qty": 26.6}, {"ing": "", "qty": 800}, {"ing": "milkPowder", "qty": 90}, {"ing": "caneSugar", "qty": 45}]}, "base_greentea": {"name": "เบสชาเขียว", "rows": [{"ing": "chaTraMueGold", "qty": 26.7}, {"ing": "chaTraMueGreenTea", "qty": 26.7}, {"ing": "chaTai", "qty": 26.6}, {"ing": "", "qty": 800}, {"ing": "milkPowder", "qty": 90}, {"ing": "caneSugar", "qty": 45}]}, "base_milkmix": {"name": "เบสนมผสม (1:2)", "rows": [{"ing": "condensedMilk", "qty": 100}, {"ing": "evaporatedMilk", "qty": 200}]}, "base_cocoasauce": {"name": "เบสซอสโกโก้", "rows": [{"ing": "choiceDutchCocoa", "qty": 25}, {"ing": "", "qty": 75}]}, "base_matchafoam": {"name": "เบสโฟมมัทฉะ", "rows": [{"ing": "matcha", "qty": 15}, {"ing": "cream", "qty": 150}, {"ing": "freshMilk", "qty": 80}]}, "base_strawberryfoam": {"name": "เบสโฟมสตรอเบอรี่", "rows": [{"ing": "cream", "qty": 150}, {"ing": "freshMilk", "qty": 80}, {"ing": "strawberrySyrup", "qty": 30}]}, "base_cheesefoam": {"name": "เบสโฟมครีมชีส", "rows": [{"ing": "dreamyCreamCheese", "qty": 100}, {"ing": "cream", "qty": 100}, {"ing": "freshMilk", "qty": 50}]}};
+const RECIPES_SEED = {"Americano": [{"ing": "coffeeBeans", "qty": 41}], "Coconut Americano": [{"ing": "coffeeBeans", "qty": 41}, {"ing": "freshCoconut", "qty": 100}, {"ing": "mikawaCoconutSquash", "qty": 15}, {"ing": "pinpinCoconutSyrup", "qty": 5}], "Americano Peach Soda": [{"ing": "coffeeBeans", "qty": 41}, {"ing": "peachSyrup", "qty": 20}, {"ing": "sodaWater", "qty": 100}], "Cappuccino": [{"ing": "coffeeBeans", "qty": 41}, {"ing": "condensedMilk", "qty": 30}, {"ing": "evaporatedMilk", "qty": 30}, {"ing": "freshMilk", "qty": 60}], "Mocca": [{"ing": "coffeeBeans", "qty": 41}, {"ing": "condensedMilk", "qty": 30}, {"ing": "evaporatedMilk", "qty": 30}, {"ing": "freshMilk", "qty": 40}, {"ing": "hersheySyrup", "qty": 20}], "Latte": [{"ing": "coffeeBeans", "qty": 41}, {"ing": "condensedMilk", "qty": 30}, {"ing": "evaporatedMilk", "qty": 30}, {"ing": "freshMilk", "qty": 60}], "Caramel Macchiato": [{"ing": "coffeeBeans", "qty": 41}, {"ing": "condensedMilk", "qty": 30}, {"ing": "evaporatedMilk", "qty": 30}, {"ing": "freshMilk", "qty": 40}, {"ing": "caramelSauce", "qty": 15}], "Thai tea (ชาไทยชีส)": [{"ing": "base_thaitea", "qty": 100}, {"ing": "base_cheesefoam", "qty": 50}], "Iced Cocoa (โกโก้เย็น)": [{"ing": "base_cocoasauce", "qty": 100}], "Green Tea (ชาเขียวชีส)": [{"ing": "base_greentea", "qty": 100}, {"ing": "base_cheesefoam", "qty": 50}], "Iced Pink Milk (นมเย็นชมพู)": [{"ing": "freshMilk", "qty": 150}, {"ing": "strawberrySyrup", "qty": 20}], "Coconut Foam Matcha": [{"ing": "freshCoconut", "qty": 125}, {"ing": "mikawaCoconutSquash", "qty": 15}, {"ing": "pinpinCoconutSyrup", "qty": 10}, {"ing": "matcha", "qty": 4}, {"ing": "base_matchafoam", "qty": 30}], "Matcha Latte": [{"ing": "oatMilk", "qty": 150}, {"ing": "plainSyrup", "qty": 2.5}, {"ing": "matcha", "qty": 4}], "Biscoff Matcha": [{"ing": "biscoffSpread", "qty": 10}, {"ing": "oatMilk", "qty": 150}, {"ing": "plainSyrup", "qty": 2.5}, {"ing": "matcha", "qty": 4}, {"ing": "cream", "qty": 30}, {"ing": "biscoffCrumble", "qty": 5}], "Matcha Strawberry": [{"ing": "strawberrySyrup", "qty": 20}, {"ing": "oatMilk", "qty": 100}, {"ing": "matcha", "qty": 4}, {"ing": "base_strawberryfoam", "qty": 20}], "Earl Grey Matcha": [{"ing": "twiningsTea", "qty": 2}, {"ing": "sugarWhite", "qty": 10}, {"ing": "gelatinPowder", "qty": 1}, {"ing": "oatMilk", "qty": 130}, {"ing": "plainSyrup", "qty": 2.5}, {"ing": "matcha", "qty": 4}], "ลิ้นจี่โซดา": [{"ing": "lycheeSyrup", "qty": 25}, {"ing": "sodaWater", "qty": 150}], "สตอเบอร์รี่โซดา": [{"ing": "strawberrySyrup", "qty": 25}, {"ing": "sodaWater", "qty": 150}], "บลูอาวายโซดา": [{"ing": "blueHawaiiSyrup", "qty": 25}, {"ing": "sodaWater", "qty": 150}], "แดงโซดา": [{"ing": "redSyrup", "qty": 25}, {"ing": "sodaWater", "qty": 150}], "พีชโซดา": [{"ing": "peachSyrup", "qty": 25}, {"ing": "sodaWater", "qty": 150}], "น้ำเปล่า": [{"ing": "waterBottle", "qty": 1}], "วุ้นชาเอิร์ลเกรย์": [{"ing": "twiningsTea", "qty": 2}, {"ing": "sugarWhite", "qty": 10}, {"ing": "gelatinPowder", "qty": 1}], "ซอฟครีม": [{"ing": "cream", "qty": 30}], "ครีมชีส": [{"ing": "dreamyCreamCheese", "qty": 20}, {"ing": "cream", "qty": 20}], "บิสคอฟ บิสกิต": [{"ing": "biscoffCookieWhole", "qty": 1}], "นมโอ๊ต": [{"ing": "oatMilk", "qty": 30}]};
+
+const TARGET_COST_PCT = 30; // เป้าหมาย: ต้นทุนไม่เกิน 30% ของราคาขาย
+
+function load(key, seed){
+  const raw = localStorage.getItem(key);
+  if(raw){ try{ return JSON.parse(raw); }catch(e){} }
+  return JSON.parse(JSON.stringify(seed));
+}
+function save(key, data){ localStorage.setItem(key, JSON.stringify(data)); }
+
+let menu = load('meowcha_menu', MENU_SEED);
+let stock = load('meowcha_stock', STOCK_SEED);
+let raw = load('meowcha_raw', RAW_SEED);
+let bases = load('meowcha_bases', BASES_SEED);
+// recipes keyed by menu item name -> [{ing, qty}]
+let recipes = load('meowcha_recipes', RECIPES_SEED);
+let openRecipeIdx = null; // which menu row's recipe editor is expanded
+let openBaseId = null;    // which base card is expanded (ingredients view)
+
+function rawById(id){ return raw.find(i => i.id === id); }
+function unitCostRaw(r){
+  if(!r) return 0;
+  if(r.type === 'each'){
+    const y = r.yieldMl || 1;
+    return (r.packPrice||0) / y;
+  }
+  const sz = r.packSize || 1;
+  const mult = (r.packUnit === 'kg' || r.packUnit === 'L') ? 1000 : 1;
+  return (r.packPrice||0) / (sz * mult);
+}
+function rawDisplayUnit(r){
+  if(r.type === 'each') return 'ชิ้น';
+  return r.type === 'solid' ? 'กรัม' : 'มล.';
+}
+function baseUnitCost(baseId, seen){
+  seen = seen || new Set();
+  if(seen.has(baseId)) return 0; // guard against accidental cycles
+  seen.add(baseId);
+  const b = bases[baseId];
+  if(!b) return 0;
+  let totalCost = 0, totalQty = 0;
+  b.rows.forEach(row => {
+    const q = parseFloat(row.qty) || 0;
+    totalCost += q * costOf(row.ing, seen);
+    totalQty += q;
+  });
+  return totalQty ? totalCost / totalQty : 0;
+}
+// costOf(id): resolves cost-per-unit for ANY id — raw ingredient, base, or '' (free/water) = 0
+function costOf(id, seen){
+  if(!id) return 0;
+  if(bases[id]) return baseUnitCost(id, seen);
+  return unitCostRaw(rawById(id));
+}
+function unitLabel(id){
+  if(!id) return '';
+  if(bases[id]) return 'มล./กรัม';
+  const r = rawById(id);
+  return r ? rawDisplayUnit(r) : '';
+}
+function catalogLabel(id){
+  if(!id) return '';
+  if(bases[id]) return '(เบส) ' + bases[id].name;
+  const r = rawById(id);
+  return r ? r.label : id;
+}
+// full list of {id,label,unit,cost} for dropdowns — recomputed fresh every call so edits propagate
+function catalogOptions(){
+  const opts = raw.map(r => ({id: r.id, label: r.label, unit: rawDisplayUnit(r), cost: unitCostRaw(r)}));
+  Object.keys(bases).forEach(bid => opts.push({id: bid, label: '(เบส) ' + bases[bid].name, unit: 'มล./กรัม', cost: baseUnitCost(bid)}));
+  return opts;
+}
+function recipeFor(name){ if(!recipes[name]) recipes[name] = []; return recipes[name]; }
+function recipeTotalCost(name){
+  return recipeFor(name).reduce((s, row) => s + costOf(row.ing) * (parseFloat(row.qty)||0), 0);
+}
+
+function recalcItem(it){
+  it.cost = Math.round((it.price - it.gross) * 100) / 100; // keep relation consistent if price edited elsewhere
+}
+
+function costPct(it){ return it.price ? (it.cost / it.price * 100) : 0; }
+function marginTier(pct){
+  if(pct <= TARGET_COST_PCT) return 'good';
+  if(pct <= 45) return 'warn';
+  return 'bad';
+}
+function fmt(n){ return (Math.round(n*100)/100).toLocaleString('th-TH', {minimumFractionDigits:2, maximumFractionDigits:2}); }
+function fmt1(n){ return (Math.round(n*10)/10).toLocaleString('th-TH', {minimumFractionDigits:1, maximumFractionDigits:1}); }
+
+function groupBy(arr, key){
+  const out = {};
+  arr.forEach(x => { (out[x[key]] = out[x[key]] || []).push(x); });
+  return out;
+}
+
+/* ================= MENU VIEW ================= */
+function renderMenu(filterText){
+  const el = document.getElementById('view-menu');
+  const q = (filterText||'').trim().toLowerCase();
+  const filtered = menu.filter(it => !q || it.name.toLowerCase().includes(q) || it.cat.toLowerCase().includes(q));
+
+  // stats
+  const total = menu.length;
+  const bad = menu.filter(it => marginTier(costPct(it)) === 'bad').length;
+  const warn = menu.filter(it => marginTier(costPct(it)) === 'warn').length;
+  const noRecipe = menu.filter(it => it.note && it.note.includes('ยังไม่มีสูตร')).length;
+
+  let html = `<div class="stats">
+    <div class="stat"><div class="v">${total}</div><div class="l">เมนูทั้งหมด</div></div>
+    <div class="stat bad"><div class="v">${bad}</div><div class="l">ต้นทุนเกิน 45% (แดง)</div></div>
+    <div class="stat warn"><div class="v">${warn}</div><div class="l">ต้นทุนเกินเป้า 30% (เหลือง)</div></div>
+    <div class="stat"><div class="v">${noRecipe}</div><div class="l">ยังไม่มีสูตรต้นทุน</div></div>
+  </div>`;
+
+  const groups = groupBy(filtered, 'cat');
+  Object.keys(groups).forEach(cat => {
+    const items = groups[cat];
+    html += `<div class="cat-group"><div class="cat-title">${cat} (${items.length})</div>
+    <div class="table-wrap"><table><thead><tr>
+      <th></th>
+      <th>เมนู</th>
+      <th class="num">ราคาขาย</th>
+      <th class="num">ต้นทุน</th>
+      <th class="num">กำไรขั้นต้น</th>
+      <th class="num">%ต้นทุน</th>
+      <th class="bar-cell"></th>
+      <th>สถานะ</th>
+    </tr></thead><tbody>`;
+    items.forEach(it => {
+      const idx = menu.indexOf(it);
+      const pct = costPct(it);
+      const tier = marginTier(pct);
+      const tierLabel = tier === 'good' ? '🟢 ดี' : tier === 'warn' ? '🟡 เกินเป้า' : '🔴 สูงเกินไป';
+      const barColor = tier === 'good' ? 'var(--good)' : tier === 'warn' ? 'var(--warn)' : 'var(--bad)';
+      const barWidth = Math.min(100, pct);
+      const isOpen = openRecipeIdx === idx;
+      const nIng = recipeFor(it.name).length;
+      html += `<tr data-idx="${idx}">
+        <td><button class="chev-btn ${isOpen?'open':''}" data-toggle="${idx}" title="สูตร/ส่วนผสม">${isOpen?'▼':'▶'}</button></td>
+        <td class="name-cell">${it.name}${it.note ? `<span class="note">${it.note}</span>` : ''}<span class="note">${nIng ? nIng+' ส่วนผสม' : 'ยังไม่มีสูตร — กดลูกศรเพื่อเพิ่ม'}</span></td>
+        <td class="num"><input class="edit price-inp" data-idx="${idx}" type="number" step="1" value="${it.price}"></td>
+        <td class="num"><input class="edit cost-inp" data-idx="${idx}" type="number" step="0.01" value="${it.cost}"></td>
+        <td class="num">${fmt(it.price - it.cost)}</td>
+        <td class="num">${fmt1(pct)}%</td>
+        <td class="bar-cell"><div class="bar"><i style="width:${barWidth}%;background:${barColor}"></i></div></td>
+        <td><span class="badge ${tier}">${tierLabel}</span></td>
+      </tr>
+      <tr class="recipe-row ${isOpen?'open':''}" data-recipe-for="${idx}"><td colspan="8">${isOpen ? renderRecipeBox(it, idx) : ''}</td></tr>`;
+    });
+    html += `</tbody></table></div></div>`;
+  });
+
+  if(filtered.length === 0) html += `<p style="color:var(--ink-muted)">ไม่พบเมนูที่ตรงกับคำค้นหา</p>`;
+
+  el.innerHTML = html;
+
+  el.querySelectorAll('.chev-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.toggle;
+      openRecipeIdx = (openRecipeIdx === idx) ? null : idx;
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+  el.querySelectorAll('.price-inp').forEach(inp => {
+    inp.addEventListener('input', e => {
+      const idx = +e.target.dataset.idx;
+      menu[idx].price = parseFloat(e.target.value) || 0;
+      save('meowcha_menu', menu);
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+  el.querySelectorAll('.cost-inp').forEach(inp => {
+    inp.addEventListener('input', e => {
+      const idx = +e.target.dataset.idx;
+      menu[idx].cost = parseFloat(e.target.value) || 0;
+      save('meowcha_menu', menu);
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+  bindRecipeBoxEvents(el);
+}
+
+/* ---- recipe editor box (ingredients + qty per menu item) ---- */
+function renderRecipeBox(it, idx){
+  const rows = recipeFor(it.name);
+  const total = recipeTotalCost(it.name);
+  const catalog = catalogOptions();
+  const ingOptions = catalog.map(i => `<option value="${i.id}">${i.label} (${fmt(i.cost)}บ./${i.unit})</option>`).join('');
+  let rowsHtml = rows.map((r, ri) => {
+    const unit = unitLabel(r.ing);
+    const lineCost = costOf(r.ing) * (parseFloat(r.qty)||0);
+    return `<tr>
+      <td><select class="rc-ing" data-idx="${idx}" data-ri="${ri}">
+        <option value="">— เลือกวัตถุดิบ —</option>${ingOptions}
+      </select></td>
+      <td><input class="qty-edit rc-qty" data-idx="${idx}" data-ri="${ri}" type="number" step="0.1" value="${r.qty}"></td>
+      <td style="font-size:12px;color:var(--ink-muted)">${unit}</td>
+      <td class="num" style="font-family:var(--mono);font-size:12.5px;">${fmt(lineCost)} บ.</td>
+      <td><button class="mini-btn rc-del" data-idx="${idx}" data-ri="${ri}" title="ลบ">✕</button></td>
+    </tr>`;
+  }).join('');
+  if(!rows.length) rowsHtml = `<tr><td colspan="5" class="recipe-empty">ยังไม่มีส่วนผสม — กด "+ เพิ่มวัตถุดิบ" ด้านล่าง</td></tr>`;
+
+  return `<div class="recipe-box">
+    <div class="table-wrap"><table><thead><tr><th>วัตถุดิบ/เบส</th><th>ปริมาณ</th><th>หน่วย</th><th class="num">ต้นทุน</th><th></th></tr></thead>
+    <tbody>${rowsHtml}</tbody></table></div>
+    <div class="add-ing-row">
+      <button class="btn rc-add" data-idx="${idx}" type="button">➕ เพิ่มวัตถุดิบ</button>
+      <span style="font-size:11.5px;color:var(--ink-muted);">ไม่เจอที่ต้องการ? ไปเพิ่มที่แท็บ "วัตถุดิบ & เบส" แล้วย้อนมาใส่สูตรนี้</span>
+    </div>
+    <div class="recipe-summary">
+      <span>รวมต้นทุนวัตถุดิบจากสูตร: <b>${fmt(total)}</b> บาท ${Math.abs(total - it.cost) > 0.01 ? `<span style="color:var(--warn);font-size:12px;">(ต่างจากต้นทุนที่บันทึกไว้ ${fmt(it.cost)} บ.)</span>` : ''}</span>
+      <button class="sync-btn rc-sync" data-idx="${idx}" type="button">📋 ใช้ค่านี้เป็นต้นทุน</button>
+    </div>
+  </div>`;
+}
+
+function bindRecipeBoxEvents(root){
+  root.querySelectorAll('.rc-ing').forEach(sel => {
+    const idx = +sel.dataset.idx, ri = +sel.dataset.ri;
+    sel.value = recipeFor(menu[idx].name)[ri].ing || '';
+    sel.addEventListener('change', e => {
+      recipeFor(menu[idx].name)[ri].ing = e.target.value;
+      save('meowcha_recipes', recipes);
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+  root.querySelectorAll('.rc-qty').forEach(inp => {
+    inp.addEventListener('input', e => {
+      const idx = +e.target.dataset.idx, ri = +e.target.dataset.ri;
+      recipeFor(menu[idx].name)[ri].qty = parseFloat(e.target.value) || 0;
+      save('meowcha_recipes', recipes);
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+  root.querySelectorAll('.rc-del').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.idx, ri = +btn.dataset.ri;
+      recipeFor(menu[idx].name).splice(ri, 1);
+      save('meowcha_recipes', recipes);
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+  root.querySelectorAll('.rc-add').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.idx;
+      recipeFor(menu[idx].name).push({ing: '', qty: 0});
+      save('meowcha_recipes', recipes);
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+  root.querySelectorAll('.rc-sync').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const idx = +btn.dataset.idx;
+      menu[idx].cost = Math.round(recipeTotalCost(menu[idx].name) * 100) / 100;
+      save('meowcha_menu', menu);
+      renderMenu(document.getElementById('search').value);
+    });
+  });
+}
+
+/* ================= INGREDIENTS & BASES VIEW ================= */
+function renderIngredients(filterText){
+  const el = document.getElementById('view-ingredients');
+  const q = (filterText||'').trim().toLowerCase();
+  const filteredRaw = raw.filter(r => !q || r.label.toLowerCase().includes(q));
+  const baseIds = Object.keys(bases).filter(bid => !q || bases[bid].name.toLowerCase().includes(q));
+
+  const unpriced = raw.filter(r => !r.packPrice).length;
+
+  let html = `<div class="stats">
+    <div class="stat"><div class="v">${raw.length}</div><div class="l">วัตถุดิบดิบทั้งหมด</div></div>
+    <div class="stat bad"><div class="v">${unpriced}</div><div class="l">ยังไม่มีราคา</div></div>
+    <div class="stat"><div class="v">${Object.keys(bases).length}</div><div class="l">เบส (สูตรกลาง)</div></div>
+  </div>`;
+
+  // ---- Section 1: raw ingredients ----
+  html += `<div class="cat-group">
+    <div class="cat-title">💰 ราคาวัตถุดิบดิบ — แก้ราคาที่นี่ จะอัปเดตต้นทุนเมนู/เบสที่ใช้วัตถุดิบนี้ทันที</div>
+    <div class="table-wrap"><table><thead><tr>
+      <th>วัตถุดิบ</th><th class="num">ราคา/แพ็ก</th><th>ขนาดแพ็ก</th><th>หน่วย</th>
+      <th class="num">ต้นทุน/หน่วยเล็ก</th>
+    </tr></thead><tbody>`;
+  filteredRaw.forEach(r => {
+    const idx = raw.indexOf(r);
+    const uc = unitCostRaw(r);
+    const isEach = r.type === 'each';
+    html += `<tr>
+      <td class="name-cell"><input class="edit raw-label" style="width:220px;text-align:left;font-weight:600;" data-idx="${idx}" value="${r.label}"></td>
+      <td class="num"><input class="edit raw-price" data-idx="${idx}" type="number" step="1" value="${r.packPrice}"></td>
+      <td>${isEach ? '—' : `<input class="edit raw-size" style="width:56px;" data-idx="${idx}" type="number" step="1" value="${r.packSize}">`}</td>
+      <td style="font-size:12.5px;color:var(--ink-muted);">
+        ${isEach ? `/ ${r.yieldMl||1} ชิ้น` : (r.type === 'solid' ? (r.packUnit==='kg'?'กก.':'กรัม') : (r.packUnit==='L'?'ลิตร':'มล.'))}
+      </td>
+      <td class="num" style="font-family:var(--mono);">${fmt(uc)} บ./${rawDisplayUnit(r)}</td>
+    </tr>`;
+  });
+  html += `</tbody></table></div>
+    <div class="add-ing-row"><button class="btn" id="addRawBtn" type="button">➕ เพิ่มวัตถุดิบดิบใหม่</button></div>
+  </div>`;
+
+  // ---- Section 2: bases ----
+  html += `<div class="cat-group"><div class="cat-title">🧪 เบส (สูตรกลาง) — ผสมจากวัตถุดิบดิบ แล้วนำไปใส่ในเมนูอีกที</div>`;
+  baseIds.forEach(bid => {
+    const b = bases[bid];
+    const isOpen = openBaseId === bid;
+    const uc = baseUnitCost(bid);
+    const totalQty = b.rows.reduce((s,r)=>s+(parseFloat(r.qty)||0),0);
+    html += `<div class="recipe-box" style="margin-bottom:10px;">
+      <div style="display:flex;justify-content:space-between;align-items:center;cursor:pointer;" data-base-toggle="${bid}">
+        <div><button class="chev-btn ${isOpen?'open':''}" style="pointer-events:none;">${isOpen?'▼':'▶'}</button> <b>${b.name}</b>
+          <span class="note" style="display:inline;">${b.rows.length} วัตถุดิบ · ได้ ${fmt(totalQty)} มล./กรัม</span></div>
+        <div style="font-family:var(--mono);font-weight:700;">${fmt(uc)} บ./หน่วย</div>
+      </div>`;
+    if(isOpen){
+      let rowsHtml = b.rows.map((r, ri) => {
+        const rawOpts = raw.map(rw => `<option value="${rw.id}" ${rw.id===r.ing?'selected':''}>${rw.label} (${fmt(unitCostRaw(rw))}บ./${rawDisplayUnit(rw)})</option>`).join('');
+        const lineCost = (r.ing ? unitCostRaw(rawById(r.ing)) : 0) * (parseFloat(r.qty)||0);
+        return `<tr>
+          <td><select class="bs-ing" data-base="${bid}" data-ri="${ri}">
+            <option value="">— น้ำ/เปล่า —</option>${rawOpts}
+          </select></td>
+          <td><input class="qty-edit bs-qty" data-base="${bid}" data-ri="${ri}" type="number" step="0.1" value="${r.qty}"></td>
+          <td class="num" style="font-family:var(--mono);font-size:12.5px;">${fmt(lineCost)} บ.</td>
+          <td><button class="mini-btn bs-del" data-base="${bid}" data-ri="${ri}" title="ลบ">✕</button></td>
+        </tr>`;
+      }).join('');
+      html += `<div class="table-wrap"><table style="margin-top:10px;"><thead><tr><th>วัตถุดิบดิบ</th><th>ปริมาณ</th><th class="num">ต้นทุน</th><th></th></tr></thead>
+        <tbody>${rowsHtml || `<tr><td colspan="4" class="recipe-empty">ยังไม่มีวัตถุดิบในเบสนี้</td></tr>`}</tbody></table></div>
+        <div class="add-ing-row"><button class="btn bs-add" data-base="${bid}" type="button">➕ เพิ่มวัตถุดิบในเบส</button></div>
+        <div class="recipe-summary"><span>รวม ${fmt(totalQty)} มล./กรัม → ต้นทุนเฉลี่ย <b>${fmt(uc)}</b> บาท/หน่วย</span></div>`;
+    }
+    html += `</div>`;
+  });
+  html += `<div class="add-ing-row"><button class="btn" id="addBaseBtn" type="button">➕ สร้างเบสใหม่</button></div></div>`;
+
+  if(filteredRaw.length === 0 && baseIds.length === 0) html += `<p style="color:var(--ink-muted)">ไม่พบวัตถุดิบ/เบสที่ตรงกับคำค้นหา</p>`;
+
+  el.innerHTML = html;
+  bindIngredientsEvents(el);
+}
+
+function bindIngredientsEvents(el){
+  el.querySelectorAll('.raw-label').forEach(inp => inp.addEventListener('input', e => {
+    raw[+e.target.dataset.idx].label = e.target.value;
+    save('meowcha_raw', raw);
+  }));
+  el.querySelectorAll('.raw-price').forEach(inp => inp.addEventListener('input', e => {
+    raw[+e.target.dataset.idx].packPrice = parseFloat(e.target.value) || 0;
+    save('meowcha_raw', raw);
+    renderIngredients(document.getElementById('search').value);
+  }));
+  el.querySelectorAll('.raw-size').forEach(inp => inp.addEventListener('input', e => {
+    raw[+e.target.dataset.idx].packSize = parseFloat(e.target.value) || 1;
+    save('meowcha_raw', raw);
+    renderIngredients(document.getElementById('search').value);
+  }));
+  const addRawBtn = document.getElementById('addRawBtn');
+  if(addRawBtn) addRawBtn.addEventListener('click', () => {
+    const label = prompt('ชื่อวัตถุดิบใหม่:');
+    if(!label) return;
+    const typeIn = (prompt('ชนิด: 1=ของเหลว(มล./ลิตร)  2=ของแห้ง(กรัม/กก.)  3=นับเป็นชิ้น', '1') || '1').trim();
+    const type = typeIn === '2' ? 'solid' : typeIn === '3' ? 'each' : 'liquid';
+    const packPrice = parseFloat(prompt('ราคาต่อแพ็ก (บาท):', '0')) || 0;
+    const id = 'custom_' + Date.now();
+    if(type === 'each'){
+      const yieldMl = parseFloat(prompt('ได้กี่ชิ้นต่อแพ็ก:', '1')) || 1;
+      raw.push({id, label, type, packPrice, packSize: null, packUnit: null, yieldMl});
+    } else {
+      const packSize = parseFloat(prompt('ขนาดแพ็ก (ตัวเลข):', '1')) || 1;
+      const packUnit = prompt('หน่วย (ml/L/g/kg):', type==='liquid'?'ml':'g') || (type==='liquid'?'ml':'g');
+      raw.push({id, label, type, packPrice, packSize, packUnit, yieldMl: null});
+    }
+    save('meowcha_raw', raw);
+    renderIngredients(document.getElementById('search').value);
+  });
+  el.querySelectorAll('[data-base-toggle]').forEach(row => row.addEventListener('click', () => {
+    const bid = row.dataset.baseToggle;
+    openBaseId = (openBaseId === bid) ? null : bid;
+    renderIngredients(document.getElementById('search').value);
+  }));
+  el.querySelectorAll('.bs-ing').forEach(sel => sel.addEventListener('change', e => {
+    bases[e.target.dataset.base].rows[+e.target.dataset.ri].ing = e.target.value;
+    save('meowcha_bases', bases);
+    renderIngredients(document.getElementById('search').value);
+    renderMenu(document.getElementById('search').value);
+  }));
+  el.querySelectorAll('.bs-qty').forEach(inp => inp.addEventListener('input', e => {
+    bases[e.target.dataset.base].rows[+e.target.dataset.ri].qty = parseFloat(e.target.value) || 0;
+    save('meowcha_bases', bases);
+    renderIngredients(document.getElementById('search').value);
+    renderMenu(document.getElementById('search').value);
+  }));
+  el.querySelectorAll('.bs-del').forEach(btn => btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    bases[btn.dataset.base].rows.splice(+btn.dataset.ri, 1);
+    save('meowcha_bases', bases);
+    renderIngredients(document.getElementById('search').value);
+    renderMenu(document.getElementById('search').value);
+  }));
+  el.querySelectorAll('.bs-add').forEach(btn => btn.addEventListener('click', (e) => {
+    e.stopPropagation();
+    bases[btn.dataset.base].rows.push({ing: '', qty: 0});
+    save('meowcha_bases', bases);
+    renderIngredients(document.getElementById('search').value);
+  }));
+  const addBaseBtn = document.getElementById('addBaseBtn');
+  if(addBaseBtn) addBaseBtn.addEventListener('click', () => {
+    const name = prompt('ชื่อเบสใหม่:');
+    if(!name) return;
+    const id = 'base_' + Date.now();
+    bases[id] = {name, rows: []};
+    openBaseId = id;
+    save('meowcha_bases', bases);
+    renderIngredients(document.getElementById('search').value);
+  });
+}
+
+/* ================= STOCK VIEW ================= */
+let stockFilter = 'all';
+function stockStatus(it){
+  if(it.qty <= 0 && it.reorder <= 0) return 'ยังไม่ได้นับ';
+  if(it.qty <= 0) return 'หมด';
+  if(it.qty <= it.reorder) return 'ใกล้หมด';
+  return 'พอใช้';
+}
+function renderStock(filterText){
+  const el = document.getElementById('view-stock');
+  const q = (filterText||'').trim().toLowerCase();
+  let filtered = stock.filter(it => !q || it.name.toLowerCase().includes(q) || it.group.toLowerCase().includes(q));
+
+  const notCounted = stock.filter(it => stockStatus(it) === 'ยังไม่ได้นับ').length;
+  const low = stock.filter(it => stockStatus(it) === 'ใกล้หมด').length;
+  const out = stock.filter(it => stockStatus(it) === 'หมด').length;
+
+  if(stockFilter !== 'all'){
+    filtered = filtered.filter(it => stockStatus(it) === stockFilter);
+  }
+
+  let html = `<div class="stats">
+    <div class="stat"><div class="v">${stock.length}</div><div class="l">วัตถุดิบทั้งหมด</div></div>
+    <div class="stat bad"><div class="v">${notCounted}</div><div class="l">ยังไม่เคยนับสต็อก</div></div>
+    <div class="stat warn"><div class="v">${low}</div><div class="l">ใกล้หมด</div></div>
+    <div class="stat bad"><div class="v">${out}</div><div class="l">หมดแล้ว</div></div>
+  </div>`;
+
+  html += `<div class="pill-row">
+    ${['all','ยังไม่ได้นับ','พอใช้','ใกล้หมด','หมด'].map(s =>
+      `<div class="pill ${stockFilter===s?'active':''}" data-s="${s}">${s==='all' ? 'ทั้งหมด' : s}</div>`
+    ).join('')}
+  </div>`;
+
+  const groups = groupBy(filtered, 'group');
+  Object.keys(groups).forEach(g => {
+    const items = groups[g];
+    html += `<div class="stock-section cat-group"><div class="cat-title">${g} (${items.length})</div>
+    <div class="table-wrap"><table><thead><tr>
+      <th>วัตถุดิบ</th>
+      <th>หน่วย</th>
+      <th class="num">คงเหลือ</th>
+      <th class="num">จุดสั่งซื้อ</th>
+      <th>สถานะ</th>
+    </tr></thead><tbody>`;
+    items.forEach(it => {
+      const idx = stock.indexOf(it);
+      const st = stockStatus(it);
+      const tier = st === 'พอใช้' ? 'good' : st === 'ใกล้หมด' ? 'warn' : st === 'หมด' ? 'bad' : '';
+      html += `<tr>
+        <td class="name-cell">${it.name}${it.usedIn ? `<span class="note">ใช้ใน: ${it.usedIn}</span>` : ''}</td>
+        <td>${it.unit}</td>
+        <td class="num"><input class="edit qty-inp" data-idx="${idx}" type="number" step="1" value="${it.qty}"></td>
+        <td class="num"><input class="edit reorder-inp" data-idx="${idx}" type="number" step="1" value="${it.reorder}"></td>
+        <td><span class="badge ${tier || 'warn'}">${st}</span></td>
+      </tr>`;
+    });
+    html += `</tbody></table></div></div>`;
+  });
+
+  if(filtered.length === 0) html += `<p style="color:var(--ink-muted)">ไม่พบวัตถุดิบที่ตรงกับคำค้นหา/ตัวกรอง</p>`;
+
+  el.innerHTML = html;
+
+  el.querySelectorAll('.pill').forEach(p => {
+    p.addEventListener('click', () => { stockFilter = p.dataset.s; renderStock(document.getElementById('search').value); });
+  });
+  el.querySelectorAll('.qty-inp').forEach(inp => {
+    inp.addEventListener('input', e => {
+      const idx = +e.target.dataset.idx;
+      stock[idx].qty = parseFloat(e.target.value) || 0;
+      save('meowcha_stock', stock);
+      renderStock(document.getElementById('search').value);
+    });
+  });
+  el.querySelectorAll('.reorder-inp').forEach(inp => {
+    inp.addEventListener('input', e => {
+      const idx = +e.target.dataset.idx;
+      stock[idx].reorder = parseFloat(e.target.value) || 0;
+      save('meowcha_stock', stock);
+      renderStock(document.getElementById('search').value);
+    });
+  });
+}
+
+/* ================= NAV / GLOBAL ================= */
+let currentView = 'menu';
+function switchView(v){
+  currentView = v;
+  document.querySelectorAll('nav.tabs button').forEach(b => b.classList.toggle('active', b.dataset.view === v));
+  document.getElementById('view-menu').style.display = v === 'menu' ? '' : 'none';
+  document.getElementById('view-ingredients').style.display = v === 'ingredients' ? '' : 'none';
+  document.getElementById('view-stock').style.display = v === 'stock' ? '' : 'none';
+}
+document.querySelectorAll('nav.tabs button').forEach(b => {
+  b.addEventListener('click', () => switchView(b.dataset.view));
+});
+document.getElementById('search').addEventListener('input', e => {
+  renderMenu(e.target.value);
+  renderIngredients(e.target.value);
+  renderStock(e.target.value);
+});
+document.getElementById('exportBtn').addEventListener('click', () => {
+  const blob = new Blob([JSON.stringify({menu, stock, recipes, raw, bases}, null, 2)], {type:'application/json'});
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(blob);
+  a.download = 'meowcha_data_export.json';
+  a.click();
+});
+document.getElementById('resetBtn').addEventListener('click', () => {
+  if(!confirm('รีเซ็ตข้อมูลทั้งหมดกลับเป็นค่าเดิมที่ดึงจากชีต? (การแก้ไขที่ทำในเว็บนี้จะหายไป)')) return;
+  menu = JSON.parse(JSON.stringify(MENU_SEED));
+  stock = JSON.parse(JSON.stringify(STOCK_SEED));
+  recipes = JSON.parse(JSON.stringify(RECIPES_SEED));
+  raw = JSON.parse(JSON.stringify(RAW_SEED));
+  bases = JSON.parse(JSON.stringify(BASES_SEED));
+  openRecipeIdx = null; openBaseId = null;
+  save('meowcha_menu', menu);
+  save('meowcha_stock', stock);
+  save('meowcha_recipes', recipes);
+  save('meowcha_raw', raw);
+  save('meowcha_bases', bases);
+  renderMenu(''); renderIngredients(''); renderStock('');
+});
+
+renderMenu('');
+renderIngredients('');
+renderStock('');
+</script>
+</body>
+</html>
