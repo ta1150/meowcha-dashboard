@@ -298,6 +298,38 @@ function marginTier(pct){
 function fmt(n){ return (Math.round(n*100)/100).toLocaleString('th-TH', {minimumFractionDigits:2, maximumFractionDigits:2}); }
 function fmt1(n){ return (Math.round(n*10)/10).toLocaleString('th-TH', {minimumFractionDigits:1, maximumFractionDigits:1}); }
 
+// Full re-renders rebuild the whole table (innerHTML), which would normally
+// steal focus out of the input the user is actively typing in after every
+// keystroke. This wrapper remembers which field was focused (by tag + first
+// class + data-* attributes) and the caret position, runs the render, then
+// re-finds the equivalent element in the fresh DOM and restores focus/caret
+// so typing feels continuous instead of "one digit at a time".
+function withFocusPreserved(fn){
+  const active = document.activeElement;
+  let restore = null;
+  if(active && (active.tagName === 'INPUT' || active.tagName === 'SELECT')){
+    let sel;
+    if(active.id){
+      sel = '#' + CSS.escape(active.id);
+    } else {
+      const classes = (active.className || '').split(' ').filter(Boolean);
+      sel = active.tagName.toLowerCase() + classes.map(c => '.' + CSS.escape(c)).join('');
+      Object.keys(active.dataset||{}).forEach(k => { sel += `[data-${k}="${CSS.escape(active.dataset[k])}"]`; });
+    }
+    restore = {sel, start: active.selectionStart, end: active.selectionEnd};
+  }
+  fn();
+  if(restore){
+    const el = document.querySelector(restore.sel);
+    if(el){
+      el.focus();
+      if(typeof restore.start === 'number' && typeof el.setSelectionRange === 'function'){
+        try{ el.setSelectionRange(restore.start, restore.end); }catch(e){}
+      }
+    }
+  }
+}
+
 function groupBy(arr, key){
   const out = {};
   arr.forEach(x => { (out[x[key]] = out[x[key]] || []).push(x); });
@@ -377,7 +409,7 @@ function renderMenu(filterText){
       const idx = +e.target.dataset.idx;
       menu[idx].price = parseFloat(e.target.value) || 0;
       save('meowcha_menu', menu);
-      renderMenu(document.getElementById('search').value);
+      withFocusPreserved(() => renderMenu(document.getElementById('search').value));
     });
   });
   el.querySelectorAll('.cost-inp').forEach(inp => {
@@ -385,7 +417,7 @@ function renderMenu(filterText){
       const idx = +e.target.dataset.idx;
       menu[idx].cost = parseFloat(e.target.value) || 0;
       save('meowcha_menu', menu);
-      renderMenu(document.getElementById('search').value);
+      withFocusPreserved(() => renderMenu(document.getElementById('search').value));
     });
   });
   bindRecipeBoxEvents(el);
@@ -441,7 +473,7 @@ function bindRecipeBoxEvents(root){
       const idx = +e.target.dataset.idx, ri = +e.target.dataset.ri;
       recipeFor(menu[idx].name)[ri].qty = parseFloat(e.target.value) || 0;
       save('meowcha_recipes', recipes);
-      renderMenu(document.getElementById('search').value);
+      withFocusPreserved(() => renderMenu(document.getElementById('search').value));
     });
   });
   root.querySelectorAll('.rc-del').forEach(btn => {
@@ -559,12 +591,12 @@ function bindIngredientsEvents(el){
   el.querySelectorAll('.raw-price').forEach(inp => inp.addEventListener('input', e => {
     raw[+e.target.dataset.idx].packPrice = parseFloat(e.target.value) || 0;
     save('meowcha_raw', raw);
-    renderIngredients(document.getElementById('search').value);
+    withFocusPreserved(() => renderIngredients(document.getElementById('search').value));
   }));
   el.querySelectorAll('.raw-size').forEach(inp => inp.addEventListener('input', e => {
     raw[+e.target.dataset.idx].packSize = parseFloat(e.target.value) || 1;
     save('meowcha_raw', raw);
-    renderIngredients(document.getElementById('search').value);
+    withFocusPreserved(() => renderIngredients(document.getElementById('search').value));
   }));
   const addRawBtn = document.getElementById('addRawBtn');
   if(addRawBtn) addRawBtn.addEventListener('click', () => {
@@ -599,7 +631,7 @@ function bindIngredientsEvents(el){
   el.querySelectorAll('.bs-qty').forEach(inp => inp.addEventListener('input', e => {
     bases[e.target.dataset.base].rows[+e.target.dataset.ri].qty = parseFloat(e.target.value) || 0;
     save('meowcha_bases', bases);
-    renderIngredients(document.getElementById('search').value);
+    withFocusPreserved(() => renderIngredients(document.getElementById('search').value));
     renderMenu(document.getElementById('search').value);
   }));
   el.querySelectorAll('.bs-del').forEach(btn => btn.addEventListener('click', (e) => {
@@ -699,7 +731,7 @@ function renderStock(filterText){
       const idx = +e.target.dataset.idx;
       stock[idx].qty = parseFloat(e.target.value) || 0;
       save('meowcha_stock', stock);
-      renderStock(document.getElementById('search').value);
+      withFocusPreserved(() => renderStock(document.getElementById('search').value));
     });
   });
   el.querySelectorAll('.reorder-inp').forEach(inp => {
@@ -707,7 +739,7 @@ function renderStock(filterText){
       const idx = +e.target.dataset.idx;
       stock[idx].reorder = parseFloat(e.target.value) || 0;
       save('meowcha_stock', stock);
-      renderStock(document.getElementById('search').value);
+      withFocusPreserved(() => renderStock(document.getElementById('search').value));
     });
   });
 }
@@ -725,9 +757,11 @@ document.querySelectorAll('nav.tabs button').forEach(b => {
   b.addEventListener('click', () => switchView(b.dataset.view));
 });
 document.getElementById('search').addEventListener('input', e => {
-  renderMenu(e.target.value);
-  renderIngredients(e.target.value);
-  renderStock(e.target.value);
+  withFocusPreserved(() => {
+    renderMenu(e.target.value);
+    renderIngredients(e.target.value);
+    renderStock(e.target.value);
+  });
 });
 document.getElementById('exportBtn').addEventListener('click', () => {
   const blob = new Blob([JSON.stringify({menu, stock, recipes, raw, bases}, null, 2)], {type:'application/json'});
