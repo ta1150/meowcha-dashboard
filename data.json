@@ -1079,7 +1079,7 @@
     "Coconut Americano": [
       {
         "ing": "coffeeBeans",
-        "qty": 41
+        "qty": 18
       },
       {
         "ing": "freshCoconut",
@@ -1097,7 +1097,7 @@
     "Americano Peach Soda": [
       {
         "ing": "coffeeBeans",
-        "qty": 41
+        "qty": 18
       },
       {
         "ing": "peachSyrup",
@@ -1111,7 +1111,7 @@
     "Cappuccino": [
       {
         "ing": "coffeeBeans",
-        "qty": 41
+        "qty": 18
       },
       {
         "ing": "condensedMilk",
@@ -1129,7 +1129,7 @@
     "Mocca": [
       {
         "ing": "coffeeBeans",
-        "qty": 41
+        "qty": 18
       },
       {
         "ing": "condensedMilk",
@@ -1151,7 +1151,7 @@
     "Latte": [
       {
         "ing": "coffeeBeans",
-        "qty": 41
+        "qty": 18
       },
       {
         "ing": "condensedMilk",
@@ -1169,7 +1169,7 @@
     "Caramel Macchiato": [
       {
         "ing": "coffeeBeans",
-        "qty": 41
+        "qty": 18
       },
       {
         "ing": "condensedMilk",
@@ -1892,5 +1892,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-17T10:04:05.828Z"
+  "updatedAt": null
 }
