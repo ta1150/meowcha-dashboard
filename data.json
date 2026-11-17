@@ -1092,10 +1092,6 @@
       {
         "ing": "mikawaCoconutSquash",
         "qty": 15
-      },
-      {
-        "ing": "pinpinCoconutSyrup",
-        "qty": 5
       }
     ],
     "Americano Peach Soda": [
@@ -1905,5 +1901,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-17T13:12:48.667Z"
+  "updatedAt": "2026-11-17T13:14:29.182Z"
 }
