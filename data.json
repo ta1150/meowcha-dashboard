@@ -70,7 +70,7 @@
       "cat": "☕ กาแฟ",
       "name": "Caramel Macchiato",
       "price": 75,
-      "cost": 28.53,
+      "cost": 16.41,
       "gross": 46.47,
       "grossPct": 62,
       "net": 44.8,
@@ -1901,5 +1901,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-17T13:19:25.717Z"
+  "updatedAt": "2026-11-17T13:19:34.267Z"
 }
