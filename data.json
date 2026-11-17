@@ -4,7 +4,7 @@
       "cat": "☕ กาแฟ",
       "name": "Americano",
       "price": 65,
-      "cost": 9,
+      "cost": 9.13,
       "gross": 45.08,
       "grossPct": 69.4,
       "net": 43.42,
@@ -1905,5 +1905,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-17T13:12:38.045Z"
+  "updatedAt": "2026-11-17T13:12:48.667Z"
 }
