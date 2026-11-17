@@ -1077,7 +1077,7 @@
       },
       {
         "ing": "waterTank18_9L",
-        "qty": 10
+        "qty": 100
       }
     ],
     "Coconut Americano": [
@@ -1905,5 +1905,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-17T13:12:35.122Z"
+  "updatedAt": "2026-11-17T13:12:38.045Z"
 }
