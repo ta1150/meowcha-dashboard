@@ -1074,10 +1074,6 @@
       {
         "ing": "coffeeBeans",
         "qty": 18
-      },
-      {
-        "ing": "",
-        "qty": 0
       }
     ],
     "Coconut Americano": [
@@ -1757,6 +1753,15 @@
       "packSize": 325,
       "packUnit": "ml",
       "yieldMl": null
+    },
+    {
+      "id": "waterTank18_9L",
+      "label": "น้ำเปล่าถัง 18.9 ลิตร (เปลี่ยนถัง)",
+      "type": "liquid",
+      "packPrice": 25,
+      "packSize": 18900,
+      "packUnit": "ml",
+      "yieldMl": null
     }
   ],
   "bases": {
@@ -1896,5 +1901,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-17T12:39:46.169Z"
+  "updatedAt": null
 }
