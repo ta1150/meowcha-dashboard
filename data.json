@@ -1393,7 +1393,7 @@
       },
       {
         "ing": "sugarWhite",
-        "qty": 9.9
+        "qty": 10
       },
       {
         "ing": "gelatinPowder",
@@ -1892,5 +1892,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-17T10:04:02.743Z"
+  "updatedAt": "2026-11-17T10:04:05.828Z"
 }
