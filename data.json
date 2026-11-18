@@ -1184,6 +1184,10 @@
       {
         "ing": "base_milkmix",
         "qty": 60
+      },
+      {
+        "ing": "",
+        "qty": 0
       }
     ],
     "Iced Cocoa (โกโก้เย็น)": [
@@ -2090,5 +2094,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:09:19.932Z"
+  "updatedAt": "2026-11-18T06:09:36.501Z"
 }
