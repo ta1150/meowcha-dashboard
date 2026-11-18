@@ -147,7 +147,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Biscoff Matcha",
       "price": 129,
-      "cost": 43.2,
+      "cost": 47.38,
       "gross": 80.24,
       "grossPct": 62.2,
       "net": 78.58,
@@ -2108,5 +2108,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T09:03:44.254Z"
+  "updatedAt": "2026-11-18T09:03:47.536Z"
 }
