@@ -1115,7 +1115,7 @@
       },
       {
         "ing": "base_milkmix",
-        "qty": 0
+        "qty": 60
       }
     ],
     "Mocca": [
@@ -2086,5 +2086,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:05:43.947Z"
+  "updatedAt": "2026-11-18T06:05:47.097Z"
 }
