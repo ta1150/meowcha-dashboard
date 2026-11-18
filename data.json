@@ -1263,7 +1263,7 @@
       },
       {
         "ing": "base_matchafoam",
-        "qty": 2
+        "qty": 10
       }
     ],
     "Matcha Latte": [
@@ -1921,5 +1921,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T04:58:53.969Z"
+  "updatedAt": "2026-11-18T04:58:56.819Z"
 }
