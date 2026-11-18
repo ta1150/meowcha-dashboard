@@ -37,7 +37,7 @@
       "cat": "☕ กาแฟ",
       "name": "Cappuccino",
       "price": 65,
-      "cost": 25.67,
+      "cost": 16.03,
       "gross": 39.33,
       "grossPct": 60.5,
       "net": 37.67,
@@ -2086,5 +2086,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:05:47.097Z"
+  "updatedAt": "2026-11-18T06:06:04.781Z"
 }
