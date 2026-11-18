@@ -1949,7 +1949,7 @@
         },
         {
           "ing": "strawberrySyrup",
-          "qty": 20
+          "qty": 10
         }
       ]
     },
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:37:01.759Z"
+  "updatedAt": "2026-11-18T08:37:11.592Z"
 }
