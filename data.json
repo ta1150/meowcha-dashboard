@@ -1234,7 +1234,7 @@
     ],
     "Coconut Foam Matcha": [
       {
-        "ing": "freshCoconut",
+        "ing": "coconutWaterBottle",
         "qty": 125
       },
       {
@@ -2102,5 +2102,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:10:46.431Z"
+  "updatedAt": "2026-11-18T06:11:01.405Z"
 }
