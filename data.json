@@ -1261,7 +1261,7 @@
       },
       {
         "ing": "matcha",
-        "qty": 4
+        "qty": 3
       }
     ],
     "Biscoff Matcha": [
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:12:00.731Z"
+  "updatedAt": "2026-11-18T06:12:45.432Z"
 }
