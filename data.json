@@ -1291,7 +1291,7 @@
       },
       {
         "ing": "biscoffCookieWhole",
-        "qty": 0
+        "qty": 1
       }
     ],
     "Matcha Strawberry": [
@@ -2108,5 +2108,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T09:03:39.695Z"
+  "updatedAt": "2026-11-18T09:03:44.254Z"
 }
