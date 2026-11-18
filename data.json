@@ -1247,7 +1247,7 @@
       },
       {
         "ing": "base_matchafoam",
-        "qty": 2
+        "qty": 20
       }
     ],
     "Matcha Latte": [
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:13:28.457Z"
+  "updatedAt": "2026-11-18T06:13:31.256Z"
 }
