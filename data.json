@@ -2006,7 +2006,7 @@
     "☕ กาแฟ": [
       {
         "ing": "pkg_cup",
-        "qty": 2.5
+        "qty": 1
       },
       {
         "ing": "pkg_lid",
@@ -2114,5 +2114,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T05:22:10.807Z"
+  "updatedAt": "2026-11-18T05:22:28.920Z"
 }
