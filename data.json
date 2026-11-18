@@ -158,7 +158,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Matcha Strawberry",
       "price": 109,
-      "cost": 36.63,
+      "cost": 35.44,
       "gross": 67.86,
       "grossPct": 62.3,
       "net": 66.19,
@@ -2108,5 +2108,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T09:00:12.594Z"
+  "updatedAt": "2026-11-18T09:00:17.133Z"
 }
