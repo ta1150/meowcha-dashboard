@@ -1238,8 +1238,8 @@
         "qty": 100
       },
       {
-        "ing": "matcha",
-        "qty": 3
+        "ing": "",
+        "qty": 0
       }
     ],
     "Matcha Latte": [
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T07:22:44.209Z"
+  "updatedAt": "2026-11-18T07:22:47.008Z"
 }
