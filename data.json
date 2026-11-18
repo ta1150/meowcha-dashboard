@@ -1114,7 +1114,7 @@
         "qty": 60
       },
       {
-        "ing": "",
+        "ing": "base_milkmix",
         "qty": 0
       }
     ],
@@ -2086,5 +2086,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:05:30.213Z"
+  "updatedAt": "2026-11-18T06:05:39.576Z"
 }
