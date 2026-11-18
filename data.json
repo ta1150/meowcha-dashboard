@@ -169,7 +169,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Earl Grey Matcha",
       "price": 89,
-      "cost": 29.61,
+      "cost": 29.2,
       "gross": 49.54,
       "grossPct": 55.7,
       "net": 47.87,
@@ -1311,7 +1311,7 @@
       },
       {
         "ing": "oatMilk",
-        "qty": 12
+        "qty": 120
       },
       {
         "ing": "pinpinCoconutSyrup",
@@ -2104,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:46:10.166Z"
+  "updatedAt": "2026-11-18T08:46:18.888Z"
 }
