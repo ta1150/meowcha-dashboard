@@ -1919,7 +1919,7 @@
       "rows": [
         {
           "ing": "matcha",
-          "qty": 0
+          "qty": 3
         },
         {
           "ing": "cream",
@@ -2095,5 +2095,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T07:15:01.758Z"
+  "updatedAt": "2026-11-18T07:15:05.657Z"
 }
