@@ -1251,7 +1251,7 @@
     "Coconut Foam Matcha": [
       {
         "ing": "freshCoconut",
-        "qty": 98.6
+        "qty": 986
       },
       {
         "ing": "pinpinCoconutSyrup",
@@ -1921,5 +1921,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T04:59:28.978Z"
+  "updatedAt": "2026-11-18T04:59:32.189Z"
 }
