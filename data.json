@@ -1251,7 +1251,7 @@
     "Coconut Foam Matcha": [
       {
         "ing": "freshCoconut",
-        "qty": 1
+        "qty": 100
       },
       {
         "ing": "mikawaCoconutSquash",
@@ -1925,5 +1925,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T04:52:29.391Z"
+  "updatedAt": "2026-11-18T04:52:32.294Z"
 }
