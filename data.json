@@ -92,7 +92,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Iced Cocoa (โกโก้เย็น)",
       "price": 69,
-      "cost": 18.13,
+      "cost": 15.41,
       "gross": 50.87,
       "grossPct": 73.7,
       "net": 49.21,
@@ -2090,5 +2090,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:09:16.608Z"
+  "updatedAt": "2026-11-18T06:09:19.932Z"
 }
