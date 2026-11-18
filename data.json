@@ -1257,7 +1257,7 @@
       },
       {
         "ing": "plainSyrup",
-        "qty": 30
+        "qty": 3
       }
     ],
     "Biscoff Matcha": [
@@ -1288,6 +1288,10 @@
       {
         "ing": "cream",
         "qty": 40
+      },
+      {
+        "ing": "",
+        "qty": 0
       }
     ],
     "Matcha Strawberry": [
@@ -2108,5 +2112,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:58:04.346Z"
+  "updatedAt": "2026-11-18T08:58:46.433Z"
 }
