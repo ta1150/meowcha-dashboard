@@ -81,7 +81,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Thai tea (ชาไทยชีส)",
       "price": 59,
-      "cost": 9,
+      "cost": 9.53,
       "gross": 40.75,
       "grossPct": 69.1,
       "net": 39.08,
@@ -1187,7 +1187,7 @@
       },
       {
         "ing": "freshMilk",
-        "qty": 0
+        "qty": 10
       }
     ],
     "Iced Cocoa (โกโก้เย็น)": [
@@ -2094,5 +2094,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:09:39.834Z"
+  "updatedAt": "2026-11-18T06:09:47.632Z"
 }
