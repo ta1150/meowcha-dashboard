@@ -1289,7 +1289,7 @@
       },
       {
         "ing": "oatMilk",
-        "qty": 5
+        "qty": 50
       },
       {
         "ing": "matcha",
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:34:04.531Z"
+  "updatedAt": "2026-11-18T08:34:07.361Z"
 }
