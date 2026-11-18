@@ -1190,6 +1190,10 @@
       {
         "ing": "base_cocoasauce",
         "qty": 100
+      },
+      {
+        "ing": "",
+        "qty": 0
       }
     ],
     "Green Tea (ชาเขียวชีส)": [
@@ -2082,5 +2086,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:08:47.699Z"
+  "updatedAt": "2026-11-18T06:09:01.082Z"
 }
