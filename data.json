@@ -1211,7 +1211,7 @@
       },
       {
         "ing": "base_cheesefoam",
-        "qty": 0
+        "qty": 20
       }
     ],
     "Iced Pink Milk (นมเย็นชมพู)": [
@@ -2094,5 +2094,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:10:06.909Z"
+  "updatedAt": "2026-11-18T06:10:09.024Z"
 }
