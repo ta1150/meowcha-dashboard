@@ -1279,7 +1279,7 @@
       },
       {
         "ing": "biscoffCrumble",
-        "qty": 5
+        "qty": 10
       },
       {
         "ing": "cream",
@@ -2104,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:42:50.821Z"
+  "updatedAt": "2026-11-18T08:43:07.471Z"
 }
