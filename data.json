@@ -1144,6 +1144,10 @@
       {
         "ing": "freshMilk",
         "qty": 60
+      },
+      {
+        "ing": "base_milkmix",
+        "qty": 0
       }
     ],
     "Caramel Macchiato": [
@@ -2074,5 +2078,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:07:40.684Z"
+  "updatedAt": "2026-11-18T06:07:46.800Z"
 }
