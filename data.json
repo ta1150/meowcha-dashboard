@@ -1345,7 +1345,7 @@
     "บลูอาวายโซดา": [
       {
         "ing": "blueHawaiiSyrup",
-        "qty": 25
+        "qty": 50
       },
       {
         "ing": "sodaWater",
@@ -2104,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:47:36.235Z"
+  "updatedAt": "2026-11-18T08:47:44.051Z"
 }
