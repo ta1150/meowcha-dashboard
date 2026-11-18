@@ -48,7 +48,7 @@
       "cat": "☕ กาแฟ",
       "name": "Mocca",
       "price": 75,
-      "cost": 20.28,
+      "cost": 18.34,
       "gross": 45.39,
       "grossPct": 60.5,
       "net": 43.72,
@@ -1133,7 +1133,7 @@
       },
       {
         "ing": "base_milkmix",
-        "qty": 3
+        "qty": 30
       }
     ],
     "Latte": [
@@ -2082,5 +2082,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:06:59.610Z"
+  "updatedAt": "2026-11-18T06:07:02.617Z"
 }
