@@ -1290,7 +1290,7 @@
         "qty": 40
       },
       {
-        "ing": "",
+        "ing": "biscoffCookieWhole",
         "qty": 0
       }
     ],
@@ -2108,5 +2108,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T09:03:26.702Z"
+  "updatedAt": "2026-11-18T09:03:39.695Z"
 }
