@@ -1301,7 +1301,7 @@
       },
       {
         "ing": "matcha",
-        "qty": 4
+        "qty": 3
       },
       {
         "ing": "base_strawberryfoam",
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:14:09.346Z"
+  "updatedAt": "2026-11-18T06:14:23.114Z"
 }
