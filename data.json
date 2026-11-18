@@ -1197,7 +1197,7 @@
       },
       {
         "ing": "freshMilk",
-        "qty": 0
+        "qty": 10
       }
     ],
     "Green Tea (ชาเขียวชีส)": [
@@ -2090,5 +2090,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:09:14.133Z"
+  "updatedAt": "2026-11-18T06:09:16.608Z"
 }
