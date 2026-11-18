@@ -103,7 +103,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Green Tea (ชาเขียวชีส)",
       "price": 59,
-      "cost": 19.3,
+      "cost": 9.89,
       "gross": 39.7,
       "grossPct": 67.3,
       "net": 38.04,
@@ -2102,5 +2102,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:10:27.131Z"
+  "updatedAt": "2026-11-18T06:10:31.498Z"
 }
