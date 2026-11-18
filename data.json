@@ -1365,7 +1365,7 @@
     "พีชโซดา": [
       {
         "ing": "peachSyrup",
-        "qty": 0
+        "qty": 50
       },
       {
         "ing": "sodaWater",
@@ -2104,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:48:24.488Z"
+  "updatedAt": "2026-11-18T08:48:29.065Z"
 }
