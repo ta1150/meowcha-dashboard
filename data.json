@@ -15,7 +15,7 @@
       "cat": "☕ กาแฟ",
       "name": "Coconut Americano",
       "price": 80,
-      "cost": 33.55,
+      "cost": 13.9,
       "gross": 46.45,
       "grossPct": 58.1,
       "net": 44.78,
@@ -2090,5 +2090,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:04:20.146Z"
+  "updatedAt": "2026-11-18T06:04:33.278Z"
 }
