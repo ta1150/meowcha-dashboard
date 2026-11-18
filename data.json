@@ -1179,7 +1179,7 @@
       },
       {
         "ing": "base_cheesefoam",
-        "qty": 50
+        "qty": 0
       }
     ],
     "Iced Cocoa (โกโก้เย็น)": [
@@ -2078,5 +2078,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:08:00.549Z"
+  "updatedAt": "2026-11-18T06:08:33.494Z"
 }
