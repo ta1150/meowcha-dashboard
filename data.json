@@ -1254,10 +1254,6 @@
         "qty": 100
       },
       {
-        "ing": "mikawaCoconutSquash",
-        "qty": 15
-      },
-      {
         "ing": "pinpinCoconutSyrup",
         "qty": 10
       },
@@ -1925,5 +1921,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T04:52:32.294Z"
+  "updatedAt": "2026-11-18T04:53:33.163Z"
 }
