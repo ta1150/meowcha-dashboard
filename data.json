@@ -1239,7 +1239,7 @@
       },
       {
         "ing": "pinpinCoconutSyrup",
-        "qty": 5
+        "qty": 2.4
       },
       {
         "ing": "matcha",
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:12:54.380Z"
+  "updatedAt": "2026-11-18T06:13:08.898Z"
 }
