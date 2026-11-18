@@ -4,7 +4,7 @@
       "cat": "☕ กาแฟ",
       "name": "Americano",
       "price": 65,
-      "cost": 9,
+      "cost": 9.13,
       "gross": 45.08,
       "grossPct": 69.4,
       "net": 43.42,
@@ -1077,7 +1077,7 @@
       },
       {
         "ing": "waterTank18_9L",
-        "qty": 10
+        "qty": 100
       }
     ],
     "Coconut Americano": [
@@ -2089,5 +2089,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T05:57:38.566Z"
+  "updatedAt": "2026-11-18T05:57:42.118Z"
 }
