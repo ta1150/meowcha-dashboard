@@ -136,7 +136,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Matcha Latte",
       "price": 79,
-      "cost": 27.95,
+      "cost": 28.11,
       "gross": 46.39,
       "grossPct": 58.7,
       "net": 44.73,
@@ -2104,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:45:10.805Z"
+  "updatedAt": "2026-11-18T08:45:13.829Z"
 }
