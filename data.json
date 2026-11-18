@@ -1257,7 +1257,7 @@
       },
       {
         "ing": "plainSyrup",
-        "qty": 0
+        "qty": 30
       }
     ],
     "Biscoff Matcha": [
@@ -2108,5 +2108,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:58:00.471Z"
+  "updatedAt": "2026-11-18T08:58:04.346Z"
 }
