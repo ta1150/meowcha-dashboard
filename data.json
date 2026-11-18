@@ -26,7 +26,7 @@
       "cat": "☕ กาแฟ",
       "name": "Americano Peach Soda",
       "price": 75,
-      "cost": 24.43,
+      "cost": 13.37,
       "gross": 50.57,
       "grossPct": 67.4,
       "net": 48.9,
@@ -2090,5 +2090,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:04:33.278Z"
+  "updatedAt": "2026-11-18T06:05:05.795Z"
 }
