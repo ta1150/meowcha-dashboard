@@ -1396,10 +1396,6 @@
     ],
     "ครีมชีส": [
       {
-        "ing": "dreamyCreamCheese",
-        "qty": 20
-      },
-      {
         "ing": "cream",
         "qty": 20
       }
@@ -2108,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T09:01:47.394Z"
+  "updatedAt": "2026-11-18T09:02:03.770Z"
 }
