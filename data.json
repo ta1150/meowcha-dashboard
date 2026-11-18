@@ -1932,11 +1932,11 @@
         },
         {
           "ing": "cream",
-          "qty": 29.9
+          "qty": 30
         },
         {
           "ing": "mMilkFreshMilk2L",
-          "qty": 20
+          "qty": 30
         }
       ]
     },
@@ -2104,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:56:30.995Z"
+  "updatedAt": "2026-11-18T08:56:35.432Z"
 }
