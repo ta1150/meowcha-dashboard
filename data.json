@@ -1128,10 +1128,6 @@
         "qty": 30
       },
       {
-        "ing": "evaporatedMilk",
-        "qty": 30
-      },
-      {
         "ing": "freshMilk",
         "qty": 40
       },
@@ -2086,5 +2082,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:06:04.781Z"
+  "updatedAt": "2026-11-18T06:06:30.050Z"
 }
