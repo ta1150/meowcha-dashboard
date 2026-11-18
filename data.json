@@ -1310,16 +1310,8 @@
     ],
     "Earl Grey Matcha": [
       {
-        "ing": "twiningsTea",
-        "qty": 2
-      },
-      {
-        "ing": "sugarWhite",
-        "qty": 10
-      },
-      {
-        "ing": "gelatinPowder",
-        "qty": 1
+        "ing": "base_earlgreyjelly",
+        "qty": 40
       },
       {
         "ing": "oatMilk",
@@ -1332,10 +1324,6 @@
       {
         "ing": "matcha",
         "qty": 4
-      },
-      {
-        "ing": "",
-        "qty": 0
       }
     ],
     "ลิ้นจี่โซดา": [
@@ -1396,16 +1384,8 @@
     ],
     "วุ้นชาเอิร์ลเกรย์": [
       {
-        "ing": "twiningsTea",
-        "qty": 2
-      },
-      {
-        "ing": "sugarWhite",
-        "qty": 10
-      },
-      {
-        "ing": "gelatinPowder",
-        "qty": 1
+        "ing": "base_earlgreyjelly",
+        "qty": 40
       }
     ],
     "ซอฟครีม": [
@@ -1986,6 +1966,27 @@
         {
           "ing": "freshMilk",
           "qty": 50
+        }
+      ]
+    },
+    "base_earlgreyjelly": {
+      "name": "เบสวุ้นชาเอิร์ลเกรย์ (1 ชุด ~413g = 28 ชิ้น)",
+      "rows": [
+        {
+          "ing": "twiningsTea",
+          "qty": 2
+        },
+        {
+          "ing": "sugarWhite",
+          "qty": 10
+        },
+        {
+          "ing": "gelatinPowder",
+          "qty": 1
+        },
+        {
+          "ing": "",
+          "qty": 400
         }
       ]
     }
