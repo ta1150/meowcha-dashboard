@@ -1133,7 +1133,7 @@
       },
       {
         "ing": "base_milkmix",
-        "qty": 60
+        "qty": 3
       }
     ],
     "Latte": [
@@ -2082,5 +2082,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:06:45.217Z"
+  "updatedAt": "2026-11-18T06:06:59.610Z"
 }
