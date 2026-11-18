@@ -1475,7 +1475,7 @@
     },
     {
       "id": "plainSyrup",
-      "label": "ไซรัปเปล่า (น้ำเชื่อม)",
+      "label": "ไซรัป",
       "type": "liquid",
       "packPrice": 37,
       "packSize": 800,
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:41:07.782Z"
+  "updatedAt": "2026-11-18T08:41:28.559Z"
 }
