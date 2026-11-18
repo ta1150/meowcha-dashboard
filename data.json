@@ -1259,7 +1259,7 @@
     "Biscoff Matcha": [
       {
         "ing": "biscoffSpread",
-        "qty": 51
+        "qty": 15
       },
       {
         "ing": "oatMilk",
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:38:03.425Z"
+  "updatedAt": "2026-11-18T08:38:06.779Z"
 }
