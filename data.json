@@ -1329,13 +1329,13 @@
       },
       {
         "ing": "sodaWater",
-        "qty": 10
+        "qty": 100
       }
     ],
     "สตอเบอร์รี่โซดา": [
       {
         "ing": "strawberrySyrup",
-        "qty": 25
+        "qty": 0
       },
       {
         "ing": "sodaWater",
@@ -2104,5 +2104,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:47:17.519Z"
+  "updatedAt": "2026-11-18T08:47:27.854Z"
 }
