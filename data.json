@@ -1788,7 +1788,7 @@
       "label": "น้ำมะพร้าวสด",
       "type": "liquid",
       "packPrice": 49,
-      "packSize": 99,
+      "packSize": 1000,
       "packUnit": "ml",
       "yieldMl": null
     }
@@ -1930,5 +1930,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T05:02:50.871Z"
+  "updatedAt": "2026-11-18T05:02:54.982Z"
 }
