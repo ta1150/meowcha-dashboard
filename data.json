@@ -1288,6 +1288,10 @@
       {
         "ing": "cream",
         "qty": 40
+      },
+      {
+        "ing": "",
+        "qty": 0
       }
     ],
     "Matcha Strawberry": [
@@ -2104,5 +2108,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T09:02:19.819Z"
+  "updatedAt": "2026-11-18T09:03:26.702Z"
 }
