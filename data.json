@@ -1239,7 +1239,7 @@
       },
       {
         "ing": "pinpinCoconutSyrup",
-        "qty": 2.4
+        "qty": 2.5
       },
       {
         "ing": "matcha",
@@ -1247,7 +1247,7 @@
       },
       {
         "ing": "base_matchafoam",
-        "qty": 30
+        "qty": 52
       }
     ],
     "Matcha Latte": [
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:13:08.898Z"
+  "updatedAt": "2026-11-18T06:13:21.283Z"
 }
