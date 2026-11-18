@@ -1796,7 +1796,7 @@
       "id": "pkg_cup",
       "label": "แก้ว 14oz",
       "type": "each",
-      "packPrice": 0,
+      "packPrice": 2.5,
       "packSize": null,
       "packUnit": null,
       "yieldMl": 1
@@ -2114,5 +2114,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T05:21:42.404Z"
+  "updatedAt": "2026-11-18T05:22:10.807Z"
 }
