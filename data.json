@@ -114,7 +114,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Iced Pink Milk (นมเย็นชมพู)",
       "price": 59,
-      "cost": 14.6,
+      "cost": 9.93,
       "gross": 44.4,
       "grossPct": 75.3,
       "net": 42.73,
@@ -2102,5 +2102,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:10:31.498Z"
+  "updatedAt": "2026-11-18T06:10:46.431Z"
 }
