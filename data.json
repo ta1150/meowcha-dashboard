@@ -136,7 +136,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Matcha Latte",
       "price": 79,
-      "cost": 29.66,
+      "cost": 27.95,
       "gross": 46.39,
       "grossPct": 58.7,
       "net": 44.73,
@@ -1245,7 +1245,7 @@
     "Matcha Latte": [
       {
         "ing": "oatMilk",
-        "qty": 10
+        "qty": 120
       },
       {
         "ing": "pinpinCoconutSyrup",
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T07:40:22.309Z"
+  "updatedAt": "2026-11-18T07:41:46.477Z"
 }
