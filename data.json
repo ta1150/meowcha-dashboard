@@ -1275,7 +1275,7 @@
       },
       {
         "ing": "plainSyrup",
-        "qty": 30.1
+        "qty": 0
       },
       {
         "ing": "biscoffCrumble",
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:41:51.334Z"
+  "updatedAt": "2026-11-18T08:41:53.709Z"
 }
