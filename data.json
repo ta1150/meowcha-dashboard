@@ -1214,7 +1214,7 @@
         "qty": 20
       },
       {
-        "ing": "",
+        "ing": "freshMilk",
         "qty": 0
       }
     ],
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:10:11.635Z"
+  "updatedAt": "2026-11-18T06:10:14.295Z"
 }
