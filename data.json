@@ -125,7 +125,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Coconut Foam Matcha",
       "price": 89,
-      "cost": 45.61,
+      "cost": 38.83,
       "gross": 34.51,
       "grossPct": 38.8,
       "net": 32.85,
@@ -1263,7 +1263,7 @@
       },
       {
         "ing": "base_matchafoam",
-        "qty": 20
+        "qty": 2
       }
     ],
     "Matcha Latte": [
@@ -1921,5 +1921,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T04:57:37.609Z"
+  "updatedAt": "2026-11-18T04:58:53.969Z"
 }
