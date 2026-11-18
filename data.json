@@ -1076,7 +1076,7 @@
         "qty": 18
       },
       {
-        "ing": "",
+        "ing": "waterTank18_9L",
         "qty": 0
       }
     ],
@@ -2089,5 +2089,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T05:57:28.419Z"
+  "updatedAt": "2026-11-18T05:57:32.505Z"
 }
