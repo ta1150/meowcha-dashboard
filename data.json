@@ -1305,7 +1305,7 @@
       },
       {
         "ing": "base_strawberryfoam",
-        "qty": 80
+        "qty": 70
       }
     ],
     "Earl Grey Matcha": [
@@ -2108,5 +2108,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:59:17.899Z"
+  "updatedAt": "2026-11-18T09:00:12.594Z"
 }
