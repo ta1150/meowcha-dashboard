@@ -59,7 +59,7 @@
       "cat": "☕ กาแฟ",
       "name": "Latte",
       "price": 65,
-      "cost": 27.03,
+      "cost": 14.09,
       "gross": 37.97,
       "grossPct": 58.4,
       "net": 36.31,
@@ -2078,5 +2078,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:07:55.174Z"
+  "updatedAt": "2026-11-18T06:07:57.766Z"
 }
