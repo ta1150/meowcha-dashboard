@@ -1838,6 +1838,15 @@
       "packSize": 1,
       "packUnit": "kg",
       "yieldMl": null
+    },
+    {
+      "id": "coconutWaterBottle",
+      "label": "น้ำมะพร้าวสด (ขวด 1000ml)",
+      "type": "liquid",
+      "packPrice": 49,
+      "packSize": 1000,
+      "packUnit": "ml",
+      "yieldMl": null
     }
   ],
   "bases": {
