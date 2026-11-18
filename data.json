@@ -1274,7 +1274,7 @@
         "qty": 3
       },
       {
-        "ing": "cream",
+        "ing": "plainSyrup",
         "qty": 30
       },
       {
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:38:36.987Z"
+  "updatedAt": "2026-11-18T08:41:07.782Z"
 }
