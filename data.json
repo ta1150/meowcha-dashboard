@@ -1248,7 +1248,7 @@
         "qty": 150
       },
       {
-        "ing": "plainSyrup",
+        "ing": "pinpinCoconutSyrup",
         "qty": 2.5
       },
       {
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T07:22:51.894Z"
+  "updatedAt": "2026-11-18T07:38:39.451Z"
 }
