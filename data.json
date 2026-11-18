@@ -1142,14 +1142,6 @@
         "qty": 18
       },
       {
-        "ing": "condensedMilk",
-        "qty": 30
-      },
-      {
-        "ing": "evaporatedMilk",
-        "qty": 30
-      },
-      {
         "ing": "freshMilk",
         "qty": 60
       }
@@ -2082,5 +2074,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:07:02.617Z"
+  "updatedAt": "2026-11-18T06:07:40.684Z"
 }
