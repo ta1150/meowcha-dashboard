@@ -1251,7 +1251,7 @@
     "Coconut Foam Matcha": [
       {
         "ing": "freshCoconut",
-        "qty": 986
+        "qty": 98
       },
       {
         "ing": "pinpinCoconutSyrup",
@@ -1782,6 +1782,15 @@
       "packSize": 18900,
       "packUnit": "ml",
       "yieldMl": null
+    },
+    {
+      "id": "custom_1794978143311",
+      "label": "น้ำมะพร้าวสด",
+      "type": "liquid",
+      "packPrice": 49,
+      "packSize": 1,
+      "packUnit": "ml",
+      "yieldMl": null
     }
   ],
   "bases": {
@@ -1921,5 +1930,5 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T04:59:32.189Z"
+  "updatedAt": "2026-11-18T05:02:40.930Z"
 }
