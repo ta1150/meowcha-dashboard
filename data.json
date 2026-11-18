@@ -1219,7 +1219,7 @@
       },
       {
         "ing": "base_milkmix",
-        "qty": 0
+        "qty": 60
       }
     ],
     "Iced Pink Milk (นมเย็นชมพู)": [
@@ -2102,5 +2102,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:10:24.604Z"
+  "updatedAt": "2026-11-18T06:10:27.131Z"
 }
