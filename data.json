@@ -1088,10 +1088,6 @@
       {
         "ing": "coconutWaterBottle",
         "qty": 100
-      },
-      {
-        "ing": "pinpinCoconutSyrup",
-        "qty": 5
       }
     ],
     "Americano Peach Soda": [
@@ -2094,5 +2090,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:04:17.112Z"
+  "updatedAt": "2026-11-18T06:04:20.146Z"
 }
