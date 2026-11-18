@@ -1193,7 +1193,7 @@
       },
       {
         "ing": "base_milkmix",
-        "qty": 0
+        "qty": 70
       }
     ],
     "Green Tea (ชาเขียวชีส)": [
@@ -2086,5 +2086,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:09:05.317Z"
+  "updatedAt": "2026-11-18T06:09:08.442Z"
 }
