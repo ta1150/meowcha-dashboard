@@ -1086,7 +1086,7 @@
         "qty": 18
       },
       {
-        "ing": "coconutWaterBottle",
+        "ing": "freshCoconut",
         "qty": 100
       },
       {
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:03:15.984Z"
+  "updatedAt": "2026-11-18T06:03:29.200Z"
 }
