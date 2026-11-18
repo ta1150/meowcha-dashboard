@@ -1945,7 +1945,7 @@
         },
         {
           "ing": "mMilkFreshMilk2L",
-          "qty": 8
+          "qty": 2
         },
         {
           "ing": "strawberrySyrup",
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:32:19.410Z"
+  "updatedAt": "2026-11-18T08:32:23.528Z"
 }
