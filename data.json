@@ -1791,6 +1791,78 @@
       "packSize": 1000,
       "packUnit": "ml",
       "yieldMl": null
+    },
+    {
+      "id": "pkg_cup",
+      "label": "แก้ว 14oz",
+      "type": "each",
+      "packPrice": 0,
+      "packSize": null,
+      "packUnit": null,
+      "yieldMl": 1
+    },
+    {
+      "id": "pkg_lid",
+      "label": "ฝาแก้ว",
+      "type": "each",
+      "packPrice": 0,
+      "packSize": null,
+      "packUnit": null,
+      "yieldMl": 1
+    },
+    {
+      "id": "pkg_straw",
+      "label": "หลอด",
+      "type": "each",
+      "packPrice": 0,
+      "packSize": null,
+      "packUnit": null,
+      "yieldMl": 1
+    },
+    {
+      "id": "pkg_bag",
+      "label": "ถุงหิ้ว/สายหิ้ว",
+      "type": "each",
+      "packPrice": 0,
+      "packSize": null,
+      "packUnit": null,
+      "yieldMl": 1
+    },
+    {
+      "id": "pkg_sticker",
+      "label": "สติ๊กเกอร์โลโก้/ปลอกกันร้อน",
+      "type": "each",
+      "packPrice": 0,
+      "packSize": null,
+      "packUnit": null,
+      "yieldMl": 1
+    },
+    {
+      "id": "pkg_foodbox",
+      "label": "กล่องข้าว/ถุงกระดาษ",
+      "type": "each",
+      "packPrice": 0,
+      "packSize": null,
+      "packUnit": null,
+      "yieldMl": 1
+    },
+    {
+      "id": "pkg_dessertbox",
+      "label": "กล่อง/ภาชนะของหวาน",
+      "type": "each",
+      "packPrice": 0,
+      "packSize": null,
+      "packUnit": null,
+      "yieldMl": 1
+    },
+    {
+      "id": "ice",
+      "label": "น้ำแข็ง",
+      "type": "solid",
+      "packPrice": 0,
+      "packSize": 1,
+      "packUnit": "kg",
+      "yieldMl": null
     }
   ],
   "bases": {
@@ -1930,5 +2002,117 @@
       ]
     }
   },
-  "updatedAt": "2026-11-18T05:05:08.240Z"
+  "pkgProfiles": {
+    "☕ กาแฟ": [
+      {
+        "ing": "pkg_cup",
+        "qty": 2.5
+      },
+      {
+        "ing": "pkg_lid",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_straw",
+        "qty": 1
+      },
+      {
+        "ing": "ice",
+        "qty": 150
+      },
+      {
+        "ing": "pkg_sticker",
+        "qty": 1
+      }
+    ],
+    "🧋 ชา/นมสด": [
+      {
+        "ing": "pkg_cup",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_lid",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_straw",
+        "qty": 1
+      },
+      {
+        "ing": "ice",
+        "qty": 150
+      },
+      {
+        "ing": "pkg_sticker",
+        "qty": 1
+      }
+    ],
+    "🍵 มัทฉะ": [
+      {
+        "ing": "pkg_cup",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_lid",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_straw",
+        "qty": 1
+      },
+      {
+        "ing": "ice",
+        "qty": 150
+      },
+      {
+        "ing": "pkg_sticker",
+        "qty": 1
+      }
+    ],
+    "🥤 โซดา": [
+      {
+        "ing": "pkg_cup",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_lid",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_straw",
+        "qty": 1
+      },
+      {
+        "ing": "ice",
+        "qty": 150
+      },
+      {
+        "ing": "pkg_sticker",
+        "qty": 1
+      }
+    ],
+    "➕ ท็อปปิ้งเสริม": [],
+    "🍚 เมนูข้าว/ของทอด": [
+      {
+        "ing": "pkg_foodbox",
+        "qty": 1
+      }
+    ],
+    "🍰 เบเกอรี่/ของหวาน": [
+      {
+        "ing": "pkg_dessertbox",
+        "qty": 1
+      }
+    ]
+  },
+  "fixedCosts": {
+    "salesPerMonth": 0,
+    "electricity": 0,
+    "labor": 0,
+    "rent": 0,
+    "gas": 0,
+    "water": 0,
+    "depreciation": 0
+  },
+  "updatedAt": "2026-11-18T05:21:42.404Z"
 }
