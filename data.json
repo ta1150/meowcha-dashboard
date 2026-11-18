@@ -1074,6 +1074,10 @@
       {
         "ing": "coffeeBeans",
         "qty": 18
+      },
+      {
+        "ing": "",
+        "qty": 0
       }
     ],
     "Coconut Americano": [
@@ -2085,5 +2089,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T05:22:28.920Z"
+  "updatedAt": "2026-11-18T05:57:28.419Z"
 }
