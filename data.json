@@ -1289,7 +1289,7 @@
       },
       {
         "ing": "oatMilk",
-        "qty": 10
+        "qty": 100
       },
       {
         "ing": "matcha",
@@ -1297,7 +1297,7 @@
       },
       {
         "ing": "base_strawberryfoam",
-        "qty": 20
+        "qty": 280
       }
     ],
     "Earl Grey Matcha": [
@@ -2100,5 +2100,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T08:35:27.116Z"
+  "updatedAt": "2026-11-18T08:36:08.561Z"
 }
