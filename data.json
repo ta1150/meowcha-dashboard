@@ -1827,6 +1827,15 @@
       "packSize": 1000,
       "packUnit": "ml",
       "yieldMl": null
+    },
+    {
+      "id": "mMilkFreshMilk2L",
+      "label": "เอ็มมิลค์ นมสด 2 ล.",
+      "type": "liquid",
+      "packPrice": 98,
+      "packSize": 2,
+      "packUnit": "L",
+      "yieldMl": null
     }
   ],
   "bases": {
