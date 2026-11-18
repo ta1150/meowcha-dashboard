@@ -169,7 +169,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Earl Grey Matcha",
       "price": 89,
-      "cost": 39.46,
+      "cost": 28.96,
       "gross": 49.54,
       "grossPct": 55.7,
       "net": 47.87,
@@ -1323,7 +1323,7 @@
       },
       {
         "ing": "matcha",
-        "qty": 30
+        "qty": 3
       }
     ],
     "ลิ้นจี่โซดา": [
@@ -2099,5 +2099,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:51:50.802Z"
+  "updatedAt": "2026-11-18T06:51:53.789Z"
 }
