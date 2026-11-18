@@ -4,7 +4,7 @@
       "cat": "☕ กาแฟ",
       "name": "Americano",
       "price": 65,
-      "cost": 9.16,
+      "cost": 9,
       "gross": 45.08,
       "grossPct": 69.4,
       "net": 43.42,
@@ -15,7 +15,7 @@
       "cat": "☕ กาแฟ",
       "name": "Coconut Americano",
       "price": 80,
-      "cost": 14.91,
+      "cost": 33.55,
       "gross": 46.45,
       "grossPct": 58.1,
       "net": 44.78,
@@ -26,7 +26,7 @@
       "cat": "☕ กาแฟ",
       "name": "Americano Peach Soda",
       "price": 75,
-      "cost": 13.37,
+      "cost": 24.43,
       "gross": 50.57,
       "grossPct": 67.4,
       "net": 48.9,
@@ -37,7 +37,7 @@
       "cat": "☕ กาแฟ",
       "name": "Cappuccino",
       "price": 65,
-      "cost": 15.99,
+      "cost": 25.67,
       "gross": 39.33,
       "grossPct": 60.5,
       "net": 37.67,
@@ -48,7 +48,7 @@
       "cat": "☕ กาแฟ",
       "name": "Mocca",
       "price": 75,
-      "cost": 20.24,
+      "cost": 29.61,
       "gross": 45.39,
       "grossPct": 60.5,
       "net": 43.72,
@@ -59,7 +59,7 @@
       "cat": "☕ กาแฟ",
       "name": "Latte",
       "price": 65,
-      "cost": 15.99,
+      "cost": 27.03,
       "gross": 37.97,
       "grossPct": 58.4,
       "net": 36.31,
@@ -70,7 +70,7 @@
       "cat": "☕ กาแฟ",
       "name": "Caramel Macchiato",
       "price": 75,
-      "cost": 16.41,
+      "cost": 28.53,
       "gross": 46.47,
       "grossPct": 62,
       "net": 44.8,
@@ -81,7 +81,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Thai tea (ชาไทยชีส)",
       "price": 59,
-      "cost": 9.53,
+      "cost": 18.25,
       "gross": 40.75,
       "grossPct": 69.1,
       "net": 39.08,
@@ -92,7 +92,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Iced Cocoa (โกโก้เย็น)",
       "price": 69,
-      "cost": 15.41,
+      "cost": 18.13,
       "gross": 50.87,
       "grossPct": 73.7,
       "net": 49.21,
@@ -103,7 +103,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Green Tea (ชาเขียวชีส)",
       "price": 59,
-      "cost": 9.89,
+      "cost": 19.3,
       "gross": 39.7,
       "grossPct": 67.3,
       "net": 38.04,
@@ -114,7 +114,7 @@
       "cat": "🧋 ชา/นมสด",
       "name": "Iced Pink Milk (นมเย็นชมพู)",
       "price": 59,
-      "cost": 9.93,
+      "cost": 14.6,
       "gross": 44.4,
       "grossPct": 75.3,
       "net": 42.73,
@@ -125,7 +125,7 @@
       "cat": "🍵 มัทฉะ",
       "name": "Coconut Foam Matcha",
       "price": 89,
-      "cost": 27.95,
+      "cost": 54.49,
       "gross": 34.51,
       "grossPct": 38.8,
       "net": 32.85,
@@ -1074,10 +1074,6 @@
       {
         "ing": "coffeeBeans",
         "qty": 18
-      },
-      {
-        "ing": "waterTank18_9L",
-        "qty": 120
       }
     ],
     "Coconut Americano": [
@@ -1091,7 +1087,11 @@
       },
       {
         "ing": "mikawaCoconutSquash",
-        "qty": 10
+        "qty": 15
+      },
+      {
+        "ing": "pinpinCoconutSyrup",
+        "qty": 5
       }
     ],
     "Americano Peach Soda": [
@@ -1195,29 +1195,13 @@
       },
       {
         "ing": "base_cheesefoam",
-        "qty": 20
-      },
-      {
-        "ing": "base_milkmix",
-        "qty": 60
-      },
-      {
-        "ing": "freshMilk",
-        "qty": 10
+        "qty": 50
       }
     ],
     "Iced Cocoa (โกโก้เย็น)": [
       {
         "ing": "base_cocoasauce",
         "qty": 100
-      },
-      {
-        "ing": "base_milkmix",
-        "qty": 70
-      },
-      {
-        "ing": "freshMilk",
-        "qty": 10
       }
     ],
     "Green Tea (ชาเขียวชีส)": [
@@ -1227,15 +1211,7 @@
       },
       {
         "ing": "base_cheesefoam",
-        "qty": 20
-      },
-      {
-        "ing": "freshMilk",
-        "qty": 10
-      },
-      {
-        "ing": "base_milkmix",
-        "qty": 60
+        "qty": 50
       }
     ],
     "Iced Pink Milk (นมเย็นชมพู)": [
@@ -1250,20 +1226,24 @@
     ],
     "Coconut Foam Matcha": [
       {
-        "ing": "custom_1794978143311",
-        "qty": 100
+        "ing": "freshCoconut",
+        "qty": 125
+      },
+      {
+        "ing": "mikawaCoconutSquash",
+        "qty": 15
       },
       {
         "ing": "pinpinCoconutSyrup",
-        "qty": 5
+        "qty": 10
       },
       {
         "ing": "matcha",
-        "qty": 2
+        "qty": 4
       },
       {
         "ing": "base_matchafoam",
-        "qty": 15
+        "qty": 30
       }
     ],
     "Matcha Latte": [
@@ -1780,15 +1760,6 @@
       "type": "liquid",
       "packPrice": 25,
       "packSize": 18900,
-      "packUnit": "ml",
-      "yieldMl": null
-    },
-    {
-      "id": "custom_1794978143311",
-      "label": "น้ำมะพร้าวสด",
-      "type": "liquid",
-      "packPrice": 49,
-      "packSize": 1000,
       "packUnit": "ml",
       "yieldMl": null
     },
