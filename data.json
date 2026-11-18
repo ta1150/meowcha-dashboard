@@ -1235,7 +1235,7 @@
     "Coconut Foam Matcha": [
       {
         "ing": "coconutWaterBottle",
-        "qty": 12
+        "qty": 10
       },
       {
         "ing": "pinpinCoconutSyrup",
@@ -2098,5 +2098,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:11:49.894Z"
+  "updatedAt": "2026-11-18T06:11:53.226Z"
 }
