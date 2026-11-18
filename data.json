@@ -1124,16 +1124,16 @@
         "qty": 18
       },
       {
-        "ing": "condensedMilk",
-        "qty": 30
-      },
-      {
         "ing": "freshMilk",
         "qty": 40
       },
       {
         "ing": "hersheySyrup",
         "qty": 20
+      },
+      {
+        "ing": "",
+        "qty": 0
       }
     ],
     "Latte": [
@@ -2082,5 +2082,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:06:30.050Z"
+  "updatedAt": "2026-11-18T06:06:32.932Z"
 }
