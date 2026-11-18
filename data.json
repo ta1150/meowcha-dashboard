@@ -1110,16 +1110,12 @@
         "qty": 18
       },
       {
-        "ing": "condensedMilk",
-        "qty": 30
-      },
-      {
-        "ing": "evaporatedMilk",
-        "qty": 30
-      },
-      {
         "ing": "freshMilk",
         "qty": 60
+      },
+      {
+        "ing": "",
+        "qty": 0
       }
     ],
     "Mocca": [
@@ -2090,5 +2086,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-18T06:05:05.795Z"
+  "updatedAt": "2026-11-18T06:05:30.213Z"
 }
