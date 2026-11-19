@@ -38,6 +38,9 @@
   .redline{ color:#b5502f; font-weight:700; font-size:11.5px; margin-top:3px; }
   .resetbar{ text-align:center; padding:10px 0 30px; }
   .resetbtn{ background:#fff; border:1px solid #ccc; color:#777; font-size:12.5px; padding:8px 18px; border-radius:20px; }
+  .item.imp{ background:#fff9ec; border-left:4px solid #d9a526; }
+  .item.imp .ititle{ font-weight:700; }
+  .star{ color:#d9a526; margin-right:3px; }
 </style>
 </head>
 <body>
@@ -71,7 +74,7 @@ const SECTIONS = [
   { id:'e3', time:'21:00–21:45', title:'เตรียมปิดร้าน', note:'ตามที่บอสกำหนด — เริ่มเคลียร์ล่วงหน้าก่อนปิดจริง', isDraft:false,
     items:[
       {t:'ดูดฝุ่น ถูพื้นภายในร้าน'},
-      {t:'เอาหมูเข้าตู้แช่แข็ง', s:'เก็บของสด/วัตถุดิบที่เหลือกลับที่แช่ให้ครบ'},
+      {t:'เอาหมูเข้าตู้แช่แข็ง', s:'เก็บของสด/วัตถุดิบที่เหลือกลับที่แช่ให้ครบ', imp:true},
       {t:'เริ่มเก็บโต๊ะโซนที่ลูกค้าไม่นั่ง', s:'ทยอยเก็บ ไม่รบกวนลูกค้าที่ยังนั่งอยู่ เว้นโซนที่ยังมีคนไว้ก่อน'},
       {t:'เก็บขยะ มัดปากถุง เตรียมพร้อมทิ้ง'},
       {t:'เก็บพัดลม 2 ตัว และลำโพง เข้าที่เก็บ', s:'กันฝน/ความชื้นถ้าทิ้งไว้นอกร้าน'},
@@ -84,10 +87,10 @@ const SECTIONS = [
       {t:'นำขยะทุกถุงไปทิ้งจุดรวม'},
       {t:'ชาร์จแบตแท็บเล็ต POS'},
       {t:'ชาร์จแบตเครื่องดูดฝุ่น'},
-      {t:'เช็คปลั๊กไฟ แอร์ พัดลม ให้เรียบร้อย'},
-      {t:'นับเงินสด-ปิดยอดขายวันนี้', s:'เทียบยอดเงินสดกับยอดขายในระบบ POS'},
-      {t:'เช็คแมวร้าน 4 ตัว ก่อนปิด: น้ำ-อาหารพอข้ามคืนไหม'},
-      {t:'ล็อคประตู-หน้าต่าง ปิดแอร์ ปิดไฟ (เว้นจุดจำเป็น)'},
+      {t:'เช็คปลั๊กไฟ แอร์ พัดลม ให้เรียบร้อย', imp:true},
+      {t:'นับเงินสด-ปิดยอดขายวันนี้', s:'เทียบยอดเงินสดกับยอดขายในระบบ POS', imp:true},
+      {t:'เช็คแมวร้าน 4 ตัว ก่อนปิด: น้ำ-อาหารพอข้ามคืนไหม', imp:true},
+      {t:'ล็อคประตู-หน้าต่าง ปิดแอร์ ปิดไฟ (เว้นจุดจำเป็น)', imp:true},
       {t:'ถ่ายรูปร้านก่อนปิด "ร้านพร้อมปิด"'},
       {t:'แจ้งกลุ่ม: ปิดร้านเรียบร้อย + ปัญหา/ของหมดที่เจอวันนี้'},
     ]},
@@ -129,11 +132,11 @@ function render(){
       </div>
       <div class="note">${sec.note}</div>
       ${sec.items.map((it,i)=>`
-        <div class="item ${st[sec.id+'_'+i]?'done':''}" onclick="toggle('${sec.id}',${i})">
+        <div class="item ${st[sec.id+'_'+i]?'done':''} ${it.imp?'imp':''}" onclick="toggle('${sec.id}',${i})">
           <div class="irow">
             <div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
             <div class="itext">
-              <div class="ititle">${it.t}${it.isSuggest?' <span style="color:#c9960c;font-size:11px;">(แนะนำ)</span>':''}</div>
+              <div class="ititle">${it.imp?'<span class="star">⭐</span>':''}${it.t}${it.isSuggest?' <span style="color:#c9960c;font-size:11px;">(แนะนำ)</span>':''}</div>
               ${it.s?`<div class="isub">${it.s}</div>`:''}
               ${it.r?`<div class="redline">${it.r}</div>`:''}
             </div>
