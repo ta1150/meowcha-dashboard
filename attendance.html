@@ -66,9 +66,23 @@
   .pill.working{ background:#e3f6ec; color:#1f7a4d; }
   .pill.off{ background:#eaf4fb; color:#8fa7b8; }
   .subtime{ font-size:11.5px; color:#8fa7b8; margin-top:2px; }
+  .catstrip{ position:relative; height:46px; overflow:hidden; background:linear-gradient(180deg, #bfe6fa, #d9f1fb); border-bottom:2px solid rgba(255,255,255,.6); }
+  .catstrip .cat{ position:absolute; bottom:4px; font-size:28px; animation: catrun 9s linear infinite; filter: drop-shadow(0 2px 2px rgba(0,0,0,.15)); }
+  .catstrip .cat2{ animation-delay:-4.5s; font-size:22px; opacity:.85; }
+  @keyframes catrun{
+    0%   { left:-10%; transform: scaleX(1) translateY(0); }
+    48%  { transform: scaleX(1) translateY(-3px); }
+    50%  { left:104%; transform: scaleX(-1) translateY(0); }
+    98%  { transform: scaleX(-1) translateY(-3px); }
+    100% { left:-10%; transform: scaleX(-1) translateY(0); }
+  }
 </style>
 </head>
 <body>
+<div class="catstrip">
+  <span class="cat">🐈</span>
+  <span class="cat cat2">🐱</span>
+</div>
 <div class="topbar">
   <h1>🐾 ตารางกะ + ตอกบัตร</h1>
   <p>Cattopia แคทโทเปีย คาเฟ่ · ตอกบัตรได้เฉพาะในรัศมี 100 เมตรจากร้าน</p>
