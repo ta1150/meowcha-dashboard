@@ -113,17 +113,17 @@
   </div>
 
   <div class="card">
-    <h2>🟢 สถานะการทำงานตอนนี้</h2>
-    <div id="log" class="loglist"><div class="muted">กำลังโหลด...</div></div>
-  </div>
-
-  <div class="card">
-    <h2>⏱️ สรุปชั่วโมงทำงานจริง (จากการตอกบัตร) — สัปดาห์นี้</h2>
-    <div id="weekLock" class="lockbox">
+    <h2>🔒 สรุปข้อมูลพนักงาน (เฉพาะบอส)</h2>
+    <div id="ownerLock" class="lockbox">
       <p class="muted">🔒 ส่วนนี้เฉพาะบอสเท่านั้น</p>
-      <button onclick="unlockWeekSummary()">ปลดล็อคด้วยรหัส</button>
+      <button onclick="unlockOwnerSection()">ปลดล็อคด้วยรหัส</button>
     </div>
-    <div id="weekSummary" style="display:none"><div class="muted">กำลังโหลด...</div></div>
+    <div id="ownerContent" style="display:none">
+      <h3 style="font-size:13.5px;color:#2f7cb8;margin:0 0 10px;">🟢 สถานะการทำงานตอนนี้</h3>
+      <div id="log" class="loglist"><div class="muted">กำลังโหลด...</div></div>
+      <h3 style="font-size:13.5px;color:#2f7cb8;margin:20px 0 10px;">⏱️ สรุปชั่วโมงทำงานจริง (จากการตอกบัตร) — สัปดาห์นี้</h3>
+      <div id="weekSummary"><div class="muted">กำลังโหลด...</div></div>
+    </div>
   </div>
 
 </div>
@@ -381,21 +381,21 @@ async function loadWeekSummary(){
 }
 loadWeekSummary();
 
-// ---- PIN gate for boss-only weekly summary ----
+// ---- PIN gate for boss-only section (status + weekly summary) ----
 const OWNER_PIN = '9999';
-function unlockWeekSummary(){
-  const pin = prompt('ใส่รหัสเพื่อดูสรุปชั่วโมงทำงาน:');
+function unlockOwnerSection(){
+  const pin = prompt('ใส่รหัสเพื่อดูข้อมูล:');
   if(pin === OWNER_PIN){
-    document.getElementById('weekLock').style.display = 'none';
-    document.getElementById('weekSummary').style.display = 'block';
+    document.getElementById('ownerLock').style.display = 'none';
+    document.getElementById('ownerContent').style.display = 'block';
     sessionStorage.setItem('meowcha_week_unlocked', '1');
   } else if(pin !== null){
     alert('รหัสไม่ถูกต้อง');
   }
 }
 if(sessionStorage.getItem('meowcha_week_unlocked') === '1'){
-  document.getElementById('weekLock').style.display = 'none';
-  document.getElementById('weekSummary').style.display = 'block';
+  document.getElementById('ownerLock').style.display = 'none';
+  document.getElementById('ownerContent').style.display = 'block';
 }
 </script>
 </body>
