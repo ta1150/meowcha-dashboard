@@ -547,6 +547,7 @@ function renderMenu(filterText){
       <th class="num">ต้นทุน</th>
       <th class="num">กำไรขั้นต้น</th>
       <th class="num">%ต้นทุน</th>
+      <th class="num">Margin%</th>
       <th class="bar-cell"></th>
       <th>สถานะ</th>
     </tr></thead><tbody>`;
@@ -569,10 +570,11 @@ function renderMenu(filterText){
           <span class="note" style="white-space:nowrap;">วัตถุดิบ ${bd.hasRecipe ? fmt(bd.ing) : `<input class="edit cost-inp" data-idx="${idx}" type="number" step="0.01" value="${it.cost}" title="ยังไม่มีสูตร — กรอกต้นทุนวัตถุดิบเอง">`} บาท + บรรจุภัณฑ์ ${fmt(bd.pkg)} บาท</span></td>
         <td class="num">${fmt(it.price - bd.total)}</td>
         <td class="num">${fmt1(pct)}%</td>
+        <td class="num"><b>${fmt1(100-pct)}%</b></td>
         <td class="bar-cell"><div class="bar"><i style="width:${barWidth}%;background:${barColor}"></i></div></td>
         <td><span class="badge ${tier}">${tierLabel}</span></td>
       </tr>
-      <tr class="recipe-row ${isOpen?'open':''}" data-recipe-for="${idx}"><td colspan="8">${isOpen ? renderRecipeBox(it, idx) : ''}</td></tr>`;
+      <tr class="recipe-row ${isOpen?'open':''}" data-recipe-for="${idx}"><td colspan="9">${isOpen ? renderRecipeBox(it, idx) : ''}</td></tr>`;
     });
     html += `</tbody></table></div></div>`;
   });
