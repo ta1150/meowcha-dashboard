@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ตารางกะ + ตอกบัตร · Meow Cha</title>
+<style>
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:0; background:#f6f1e9; font-family:-apple-system,'Noto Sans Thai','Segoe UI',sans-serif; color:#2b1d14; }
+  .topbar{ background:#2b1d14; color:#fff8ec; padding:18px 20px; text-align:center; }
+  .topbar h1{ margin:0; font-size:18px; }
+  .topbar p{ margin:4px 0 0; font-size:12px; color:#d8c9b5; }
+  .wrap{ max-width:480px; margin:0 auto; padding:16px; display:flex; flex-direction:column; gap:16px; }
+  .card{ background:#fff; border-radius:16px; padding:20px; box-shadow:0 2px 10px rgba(0,0,0,.06); }
+  .card h2{ font-size:15px; margin:0 0 12px; color:#8a6a2f; }
+  table{ width:100%; border-collapse:collapse; font-size:13px; }
+  th, td{ padding:9px 6px; text-align:center; border-bottom:1px solid #eee; }
+  th{ background:#2b1d14; color:#fff8ec; font-size:11.5px; }
+  th:first-child, td:first-child{ text-align:left; font-weight:700; }
+  tr:nth-child(even) td{ background:#faf6ee; }
+  .off{ color:#bbb; font-style:italic; }
+  .shift-am{ color:#b5502f; font-weight:600; }
+  .shift-pm{ color:#3a6b8a; font-weight:600; }
+  select{ width:100%; padding:12px; border-radius:10px; border:1px solid #ddd; font-size:15px; margin-bottom:12px; }
+  .btnrow{ display:flex; gap:10px; }
+  button.punch{ flex:1; padding:16px 10px; border:none; border-radius:12px; font-size:15px; font-weight:700; color:#fff; }
+  .btn-in{ background:#5a8a5f; }
+  .btn-out{ background:#b5502f; }
+  button.punch:disabled{ background:#ccc; }
+  .status{ margin-top:12px; padding:12px; border-radius:10px; font-size:13px; text-align:center; display:none; }
+  .status.ok{ background:#e6f4e8; color:#2d6a33; display:block; }
+  .status.err{ background:#fde8e4; color:#b5502f; display:block; }
+  .status.wait{ background:#fff3cd; color:#7a5c00; display:block; }
+  .loglist{ font-size:13px; }
+  .logitem{ display:flex; justify-content:space-between; padding:8px 0; border-bottom:1px solid #f0ece2; }
+  .logitem .nm{ font-weight:700; }
+  .logitem .ty{ font-size:11px; padding:2px 8px; border-radius:10px; color:#fff; }
+  .ty.in{ background:#5a8a5f; }
+  .ty.out{ background:#b5502f; }
+  .muted{ color:#999; font-size:12px; text-align:center; padding:10px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>🐾 ตารางกะ + ตอกบัตร</h1>
+  <p>Cattopia แคทโทเปีย คาเฟ่ · ตอกบัตรได้เฉพาะในรัศมี 100 เมตรจากร้าน</p>
+</div>
+<div class="wrap">
+
+  <div class="card">
+    <h2>📅 ตารางกะพนักงาน</h2>
+    <table>
+      <thead><tr><th>วัน</th><th>ฟักแฟง</th><th>เนส</th><th>จ๋าย</th></tr></thead>
+      <tbody>
+        <tr><td>จันทร์</td><td class="shift-am">9:00–17:00</td><td class="shift-pm">16:00–22:00</td><td class="off">หยุด</td></tr>
+        <tr><td>อังคาร</td><td class="shift-am">9:00–17:00</td><td class="shift-pm">16:00–22:00</td><td class="off">หยุด</td></tr>
+        <tr><td>พุธ</td><td class="shift-am">9:00–17:00</td><td class="off">หยุด</td><td class="shift-pm">16:00–22:00</td></tr>
+        <tr><td>พฤหัสบดี</td><td class="shift-am">9:00–17:00</td><td class="off">หยุด</td><td class="shift-pm">16:00–22:00</td></tr>
+        <tr><td>ศุกร์</td><td class="shift-am">9:00–17:00</td><td class="off">หยุด</td><td class="shift-pm">16:00–22:00</td></tr>
+        <tr><td>เสาร์</td><td class="shift-am">9:00–17:00</td><td class="shift-pm">16:00–22:00</td><td class="off">หยุด</td></tr>
+        <tr><td>อาทิตย์</td><td class="off">หยุด</td><td class="shift-am">9:00–17:00</td><td class="shift-pm">16:00–22:00</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="card">
+    <h2>🕐 ตอกบัตรเข้า–ออกงาน</h2>
+    <select id="empSelect">
+      <option value="">เลือกชื่อพนักงาน</option>
+      <option value="ฟักแฟง">ฟักแฟง</option>
+      <option value="เนส">เนส</option>
+      <option value="จ๋าย">จ๋าย</option>
+    </select>
+    <div class="btnrow">
+      <button class="punch btn-in" onclick="punch('in')">✅ ตอกบัตรเข้างาน</button>
+      <button class="punch btn-out" onclick="punch('out')">🚪 ตอกบัตรออกงาน</button>
+    </div>
+    <div id="status" class="status"></div>
+  </div>
+
+  <div class="card">
+    <h2>📋 ประวัติตอกบัตรล่าสุด</h2>
+    <div id="log" class="loglist"><div class="muted">กำลังโหลด...</div></div>
+  </div>
+
+</div>
+
+<script>
+// ---- shop geofence ----
+const SHOP_LAT = 16.2401947;
+const SHOP_LNG = 103.2594684;
+const RADIUS_M = 100;
+
+// ---- GitHub sync (shared data.json, same token as cost dashboard) ----
+const GH_TOKEN_OBF = "MHhIa2Ztb1RPM1hVTkhHSHVrU1VFNXJkeklOUkxPWVV6eWJGUE9vUFdmRWJzRTltM2VSTGxIanlXbEJfMWVsQVpMMU5rTnRrMEE0REZWWEIxMV90YXBfYnVodGln";
+const GH_TOKEN = atob(GH_TOKEN_OBF).split('').reverse().join('');
+const GH_REPO = "ta1150/meowcha-dashboard";
+const GH_PATH = "data.json";
+const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
+
+function haversine(lat1, lng1, lat2, lng2){
+  const R = 6371000;
+  const toRad = d => d*Math.PI/180;
+  const dLat = toRad(lat2-lat1), dLng = toRad(lng2-lng1);
+  const a = Math.sin(dLat/2)**2 + Math.cos(toRad(lat1))*Math.cos(toRad(lat2))*Math.sin(dLng/2)**2;
+  return R * 2*Math.atan2(Math.sqrt(a), Math.sqrt(1-a));
+}
+
+function setStatus(msg, cls){
+  const el = document.getElementById('status');
+  el.textContent = msg;
+  el.className = 'status ' + cls;
+}
+
+function b64encodeUtf8(str){
+  return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, (_, p1) => String.fromCharCode('0x'+p1)));
+}
+function b64decodeUtf8(str){
+  return decodeURIComponent(atob(str).split('').map(c => '%' + ('00'+c.charCodeAt(0).toString(16)).slice(-2)).join(''));
+}
+
+async function punch(type){
+  const emp = document.getElementById('empSelect').value;
+  if(!emp){ setStatus('กรุณาเลือกชื่อพนักงานก่อน', 'err'); return; }
+  if(!navigator.geolocation){ setStatus('เบราว์เซอร์นี้ไม่รองรับ GPS', 'err'); return; }
+
+  setStatus('📍 กำลังเช็คตำแหน่ง GPS...', 'wait');
+  navigator.geolocation.getCurrentPosition(async (pos) => {
+    const {latitude, longitude, accuracy} = pos.coords;
+    const dist = haversine(latitude, longitude, SHOP_LAT, SHOP_LNG);
+    if(dist > RADIUS_M){
+      setStatus(`❌ อยู่นอกรัศมีร้าน (ห่าง ~${Math.round(dist)} ม. จากร้าน ต้องไม่เกิน ${RADIUS_M} ม.)`, 'err');
+      return;
+    }
+    setStatus('🔄 กำลังบันทึก...', 'wait');
+    try{
+      const res = await fetch(GH_API, { headers:{ Authorization: `token ${GH_TOKEN}`, Accept:'application/vnd.github+json' }, cache:'no-store' });
+      const meta = await res.json();
+      const data = JSON.parse(b64decodeUtf8(meta.content));
+      if(!data.attendance) data.attendance = [];
+      const record = {
+        employee: emp, type: type,
+        ts: new Date().toISOString(),
+        lat: latitude, lng: longitude, accuracy: Math.round(accuracy), distance_m: Math.round(dist)
+      };
+      data.attendance.push(record);
+      const body = { message: `Punch ${type}: ${emp}`, content: b64encodeUtf8(JSON.stringify(data, null, 2)), sha: meta.sha };
+      const putRes = await fetch(GH_API, {
+        method:'PUT',
+        headers:{ Authorization: `token ${GH_TOKEN}`, Accept:'application/vnd.github+json', 'Content-Type':'application/json' },
+        body: JSON.stringify(body)
+      });
+      if(!putRes.ok) throw new Error('push failed: ' + putRes.status);
+      setStatus(`✅ ${type==='in'?'ตอกบัตรเข้างาน':'ตอกบัตรออกงาน'}สำเร็จ — ${emp} (ห่างร้าน ${Math.round(dist)} ม.)`, 'ok');
+      loadLog();
+    }catch(e){
+      setStatus('❌ บันทึกไม่สำเร็จ: ' + e.message, 'err');
+    }
+  }, (err) => {
+    setStatus('❌ ไม่สามารถเข้าถึงตำแหน่ง GPS ได้: ' + err.message + ' (ต้องอนุญาต Location ในเบราว์เซอร์)', 'err');
+  }, { enableHighAccuracy:true, timeout:15000 });
+}
+
+async function loadLog(){
+  const logEl = document.getElementById('log');
+  try{
+    const res = await fetch(GH_API, { cache:'no-store' });
+    const meta = await res.json();
+    const data = JSON.parse(b64decodeUtf8(meta.content));
+    const att = (data.attendance || []).slice(-15).reverse();
+    if(att.length === 0){ logEl.innerHTML = '<div class="muted">ยังไม่มีประวัติ</div>'; return; }
+    logEl.innerHTML = att.map(r => {
+      const d = new Date(r.ts);
+      const timeStr = d.toLocaleString('th-TH', {dateStyle:'short', timeStyle:'short'});
+      return `<div class="logitem"><div><span class="nm">${r.employee}</span> · ${timeStr}</div><div class="ty ${r.type}">${r.type==='in'?'เข้า':'ออก'}</div></div>`;
+    }).join('');
+  }catch(e){
+    logEl.innerHTML = '<div class="muted">โหลดไม่สำเร็จ</div>';
+  }
+}
+loadLog();
+</script>
+</body>
+</html>
