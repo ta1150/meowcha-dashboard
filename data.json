@@ -2109,15 +2109,5 @@
     "depreciation": 0
   },
   "updatedAt": "2026-11-18T09:03:47.536Z",
-  "attendance": [
-    {
-      "employee": "ฟักแฟง",
-      "type": "in",
-      "ts": "2026-11-19T08:03:45.932Z",
-      "lat": 16.2401947,
-      "lng": 103.2594684,
-      "accuracy": 15,
-      "distance_m": 0
-    }
-  ]
+  "attendance": []
 }
