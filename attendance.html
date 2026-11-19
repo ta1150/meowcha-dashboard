@@ -83,6 +83,11 @@
     <div id="log" class="loglist"><div class="muted">กำลังโหลด...</div></div>
   </div>
 
+  <div class="card">
+    <h2>⏱️ สรุปชั่วโมงทำงานจริง (จากการตอกบัตร) — สัปดาห์นี้</h2>
+    <div id="weekSummary"><div class="muted">กำลังโหลด...</div></div>
+  </div>
+
 </div>
 
 <script>
@@ -179,6 +184,76 @@ async function loadLog(){
   }
 }
 loadLog();
+
+// ---- weekly hours summary computed from real punch pairs ----
+const EMPLOYEES = ['ฟักแฟง','เนส','จ๋าย'];
+
+function getMonday(d){
+  const date = new Date(d);
+  const day = date.getDay(); // 0=Sun
+  const diff = day === 0 ? -6 : 1 - day;
+  date.setDate(date.getDate() + diff);
+  date.setHours(0,0,0,0);
+  return date;
+}
+
+function computeWeeklyHours(attendance){
+  const monday = getMonday(new Date());
+  const sunday = new Date(monday); sunday.setDate(sunday.getDate()+7);
+  const hours = {};
+  EMPLOYEES.forEach(e => hours[e] = [0,0,0,0,0,0,0]);
+  EMPLOYEES.forEach(emp => {
+    const recs = attendance.filter(r => r.employee === emp)
+      .map(r => ({...r, dt: new Date(r.ts)}))
+      .filter(r => r.dt >= monday && r.dt < sunday)
+      .sort((a,b) => a.dt - b.dt);
+    let openIn = null;
+    recs.forEach(r => {
+      if(r.type === 'in'){ openIn = r.dt; }
+      else if(r.type === 'out' && openIn){
+        const dayIdx = (openIn.getDay() + 6) % 7;
+        hours[emp][dayIdx] += (r.dt - openIn);
+        openIn = null;
+      }
+    });
+  });
+  return hours;
+}
+
+function msToHr(ms){ return Math.round((ms/3600000)*10)/10; }
+
+async function loadWeekSummary(){
+  const el = document.getElementById('weekSummary');
+  try{
+    const res = await fetch(GH_API, { cache:'no-store' });
+    const meta = await res.json();
+    const data = JSON.parse(b64decodeUtf8(meta.content));
+    const attendance = data.attendance || [];
+    const hours = computeWeeklyHours(attendance);
+    const dayLabels = ['จันทร์','อังคาร','พุธ','พฤหัสบดี','ศุกร์','เสาร์','อาทิตย์'];
+    let html = '<table><thead><tr><th>วัน</th>' + EMPLOYEES.map(e=>`<th>${e}</th>`).join('') + '</tr></thead><tbody>';
+    const totals = {};
+    EMPLOYEES.forEach(e=>totals[e]=0);
+    dayLabels.forEach((label, i) => {
+      html += `<tr><td>${label}</td>`;
+      EMPLOYEES.forEach(e => {
+        const h = msToHr(hours[e][i]);
+        totals[e] += h;
+        html += `<td>${h>0 ? h+' ชม.' : '<span class="off">-</span>'}</td>`;
+      });
+      html += '</tr>';
+    });
+    html += `<tr style="font-weight:800;background:#f3e7cf;"><td>รวม/สัปดาห์</td>` + EMPLOYEES.map(e=>`<td>${Math.round(totals[e]*10)/10} ชม.</td>`).join('') + '</tr>';
+    html += '</tbody></table>';
+    if(attendance.length === 0){
+      html += '<div class="muted">ยังไม่มีข้อมูลตอกบัตรจริง (ตัวเลขจะขึ้น 0 จนกว่าจะเริ่มตอกบัตร)</div>';
+    }
+    el.innerHTML = html;
+  }catch(e){
+    el.innerHTML = '<div class="muted">โหลดไม่สำเร็จ</div>';
+  }
+}
+loadWeekSummary();
 </script>
 </body>
 </html>
