@@ -45,6 +45,14 @@
   .logitem img.thumb{ width:32px; height:32px; border-radius:6px; object-fit:cover; margin-right:6px; vertical-align:middle; }
   .lockbox{ text-align:center; padding:14px; }
   .lockbox button{ background:#8a6a2f; color:#fff; border:none; padding:10px 20px; border-radius:20px; font-size:13px; }
+  .statusrow{ display:flex; align-items:center; justify-content:space-between; padding:12px 0; border-bottom:1px solid #f0ece2; }
+  .statusrow:last-child{ border-bottom:none; }
+  .statusrow .nm{ font-weight:700; font-size:14.5px; display:flex; align-items:center; gap:8px; }
+  .statusrow img.thumb2{ width:36px; height:36px; border-radius:8px; object-fit:cover; }
+  .pill{ font-size:12px; padding:5px 12px; border-radius:16px; font-weight:700; }
+  .pill.working{ background:#e6f4e8; color:#2d6a33; }
+  .pill.off{ background:#f0ece2; color:#999; }
+  .subtime{ font-size:11.5px; color:#999; margin-top:2px; }
 </style>
 </head>
 <body>
@@ -91,7 +99,7 @@
   </div>
 
   <div class="card">
-    <h2>📋 ประวัติตอกบัตรล่าสุด</h2>
+    <h2>🟢 สถานะการทำงานตอนนี้</h2>
     <div id="log" class="loglist"><div class="muted">กำลังโหลด...</div></div>
   </div>
 
@@ -223,13 +231,22 @@ async function loadLog(){
     const res = await fetch(GH_API, { cache:'no-store' });
     const meta = await res.json();
     const data = JSON.parse(b64decodeUtf8(meta.content));
-    const att = (data.attendance || []).slice(-15).reverse();
-    if(att.length === 0){ logEl.innerHTML = '<div class="muted">ยังไม่มีประวัติ</div>'; return; }
-    logEl.innerHTML = att.map(r => {
-      const d = new Date(r.ts);
-      const timeStr = d.toLocaleString('th-TH', {dateStyle:'short', timeStyle:'short'});
-      const thumb = r.photo ? `<img class="thumb" src="${r.photo}">` : '';
-      return `<div class="logitem"><div>${thumb}<span class="nm">${r.employee}</span> · ${timeStr}</div><div class="ty ${r.type}">${r.type==='in'?'เข้า':'ออก'}</div></div>`;
+    const attendance = data.attendance || [];
+    logEl.innerHTML = EMPLOYEES.map(emp => {
+      const recs = attendance.filter(r => r.employee === emp)
+        .map(r => ({...r, dt: new Date(r.ts)}))
+        .sort((a,b) => a.dt - b.dt);
+      const last = recs[recs.length - 1];
+      const isWorking = last && last.type === 'in';
+      const timeStr = last ? last.dt.toLocaleString('th-TH', {dateStyle:'short', timeStyle:'short'}) : null;
+      const thumb = last && last.photo ? `<img class="thumb2" src="${last.photo}">` : '';
+      const pill = isWorking
+        ? `<span class="pill working">🟢 กำลังทำงาน</span>`
+        : `<span class="pill off">⚪ ไม่ได้ทำงาน</span>`;
+      const sub = last
+        ? `<div class="subtime">${isWorking ? 'เข้างานเมื่อ' : 'ออกงานล่าสุดเมื่อ'} ${timeStr}</div>`
+        : `<div class="subtime">ยังไม่มีประวัติ</div>`;
+      return `<div class="statusrow"><div><div class="nm">${thumb}${emp}</div>${sub}</div>${pill}</div>`;
     }).join('');
   }catch(e){
     logEl.innerHTML = '<div class="muted">โหลดไม่สำเร็จ</div>';
