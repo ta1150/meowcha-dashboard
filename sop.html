@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOP กะเช้า · Meow Cha</title>
+<style>
+  *{box-sizing:border-box;}
+  body{ margin:0; padding:0; background:#eeeeee; font-family:-apple-system,'Noto Sans Thai','Segoe UI',sans-serif; }
+  .topbar{ background:#2b1d14; color:#fff8ec; padding:18px 20px; text-align:center; position:sticky; top:0; z-index:10; }
+  .topbar h1{ margin:0; font-size:18px; }
+  .topbar p{ margin:4px 0 0; font-size:12px; color:#d8c9b5; }
+  .wrap{ max-width:460px; margin:0 auto; padding:16px; display:flex; flex-direction:column; gap:14px; }
+  .card{ background:#fff; border-radius:14px; overflow:hidden; box-shadow:0 2px 8px rgba(0,0,0,.06); }
+  .head{ background:#f0f0ed; padding:14px 18px 10px; cursor:default; }
+  .head.active{ background:#f3e7cf; }
+  .time{ font-weight:700; font-size:14px; color:#555; }
+  .titlerow{ display:flex; align-items:center; justify-content:space-between; margin-top:3px; }
+  .title{ font-weight:800; font-size:18px; color:#1a1a1a; display:flex; align-items:center; gap:8px; }
+  .badge{ background:#8a6a2f; color:#fff; font-size:10.5px; padding:3px 9px; border-radius:20px; font-weight:700; }
+  .count{ color:#888; font-size:13.5px; }
+  .note{ color:#b5502f; font-size:12.5px; padding:10px 18px; border-bottom:1px solid #eee; font-weight:600; }
+  .item{ padding:12px 18px; border-bottom:1px solid #eee; cursor:pointer; user-select:none; }
+  .item:last-child{ border-bottom:none; }
+  .item:active{ background:#faf8f3; }
+  .irow{ display:flex; align-items:flex-start; gap:10px; }
+  .box{ width:21px; height:21px; min-width:21px; border:2px solid #bbb; border-radius:6px; margin-top:1px; display:flex; align-items:center; justify-content:center; transition:.15s; }
+  .box svg{ display:none; width:13px; height:13px; }
+  .item.done .box{ background:#5a8a5f; border-color:#5a8a5f; }
+  .item.done .box svg{ display:block; }
+  .item.done .ititle{ color:#aaa; text-decoration:line-through; }
+  .itext{ flex:1; }
+  .ititle{ font-size:15px; color:#1a1a1a; font-weight:500; }
+  .isub{ font-size:12px; color:#999; margin-top:2px; line-height:1.4; }
+  .itime{ font-size:12.5px; color:#999; white-space:nowrap; }
+  .redline{ color:#b5502f; font-weight:700; font-size:11.5px; margin-top:3px; }
+  .placeholder{ padding:16px 18px; color:#888; font-size:13px; line-height:1.6; }
+  .resetbar{ text-align:center; padding:10px 0 30px; }
+  .resetbtn{ background:#fff; border:1px solid #ccc; color:#777; font-size:12.5px; padding:8px 18px; border-radius:20px; }
+</style>
+</head>
+<body>
+<div class="topbar">
+  <h1>🐾 SOP กะเช้า — ฟักแฟง</h1>
+  <p>09:00–17:00 · เช็คลิสต์ประจำวัน (รีเซ็ตเองทุกวันใหม่)</p>
+</div>
+<div class="wrap" id="wrap"></div>
+<div class="resetbar"><button class="resetbtn" onclick="if(confirm('รีเซ็ตเช็คลิสต์วันนี้ใหม่?')){localStorage.removeItem(storeKey());render();}">รีเซ็ตเช็คลิสต์วันนี้</button></div>
+
+<script>
+const SECTIONS = [
+  { id:'s1', time:'09:00–10:00', title:'เตรียมร้าน', note:'เป้าหมาย: ทุกข้อเสร็จก่อน 10:00 · ทำตามลำดับนี้จะเร็วที่สุด',
+    items:[
+      {t:'หุงข้าวก่อนเลย', s:'ข้าวใช้เวลาหุงนาน กดหุงแล้วไปทำงานอื่นต่อ', time:'09:00'},
+      {t:'เปิดไฟ แอร์ เพลง', time:'09:05'},
+      {t:'ดูดฝุ่น ถูพื้นภายในร้านให้สะอาด', s:'รวมใต้โต๊ะ มุมห้อง หน้าบาร์', time:'09:05'},
+      {t:'เตรียมถุงขยะ ใส่ถุงใหม่ทุกถัง', time:'09:25'},
+      {t:'เป่าใบไม้หน้าร้านและทางเดิน', s:'เป่าก่อนกางเก้าอี้และก่อนรดน้ำ ใบไม้จะไม่ติดพื้นเปียก', time:'09:30'},
+      {t:'กางโต๊ะเก้าอี้ข้างนอกร้าน เช็ดให้แห้ง', time:'09:40'},
+      {t:'รดน้ำต้นไม้', time:'09:45'},
+    ]},
+  { id:'s2', time:'09:50–10:00', title:'เช็ครอบสุดท้าย', note:'ถ้าเสร็จเร็ว เห็นอะไรแปลก ผิดที่ ผิดปกติ เคลียร์เลย',
+    items:[
+      {t:'เช็คห้องน้ำ: กระดาษ สบู่ ถังขยะ ความสะอาด'},
+      {t:'ตู้แมว 3 ตู้ (เฉพาะวันที่มีแมวพัก): เก็บกระบะทราย อาหาร น้ำ', s:'สังเกตแมวกินน้อย ซึม แจ้งกลุ่มทันที · วันที่ไม่มีแมว ข้ามได้'},
+      {t:'เดินรอบร้าน 1 รอบ เคลียร์จุดที่รกหรือผิดที่', s:'ใช้สายตาแบบลูกค้าที่เพิ่งเดินเข้าร้าน', r:'ต้องแนบรูป: ร้านพร้อมเปิด'},
+    ]},
+  { id:'s3', time:'09:50–10:00', title:'เข้างาน: พร้อมขาย 10:00', note:'เข้างาน 09:50 · ทำ 2 อย่างนี้ก่อน ไม่เกิน 10 นาที · 10:00 ต้องขายได้ทันที',
+    items:[
+      {t:'1. ชิมตรวจเบสทุกตัว (นมผสม ชีส ชา) ว่าเสียไหม', s:'ดูฉลาก → ดู → ดม → ชิม · ดูวันหมด · แยกชั้น จับก้อน ฟองแปลก · กลิ่นเปรี้ยว/หืน · ชิมด้วยช้อนสะอาดเทใส่ถ้วยชิม ห้ามจุ่มช้อนลงกล่อง', r:'เบสที่ไม่แน่ใจ ทิ้งทันที ห้ามขาย — จดลงสมุดของเสีย แจ้งกลุ่ม บอกคนที่ 1 ช่วยทำใหม่'},
+      {t:'2. จัดบาร์ให้พร้อมขาย', s:'เปิดเครื่องชง · เช็คน้ำแข็ง · เอาไซรัปต่างๆ ออกมาวางที่ประจำ · นม มัทฉะ กาแฟ · เปิด POS เงินทอนพร้อม', r:'ต้องแนบรูป: บาร์พร้อมขาย'},
+    ]},
+  { id:'s4', time:'10:00–11:15', title:'ร้านเปิด: ลูกค้ายังไม่เข้า ทำต่อ', note:'ลูกค้ามา บริการก่อนเสมอ แล้วกลับมาทำข้อที่ค้าง',
+    items:[
+      {t:'3. เช็ดบาร์ ดูดฝุ่นบาร์'},
+      {t:'4. เช็ค หลอด แก้ว ฝา ทิชชู่ ถุง เติมให้พอใช้'},
+      {t:'5. เดินเช็ดความสะอาดในร้าน เช็คฝุ่นและขนแมวตามมุมต่างๆ', s:'มุมห้อง ขอบหน้าต่าง ใต้โต๊ะเก้าอี้ ชั้นวางของ รอบตู้แมว'},
+      {t:'6. เอาแก้วและฝามาเช็ดด้วยกระดาษ เอาขนแมวออก', s:'เช็ดแล้ววางคว่ำ หรือเก็บในที่มีฝาปิด'},
+    ]},
+  { id:'s5', time:'11:15–16:00', title:'ระหว่างวัน', note:'ลูกค้ามาก่อนเสมอ ทำเป็นระยะไม่รอจนงานกอง ห้ามปล่อยของขาดตอนลูกค้าสั่ง', isNew:true,
+    items:[
+      {t:'1. เช็คสต็อกวัตถุดิบ ทุก ~1-2 ชม.', s:'นม ครีม ไซรัป น้ำแข็ง แก้ว ฝา หลอด ทิชชู่ — เห็นเหลือน้อยเติม/แจ้งทันที อย่ารอจนหมด', time:'ทุก 1-2 ชม.'},
+      {t:'2. เช็ดโต๊ะ-เก็บแก้ว ทันทีหลังลูกค้าลุก', s:'อย่าปล่อยโต๊ะสกปรกรอ ลูกค้าคนถัดไปต้องเจอโต๊ะสะอาด', time:'ตลอดวัน'},
+      {t:'3. เช็คห้องน้ำซ้ำ', s:'กระดาษ สบู่ ถังขยะ ความสะอาด — เหมือนรอบเช้าแต่ทำซ้ำระหว่างวัน', time:'ทุก ~2 ชม.'},
+      {t:'4. ดูแลแมว 3 ตัว (เฉพาะวันที่มีแมวพัก)', s:'เติมน้ำ/อาหารถ้าหมด เก็บกระบะทราย', r:'สังเกตแมวกินน้อย ซึม ผิดปกติ → แจ้งกลุ่มทันที', time:'ระหว่างวัน'},
+      {t:'5. เช็ดพื้น/เก็บของหก ทันทีที่เจอ', s:'โดยเฉพาะจุดลูกค้าเดินผ่านบ่อย กันลื่น', time:'ตลอดวัน'},
+      {t:'6. พักเบรกทานข้าว ~30-60 นาที', s:'แจ้งในกลุ่มก่อนพัก ถ้ามีลูกค้าเข้าระหว่างพัก ให้รีบออกมาก่อน', time:'1 ครั้ง'},
+    ]},
+];
+
+function storeKey(){
+  const d = new Date();
+  return 'sop_' + d.getFullYear() + '-' + (d.getMonth()+1) + '-' + d.getDate();
+}
+function loadState(){
+  try{ return JSON.parse(localStorage.getItem(storeKey())) || {}; }catch(e){ return {}; }
+}
+function saveState(st){ localStorage.setItem(storeKey(), JSON.stringify(st)); }
+
+function nowInRange(timeStr){
+  // crude check: is current time within this section's start-end
+  const now = new Date();
+  const mins = now.getHours()*60+now.getMinutes();
+  const parts = timeStr.split('–').map(p=>p.trim());
+  if(parts.length<2) return false;
+  const toMin = s => { const [h,m] = s.split(':').map(Number); return h*60+m; };
+  return mins >= toMin(parts[0]) && mins < toMin(parts[1]);
+}
+
+function render(){
+  const st = loadState();
+  const wrap = document.getElementById('wrap');
+  wrap.innerHTML = '';
+  SECTIONS.forEach(sec=>{
+    const done = sec.items.filter((_,i)=>st[sec.id+'_'+i]).length;
+    const active = nowInRange(sec.time);
+    const card = document.createElement('div'); card.className='card';
+    card.innerHTML = `
+      <div class="head ${active?'active':''}">
+        <div class="time">${sec.time}</div>
+        <div class="titlerow">
+          <div class="title">${sec.title} ${active?'<span class="badge">ตอนนี้</span>':(sec.isNew?'<span class="badge">ใหม่</span>':'')}</div>
+          <div class="count">${done}/${sec.items.length}</div>
+        </div>
+      </div>
+      <div class="note">${sec.note}</div>
+      ${sec.items.map((it,i)=>`
+        <div class="item ${st[sec.id+'_'+i]?'done':''}" onclick="toggle('${sec.id}',${i})">
+          <div class="irow">
+            <div class="box"><svg viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="3"><path d="M5 13l4 4L19 7"/></svg></div>
+            <div class="itext">
+              <div class="ititle">${it.t}</div>
+              ${it.s?`<div class="isub">${it.s}</div>`:''}
+              ${it.r?`<div class="redline">${it.r}</div>`:''}
+            </div>
+            ${it.time?`<div class="itime">${it.time}</div>`:''}
+          </div>
+        </div>
+      `).join('')}
+    `;
+    wrap.appendChild(card);
+  });
+
+  // closing + scope cards (static, no checkboxes)
+  const closeCard = document.createElement('div'); closeCard.className='card';
+  closeCard.innerHTML = `
+    <div class="head"><div class="time">16:00–17:00</div><div class="titlerow"><div class="title">ส่งต่อกะเย็น</div></div></div>
+    <div class="placeholder">ยังไม่กำหนดขั้นตอนตายตัวตอนนี้ — จะเพิ่ม checklist ส่วนนี้ภายหลังหากพบปัญหาจากหน้างานจริง</div>`;
+  wrap.appendChild(closeCard);
+
+  const scopeCard = document.createElement('div'); scopeCard.className='card';
+  scopeCard.innerHTML = `
+    <div class="head"><div class="time">หมายเหตุ</div><div class="titlerow"><div class="title">ขอบเขต SOP ฉบับนี้</div></div></div>
+    <div class="placeholder">ฉบับนี้ครอบคลุมเฉพาะ "ขั้นตอนทำงานทั่วไป" ของกะเช้า (เปิดร้าน–ดูแลระหว่างวัน) ยังไม่รวมขั้นตอนการชง/ทำเมนูแต่ละตัว — แยกทำเป็นคู่มือชงเมนูอีกชุดต่างหาก</div>`;
+  wrap.appendChild(scopeCard);
+}
+
+function toggle(secId, i){
+  const st = loadState();
+  const key = secId+'_'+i;
+  st[key] = !st[key];
+  saveState(st);
+  render();
+}
+
+render();
+setInterval(render, 60000); // refresh "ตอนนี้" badge every minute
+</script>
+</body>
+</html>
