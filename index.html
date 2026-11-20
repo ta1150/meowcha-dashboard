@@ -256,6 +256,10 @@ const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
 let ghSha = null;        // last known file sha, for optimistic-concurrency updates
 let syncTimer = null;
 let syncing = false;
+let remoteExtras = {};   // fields this dashboard doesn't manage (e.g. attendance.html's
+                         // own `attendance` array) — must be preserved on every save or
+                         // the next pushRemoteState() silently wipes them out.
+const MANAGED_KEYS = ['menu','stock','recipes','raw','bases','pkgProfiles','fixedCosts','updatedAt'];
 
 function b64encodeUtf8(str){ return btoa(unescape(encodeURIComponent(str))); }
 function b64decodeUtf8(str){ return decodeURIComponent(escape(atob(str))); }
@@ -278,6 +282,8 @@ async function fetchRemoteState(){
     ghSha = json.sha;
     const text = b64decodeUtf8(json.content.replace(/\n/g, ''));
     const data = JSON.parse(text);
+    remoteExtras = {};
+    Object.keys(data).forEach(k => { if(!MANAGED_KEYS.includes(k)) remoteExtras[k] = data[k]; });
     setSyncStatus('✅ ซิงก์แล้ว ' + new Date().toLocaleTimeString('th-TH', {hour:'2-digit', minute:'2-digit'}), 'var(--good)');
     return data;
   }catch(e){
@@ -290,7 +296,22 @@ async function pushRemoteState(){
   if(syncing) return; // avoid overlapping pushes
   syncing = true;
   setSyncStatus('🔄 กำลังซิงก์...', 'var(--warn)');
-  const payload = { menu, stock, recipes, raw, bases, pkgProfiles, fixedCosts, updatedAt: new Date().toISOString() };
+  // re-fetch right before saving so we merge the freshest extras (e.g. attendance
+  // punches written by attendance.html moments ago) instead of a stale in-memory copy
+  try{
+    const freshRes = await fetch(GH_API, {
+      headers: { Authorization: `token ${GH_TOKEN}`, Accept: 'application/vnd.github+json' },
+      cache: 'no-store',
+    });
+    if(freshRes.ok){
+      const freshJson = await freshRes.json();
+      ghSha = freshJson.sha;
+      const freshData = JSON.parse(b64decodeUtf8(freshJson.content.replace(/\n/g, '')));
+      remoteExtras = {};
+      Object.keys(freshData).forEach(k => { if(!MANAGED_KEYS.includes(k)) remoteExtras[k] = freshData[k]; });
+    }
+  }catch(e){ /* fall back to whatever remoteExtras we already have */ }
+  const payload = { ...remoteExtras, menu, stock, recipes, raw, bases, pkgProfiles, fixedCosts, updatedAt: new Date().toISOString() };
   try{
     const body = { message: 'Update from dashboard', content: b64encodeUtf8(JSON.stringify(payload, null, 2)) };
     if(ghSha) body.sha = ghSha;
