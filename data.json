@@ -1584,10 +1584,6 @@
       {
         "ing": "condensedMilk",
         "qty": 20
-      },
-      {
-        "ing": "caneSugar",
-        "qty": 0.1
       }
     ],
     "เนยน้ำตาล": [
@@ -2645,5 +2641,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T09:16:53.112Z"
+  "updatedAt": "2026-11-20T09:16:58.392Z"
 }
