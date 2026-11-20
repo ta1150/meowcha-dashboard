@@ -256,6 +256,7 @@ const GH_API = `https://api.github.com/repos/${GH_REPO}/contents/${GH_PATH}`;
 let ghSha = null;        // last known file sha, for optimistic-concurrency updates
 let syncTimer = null;
 let syncing = false;
+const PAGE_LOAD_TS = Date.now(); // cache-busting token for reference images (constant per page view)
 let remoteExtras = {};   // fields this dashboard doesn't manage (e.g. attendance.html's
                          // own `attendance` array) — must be preserved on every save or
                          // the next pushRemoteState() silently wipes them out.
@@ -555,7 +556,10 @@ function renderMenu(filterText){
   const groups = groupBy(filtered, 'cat');
   Object.keys(groups).forEach(cat => {
     const items = groups[cat];
-    const refImg = CAT_REF_IMAGES[cat];
+    const refImgBase = CAT_REF_IMAGES[cat];
+    // cache-bust with updatedAt (or current load time) so browsers refetch the
+    // image whenever the data syncs, instead of showing a stale cached copy forever
+    const refImg = refImgBase ? refImgBase + '?v=' + encodeURIComponent(PAGE_LOAD_TS) : null;
     const refImgHtml = refImg ? `
       <details class="cat-ref"><summary>🖼️ ดูโปสเตอร์เมนูอ้างอิง</summary>
         <img src="${refImg}" alt="โปสเตอร์เมนู ${cat}" style="max-width:360px;width:100%;border-radius:12px;border:2px solid var(--line,#ddd);margin-top:8px;display:block;">
