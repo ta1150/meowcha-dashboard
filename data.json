@@ -420,7 +420,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ช็อกโกแลตปิ้ง",
+      "name": "เนยช็อกโกแลต",
       "price": 30,
       "cost": 12.56,
       "gross": 17.75,
@@ -1604,24 +1604,6 @@
         "qty": 20
       }
     ],
-    "ช็อกโกแลตปิ้ง": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      },
-      {
-        "ing": "condensedMilk",
-        "qty": 20
-      },
-      {
-        "ing": "chocolateSpread",
-        "qty": 20
-      }
-    ],
     "โอวัลตินปิ้ง": [
       {
         "ing": "breadLoaf4lb",
@@ -1862,6 +1844,24 @@
       {
         "ing": "strawberrySyrup",
         "qty": 30
+      }
+    ],
+    "เนยช็อกโกแลต": [
+      {
+        "ing": "breadLoaf4lb",
+        "qty": 1
+      },
+      {
+        "ing": "butterSolid",
+        "qty": 10
+      },
+      {
+        "ing": "condensedMilk",
+        "qty": 20
+      },
+      {
+        "ing": "chocolateSpread",
+        "qty": 20
       }
     ]
   },
