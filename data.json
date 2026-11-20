@@ -486,7 +486,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยเนยนูเทลล่ากล้วย",
+      "name": "ปังเนยนูเทล่ากล้วยชอคโกแลต",
       "price": 45,
       "cost": 22.84,
       "gross": 22.16,
@@ -1804,24 +1804,6 @@
         "qty": 0.5
       }
     ],
-    "ปังเนยเนยนูเทลล่ากล้วย": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      },
-      {
-        "ing": "nutellaSpread",
-        "qty": 20
-      },
-      {
-        "ing": "bananaEach",
-        "qty": 1
-      }
-    ],
     "ปังเนยเนยนูเทลล่าวิปครีม": [
       {
         "ing": "breadLoaf4lb",
@@ -1874,6 +1856,28 @@
       {
         "ing": "chocolateSpread",
         "qty": 20
+      }
+    ],
+    "ปังเนยนูเทล่ากล้วยชอคโกแลต": [
+      {
+        "ing": "breadLoaf4lb",
+        "qty": 1
+      },
+      {
+        "ing": "butterSolid",
+        "qty": 10
+      },
+      {
+        "ing": "nutellaSpread",
+        "qty": 20
+      },
+      {
+        "ing": "chocolateSpread",
+        "qty": 20
+      },
+      {
+        "ing": "bananaEach",
+        "qty": 0.5
       }
     ]
   },
