@@ -1578,7 +1578,7 @@
       },
       {
         "ing": "butterSolid",
-        "qty": 15
+        "qty": 10
       }
     ],
     "เนยน้ำตาล": [
@@ -1588,7 +1588,15 @@
       },
       {
         "ing": "butterSolid",
-        "qty": 15
+        "qty": 10
+      },
+      {
+        "ing": "sugarWhite",
+        "qty": 7
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 20
       }
     ],
     "ช็อกโกแลตปิ้ง": [
@@ -1597,14 +1605,30 @@
         "qty": 1
       },
       {
+        "ing": "butterSolid",
+        "qty": 10
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 10
+      },
+      {
         "ing": "chocolateSpread",
-        "qty": 25
+        "qty": 20
       }
     ],
     "โอวัลตินปิ้ง": [
       {
         "ing": "breadLoaf4lb",
         "qty": 1
+      },
+      {
+        "ing": "butterSolid",
+        "qty": 10
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 20
       },
       {
         "ing": "ovaltinePowder",
@@ -1617,12 +1641,16 @@
         "qty": 1
       },
       {
+        "ing": "butterSolid",
+        "qty": 10
+      },
+      {
         "ing": "chocolateSpread",
-        "qty": 25
+        "qty": 20
       },
       {
         "ing": "bananaEach",
-        "qty": 1
+        "qty": 0.5
       }
     ],
     "วิปครีมปิ้ง": [
@@ -1641,12 +1669,20 @@
         "qty": 1
       },
       {
-        "ing": "whipCreamDreamy",
+        "ing": "butterSolid",
+        "qty": 10
+      },
+      {
+        "ing": "chocolateSpread",
         "qty": 20
       },
       {
+        "ing": "whipCreamDreamy",
+        "qty": 25
+      },
+      {
         "ing": "bananaEach",
-        "qty": 1
+        "qty": 0.5
       }
     ],
     "เนยนูเทลล่า": [
@@ -1723,62 +1759,82 @@
     ],
     "ชาไทยปั่น": [
       {
-        "ing": "base_thaitea",
-        "qty": 100
+        "ing": "chaTraMueGold",
+        "qty": 18
       },
       {
-        "ing": "base_cheesefoam",
-        "qty": 20
+        "ing": "milkPowder",
+        "qty": 15
       },
       {
-        "ing": "base_milkmix",
-        "qty": 60
+        "ing": "condensedMilk",
+        "qty": 40
       },
       {
-        "ing": "freshMilk",
-        "qty": 10
+        "ing": "evaporatedMilk",
+        "qty": 30
+      },
+      {
+        "ing": "plainSyrup",
+        "qty": 40
       }
     ],
     "ชาเขียวปั่น": [
       {
-        "ing": "base_greentea",
-        "qty": 100
+        "ing": "chaTraMueGreenTea",
+        "qty": 18
       },
       {
-        "ing": "base_cheesefoam",
-        "qty": 20
+        "ing": "milkPowder",
+        "qty": 15
       },
       {
-        "ing": "freshMilk",
-        "qty": 10
+        "ing": "condensedMilk",
+        "qty": 40
       },
       {
-        "ing": "base_milkmix",
-        "qty": 60
+        "ing": "evaporatedMilk",
+        "qty": 30
+      },
+      {
+        "ing": "plainSyrup",
+        "qty": 40
       }
     ],
     "โกโก้ปั่น": [
       {
-        "ing": "base_cocoasauce",
-        "qty": 100
+        "ing": "choiceDutchCocoa",
+        "qty": 15
       },
       {
-        "ing": "base_milkmix",
-        "qty": 70
+        "ing": "milkPowder",
+        "qty": 5
       },
       {
         "ing": "freshMilk",
-        "qty": 10
+        "qty": 60
+      },
+      {
+        "ing": "plainSyrup",
+        "qty": 30
       }
     ],
     "นมชมพูปั่น": [
       {
-        "ing": "freshMilk",
-        "qty": 150
+        "ing": "redSyrup",
+        "qty": 60
       },
       {
-        "ing": "strawberrySyrup",
-        "qty": 20
+        "ing": "freshMilk",
+        "qty": 50
+      },
+      {
+        "ing": "evaporatedMilk",
+        "qty": 45
+      },
+      {
+        "ing": "condensedMilk",
+        "qty": 35
       }
     ],
     "นมสดสตรอว์เบอร์รี่ปั่น": [
@@ -2221,12 +2277,12 @@
     },
     {
       "id": "breadLoaf4lb",
-      "label": "ขนมปังแถว 4 ปอนด์ (40 แผ่น)",
+      "label": "ขนมปังแถว 4 ปอนด์ (56 แผ่น)",
       "type": "each",
       "packPrice": 179,
       "packSize": null,
       "packUnit": null,
-      "yieldMl": 40
+      "yieldMl": 56
     },
     {
       "id": "butterSolid",
