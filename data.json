@@ -2666,5 +2666,11 @@
     "depreciation": 0
   },
   "updatedAt": "2026-11-20T11:23:46.690Z",
-  "attendance": []
+  "attendance": [
+    {
+      "employee": "TEST_SIM_PUNCH",
+      "type": "in",
+      "ts": "2026-11-20T19:20:00.000Z"
+    }
+  ]
 }
