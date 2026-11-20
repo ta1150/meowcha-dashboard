@@ -1577,7 +1577,7 @@
     "ชาเขียวปั่น": [
       {
         "ing": "base_greentea",
-        "qty": 18
+        "qty": 120
       },
       {
         "ing": "milkPowder",
@@ -2525,5 +2525,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T16:56:26.774Z"
+  "updatedAt": "2026-11-20T16:56:31.295Z"
 }
