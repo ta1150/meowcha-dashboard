@@ -1855,7 +1855,7 @@
         "qty": 35
       },
       {
-        "ing": "plainSyrup",
+        "ing": "mitrpholCaneSyrup",
         "qty": 10
       },
       {
@@ -2640,5 +2640,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T08:04:28.872Z"
+  "updatedAt": "2026-11-20T08:05:51.688Z"
 }
