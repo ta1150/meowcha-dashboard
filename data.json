@@ -1815,7 +1815,7 @@
         "qty": 5
       },
       {
-        "ing": "freshMilk",
+        "ing": "base_milkmix",
         "qty": 60
       },
       {
@@ -2640,5 +2640,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T07:51:11.330Z"
+  "updatedAt": "2026-11-20T08:04:28.872Z"
 }
