@@ -422,7 +422,7 @@
       "cat": "🍞 ขนมปังปิ้ง",
       "name": "ช็อกโกแลตปิ้ง",
       "price": 30,
-      "cost": 12.25,
+      "cost": 12.56,
       "gross": 17.75,
       "grossPct": 59.2,
       "net": 17.75,
@@ -1614,7 +1614,7 @@
       },
       {
         "ing": "condensedMilk",
-        "qty": 0
+        "qty": 20
       },
       {
         "ing": "chocolateSpread",
@@ -2631,5 +2631,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T07:50:22.861Z"
+  "updatedAt": "2026-11-20T07:50:37.265Z"
 }
