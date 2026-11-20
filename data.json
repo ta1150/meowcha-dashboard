@@ -1576,7 +1576,7 @@
     ],
     "ชาเขียวปั่น": [
       {
-        "ing": "chaTraMueGreenTea",
+        "ing": "base_greentea",
         "qty": 18
       },
       {
@@ -2525,5 +2525,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T16:56:15.017Z"
+  "updatedAt": "2026-11-20T16:56:26.774Z"
 }
