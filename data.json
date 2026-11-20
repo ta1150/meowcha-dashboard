@@ -1554,7 +1554,7 @@
     "ชาไทยปั่น": [
       {
         "ing": "base_thaitea",
-        "qty": 1
+        "qty": 120
       },
       {
         "ing": "milkPowder",
@@ -2524,5 +2524,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T16:55:59.969Z"
+  "updatedAt": "2026-11-20T16:56:05.058Z"
 }
