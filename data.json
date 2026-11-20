@@ -1779,7 +1779,7 @@
         "qty": 30
       },
       {
-        "ing": "plainSyrup",
+        "ing": "mitrpholCaneSyrup",
         "qty": 40
       }
     ],
@@ -1801,7 +1801,7 @@
         "qty": 30
       },
       {
-        "ing": "plainSyrup",
+        "ing": "mitrpholCaneSyrup",
         "qty": 40
       }
     ],
@@ -1819,7 +1819,7 @@
         "qty": 60
       },
       {
-        "ing": "plainSyrup",
+        "ing": "mitrpholCaneSyrup",
         "qty": 30
       }
     ],
@@ -2340,6 +2340,15 @@
       "packPrice": 200,
       "packSize": 500,
       "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "mitrpholCaneSyrup",
+      "label": "มิตรผล น้ำเชื่อมสำเร็จรูป",
+      "type": "liquid",
+      "packPrice": 46,
+      "packSize": 800,
+      "packUnit": "ml",
       "yieldMl": null
     }
   ],
