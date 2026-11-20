@@ -536,10 +536,19 @@ function renderMenu(filterText){
 
   html += renderPkgPanel();
 
+  const CAT_REF_IMAGES = {
+    '🍞 ขนมปังปิ้ง': 'https://raw.githubusercontent.com/ta1150/meowcha-dashboard/main/assets/toast_menu_poster.jpg'
+  };
   const groups = groupBy(filtered, 'cat');
   Object.keys(groups).forEach(cat => {
     const items = groups[cat];
+    const refImg = CAT_REF_IMAGES[cat];
+    const refImgHtml = refImg ? `
+      <details class="cat-ref"><summary>🖼️ ดูโปสเตอร์เมนูอ้างอิง</summary>
+        <img src="${refImg}" alt="โปสเตอร์เมนู ${cat}" style="max-width:360px;width:100%;border-radius:12px;border:2px solid var(--line,#ddd);margin-top:8px;display:block;">
+      </details>` : '';
     html += `<div class="cat-group"><div class="cat-title">${cat} (${items.length})</div>
+    ${refImgHtml}
     <div class="table-wrap"><table><thead><tr>
       <th></th>
       <th>เมนู</th>
