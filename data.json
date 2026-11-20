@@ -1553,7 +1553,7 @@
     ],
     "ชาไทยปั่น": [
       {
-        "ing": "chaTraMueGold",
+        "ing": "base_thaitea",
         "qty": 18
       },
       {
@@ -2524,5 +2524,5 @@
     "water": 0,
     "depreciation": 0
   },
-  "updatedAt": "2026-11-20T16:02:16.189Z"
+  "updatedAt": "2026-11-20T16:55:55.644Z"
 }
