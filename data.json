@@ -497,7 +497,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยเนยนูเทลล่าวิปครีม",
+      "name": "ปังเนยวิปครีมนูเทล่าชอคโกแลต",
       "price": 49,
       "cost": 19.84,
       "gross": 29.16,
@@ -1804,24 +1804,6 @@
         "qty": 0.5
       }
     ],
-    "ปังเนยเนยนูเทลล่าวิปครีม": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      },
-      {
-        "ing": "nutellaSpread",
-        "qty": 20
-      },
-      {
-        "ing": "whipCreamDreamy",
-        "qty": 15
-      }
-    ],
     "ปังเนยวิปครีมชอคโกแลต": [
       {
         "ing": "breadLoaf4lb",
@@ -1870,6 +1852,32 @@
       {
         "ing": "nutellaSpread",
         "qty": 20
+      },
+      {
+        "ing": "chocolateSpread",
+        "qty": 20
+      },
+      {
+        "ing": "bananaEach",
+        "qty": 0.5
+      }
+    ],
+    "ปังเนยวิปครีมนูเทล่าชอคโกแลต": [
+      {
+        "ing": "breadLoaf4lb",
+        "qty": 1
+      },
+      {
+        "ing": "butterSolid",
+        "qty": 10
+      },
+      {
+        "ing": "nutellaSpread",
+        "qty": 20
+      },
+      {
+        "ing": "whipCreamDreamy",
+        "qty": 27
       },
       {
         "ing": "chocolateSpread",
