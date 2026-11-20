@@ -410,7 +410,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยเนยนม",
+      "name": "เนยนม",
       "price": 25,
       "cost": 7.32,
       "gross": 17.68,
@@ -421,7 +421,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยเนยน้ำตาล",
+      "name": "เนยน้ำตาล",
       "price": 25,
       "cost": 7.32,
       "gross": 17.68,
@@ -432,18 +432,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยเนยช็อกโกแลต",
-      "price": 30,
-      "cost": 12.56,
-      "gross": 17.75,
-      "grossPct": 59.2,
-      "net": 17.75,
-      "netPct": 59.2,
-      "note": ""
-    },
-    {
-      "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยโอวัลตินปิ้ง",
+      "name": "เนยโอวัลติน",
       "price": 35,
       "cost": 11.89,
       "gross": 24.97,
@@ -454,29 +443,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยกล้วยช็อกโกแลต",
-      "price": 39,
-      "cost": 21.25,
-      "gross": 17.75,
-      "grossPct": 45.5,
-      "net": 17.75,
-      "netPct": 45.5,
-      "note": ""
-    },
-    {
-      "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยวิปครีมชอคโกแลต",
-      "price": 49,
-      "cost": 12.47,
-      "gross": 26.53,
-      "grossPct": 68,
-      "net": 26.53,
-      "netPct": 68,
-      "note": ""
-    },
-    {
-      "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยกล้วยวิปครีม",
+      "name": "เนยวิปครีมกล้วย",
       "price": 59,
       "cost": 21.48,
       "gross": 23.52,
@@ -487,35 +454,13 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยนูเทล่าชอคโกแลต",
-      "price": 45,
-      "cost": 13.84,
-      "gross": 25.16,
-      "grossPct": 64.5,
-      "net": 25.16,
-      "netPct": 64.5,
-      "note": ""
-    },
-    {
-      "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยนูเทล่ากล้วยชอคโกแลต",
+      "name": "เนยนูเทล่ากล้วย",
       "price": 55,
       "cost": 22.84,
       "gross": 22.16,
       "grossPct": 49.2,
       "net": 22.16,
       "netPct": 49.2,
-      "note": ""
-    },
-    {
-      "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยวิปครีมนูเทล่าชอคโกแลต",
-      "price": 59,
-      "cost": 19.84,
-      "gross": 29.16,
-      "grossPct": 59.5,
-      "net": 29.16,
-      "netPct": 59.5,
       "note": ""
     },
     {
@@ -1708,7 +1653,7 @@
         "qty": 30
       }
     ],
-    "ปังเนยเนยนม": [
+    "เนยนม": [
       {
         "ing": "breadLoaf4lb",
         "qty": 1
@@ -1722,7 +1667,7 @@
         "qty": 20
       }
     ],
-    "ปังเนยเนยน้ำตาล": [
+    "เนยน้ำตาล": [
       {
         "ing": "breadLoaf4lb",
         "qty": 1
@@ -1740,25 +1685,7 @@
         "qty": 20
       }
     ],
-    "ปังเนยเนยช็อกโกแลต": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      },
-      {
-        "ing": "condensedMilk",
-        "qty": 20
-      },
-      {
-        "ing": "chocolateSpread",
-        "qty": 20
-      }
-    ],
-    "ปังเนยโอวัลตินปิ้ง": [
+    "เนยโอวัลติน": [
       {
         "ing": "breadLoaf4lb",
         "qty": 1
@@ -1776,7 +1703,7 @@
         "qty": 20
       }
     ],
-    "ปังเนยกล้วยช็อกโกแลต": [
+    "เนยนูเทล่ากล้วย": [
       {
         "ing": "breadLoaf4lb",
         "qty": 1
@@ -1784,6 +1711,10 @@
       {
         "ing": "butterSolid",
         "qty": 10
+      },
+      {
+        "ing": "nutellaSpread",
+        "qty": 20
       },
       {
         "ing": "chocolateSpread",
@@ -1794,7 +1725,7 @@
         "qty": 0.5
       }
     ],
-    "ปังเนยกล้วยวิปครีม": [
+    "เนยวิปครีมกล้วย": [
       {
         "ing": "breadLoaf4lb",
         "qty": 1
@@ -1810,90 +1741,6 @@
       {
         "ing": "whipCreamDreamy",
         "qty": 25
-      },
-      {
-        "ing": "bananaEach",
-        "qty": 0.5
-      }
-    ],
-    "ปังเนยวิปครีมชอคโกแลต": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "whipCreamDreamy",
-        "qty": 27
-      },
-      {
-        "ing": "chocolateSpread",
-        "qty": 20
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      }
-    ],
-    "ปังเนยนูเทล่าชอคโกแลต": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      },
-      {
-        "ing": "nutellaSpread",
-        "qty": 20
-      },
-      {
-        "ing": "chocolateSpread",
-        "qty": 20
-      }
-    ],
-    "ปังเนยนูเทล่ากล้วยชอคโกแลต": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      },
-      {
-        "ing": "nutellaSpread",
-        "qty": 20
-      },
-      {
-        "ing": "chocolateSpread",
-        "qty": 20
-      },
-      {
-        "ing": "bananaEach",
-        "qty": 0.5
-      }
-    ],
-    "ปังเนยวิปครีมนูเทล่าชอคโกแลต": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "butterSolid",
-        "qty": 10
-      },
-      {
-        "ing": "nutellaSpread",
-        "qty": 20
-      },
-      {
-        "ing": "whipCreamDreamy",
-        "qty": 27
-      },
-      {
-        "ing": "chocolateSpread",
-        "qty": 20
       },
       {
         "ing": "bananaEach",
