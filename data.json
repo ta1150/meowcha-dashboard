@@ -505,6 +505,42 @@
       "net": 29.16,
       "netPct": 59.5,
       "note": ""
+    },
+    {
+      "id": "fresh_strawberry_milk",
+      "name": "นมสดสตรอว์เบอร์รี่",
+      "price": 69,
+      "cat": "🧋 ชา/นมสด"
+    },
+    {
+      "id": "blend_ชาไทยปั่น",
+      "name": "ชาไทยปั่น",
+      "price": 69,
+      "cat": "🥤 เมนูปั่น"
+    },
+    {
+      "id": "blend_ชาเขียวปั่น",
+      "name": "ชาเขียวปั่น",
+      "price": 69,
+      "cat": "🥤 เมนูปั่น"
+    },
+    {
+      "id": "blend_โกโก้ปั่น",
+      "name": "โกโก้ปั่น",
+      "price": 79,
+      "cat": "🥤 เมนูปั่น"
+    },
+    {
+      "id": "blend_นมชมพูปั่น",
+      "name": "นมชมพูปั่น",
+      "price": 69,
+      "cat": "🥤 เมนูปั่น"
+    },
+    {
+      "id": "blend_นมสดสตรอว์เบอร์รี่ปั่น",
+      "name": "นมสดสตรอว์เบอร์รี่ปั่น",
+      "price": 79,
+      "cat": "🥤 เมนูปั่น"
     }
   ],
   "stock": [
@@ -1662,6 +1698,110 @@
         "ing": "whipCreamDreamy",
         "qty": 15
       }
+    ],
+    "นมสดสตรอว์เบอร์รี่": [
+      {
+        "ing": "freshMilk",
+        "qty": 100
+      },
+      {
+        "ing": "evaporatedMilk",
+        "qty": 35
+      },
+      {
+        "ing": "condensedMilk",
+        "qty": 35
+      },
+      {
+        "ing": "plainSyrup",
+        "qty": 10
+      },
+      {
+        "ing": "strawberrySyrup",
+        "qty": 30
+      }
+    ],
+    "ชาไทยปั่น": [
+      {
+        "ing": "base_thaitea",
+        "qty": 100
+      },
+      {
+        "ing": "base_cheesefoam",
+        "qty": 20
+      },
+      {
+        "ing": "base_milkmix",
+        "qty": 60
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 10
+      }
+    ],
+    "ชาเขียวปั่น": [
+      {
+        "ing": "base_greentea",
+        "qty": 100
+      },
+      {
+        "ing": "base_cheesefoam",
+        "qty": 20
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 10
+      },
+      {
+        "ing": "base_milkmix",
+        "qty": 60
+      }
+    ],
+    "โกโก้ปั่น": [
+      {
+        "ing": "base_cocoasauce",
+        "qty": 100
+      },
+      {
+        "ing": "base_milkmix",
+        "qty": 70
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 10
+      }
+    ],
+    "นมชมพูปั่น": [
+      {
+        "ing": "freshMilk",
+        "qty": 150
+      },
+      {
+        "ing": "strawberrySyrup",
+        "qty": 20
+      }
+    ],
+    "นมสดสตรอว์เบอร์รี่ปั่น": [
+      {
+        "ing": "freshMilk",
+        "qty": 100
+      },
+      {
+        "ing": "evaporatedMilk",
+        "qty": 35
+      },
+      {
+        "ing": "condensedMilk",
+        "qty": 35
+      },
+      {
+        "ing": "plainSyrup",
+        "qty": 10
+      },
+      {
+        "ing": "strawberrySyrup",
+        "qty": 30
+      }
     ]
   },
   "raw": [
@@ -2396,6 +2536,28 @@
     "🍰 เบเกอรี่/ของหวาน": [
       {
         "ing": "pkg_dessertbox",
+        "qty": 1
+      }
+    ],
+    "🥤 เมนูปั่น": [
+      {
+        "ing": "pkg_cup",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_lid",
+        "qty": 1
+      },
+      {
+        "ing": "pkg_straw",
+        "qty": 1
+      },
+      {
+        "ing": "ice",
+        "qty": 150
+      },
+      {
+        "ing": "pkg_sticker",
         "qty": 1
       }
     ]
