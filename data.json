@@ -453,7 +453,7 @@
     },
     {
       "cat": "🍞 ขนมปังปิ้ง",
-      "name": "ปังเนยวิปครีมปิ้ง",
+      "name": "ปังเนยวิปครีมชอคโกแลต",
       "price": 39,
       "cost": 12.47,
       "gross": 26.53,
@@ -1782,16 +1782,6 @@
         "qty": 0.5
       }
     ],
-    "ปังเนยวิปครีมปิ้ง": [
-      {
-        "ing": "breadLoaf4lb",
-        "qty": 1
-      },
-      {
-        "ing": "whipCreamDreamy",
-        "qty": 20
-      }
-    ],
     "ปังเนยกล้วยวิปครีม": [
       {
         "ing": "breadLoaf4lb",
@@ -1862,6 +1852,24 @@
       {
         "ing": "whipCreamDreamy",
         "qty": 15
+      }
+    ],
+    "ปังเนยวิปครีมชอคโกแลต": [
+      {
+        "ing": "breadLoaf4lb",
+        "qty": 1
+      },
+      {
+        "ing": "whipCreamDreamy",
+        "qty": 27
+      },
+      {
+        "ing": "chocolateSpread",
+        "qty": 20
+      },
+      {
+        "ing": "butterSolid",
+        "qty": 10
       }
     ]
   },
