@@ -49,6 +49,16 @@
       "category": "บรรจุภัณฑ์",
       "reported_by": "D. Marcio",
       "raw_note": "RNo. 11000547-67617"
+    },
+    {
+      "id": "86254069-233f-416e-8c1a-39f5b83cba74",
+      "ts": "2026-11-21T18:52:00+07:00",
+      "amount": 4115.99,
+      "vendor": "เจ แอนด์ ที เอ็กซ์เพรส (J&T Express)",
+      "items": "เตาฮิดะญี่ปุ่น",
+      "category": "อุปกรณ์",
+      "reported_by": "D. Marcio",
+      "raw_note": "โอนผ่าน MyMo by GSB, ref AgJhEhGFJDeRRzgwYyUYeRRz"
     }
   ],
   "income": [],
