@@ -39,6 +39,16 @@
       "category": "วัตถุดิบ",
       "reported_by": "D. Marcio",
       "raw_note": "เลขที่ 69112008339"
+    },
+    {
+      "id": "255ec9d2-a43c-496c-b843-96066d9f2deb",
+      "ts": "2026-11-21T17:12:00+07:00",
+      "amount": 76.0,
+      "vendor": "บีบีอี่เหวิน ช็อปชานม898",
+      "items": "ฝาโดม 98mm x2",
+      "category": "บรรจุภัณฑ์",
+      "reported_by": "D. Marcio",
+      "raw_note": "RNo. 11000547-67617"
     }
   ],
   "income": [],
