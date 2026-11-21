@@ -300,9 +300,20 @@ const SCHEDULE = {
   'จ๋าย':   [ null, null, {s:'16:00',e:'22:00'}, {s:'16:00',e:'22:00'}, {s:'16:00',e:'22:00'}, null, {s:'16:00',e:'22:00'} ],
 };
 
-function scheduledEndFor(emp, dateObj){
+function scheduledShiftFor(emp, dateObj){
   const dayIdx = (dateObj.getDay() + 6) % 7; // Mon=0..Sun=6
-  const sh = SCHEDULE[emp] && SCHEDULE[emp][dayIdx];
+  return (SCHEDULE[emp] && SCHEDULE[emp][dayIdx]) || null;
+}
+
+function scheduledDurationMs(shift){
+  if(!shift) return null;
+  const [sh, sm] = shift.s.split(':').map(Number);
+  const [eh, em] = shift.e.split(':').map(Number);
+  return ((eh*60+em) - (sh*60+sm)) * 60000;
+}
+
+function scheduledEndFor(emp, dateObj){
+  const sh = scheduledShiftFor(emp, dateObj);
   if(!sh) return null;
   const [h,m] = sh.e.split(':').map(Number);
   const end = new Date(dateObj);
@@ -334,27 +345,29 @@ function computeWeeklyHours(attendance){
       if(r.type === 'in'){
         // if a previous 'in' was never closed, auto-close it at scheduled end first
         if(openIn){
-          const schedEnd = scheduledEndFor(emp, openIn);
-          if(schedEnd){
-            const dayIdx = (openIn.getDay() + 6) % 7;
-            hours[emp][dayIdx] += Math.max(0, schedEnd - openIn);
-          }
+          const dayIdx = (openIn.getDay() + 6) % 7;
+          const shift = scheduledShiftFor(emp, openIn);
+          const dur = scheduledDurationMs(shift);
+          if(dur != null) hours[emp][dayIdx] += dur;
         }
         openIn = r.dt;
       }
       else if(r.type === 'out' && openIn){
+        // count the full scheduled shift duration for that day (rounded by design,
+        // since shifts are whole-hour blocks) instead of the exact punched minutes
         const dayIdx = (openIn.getDay() + 6) % 7;
-        hours[emp][dayIdx] += (r.dt - openIn);
+        const shift = scheduledShiftFor(emp, openIn);
+        const dur = scheduledDurationMs(shift);
+        hours[emp][dayIdx] += (dur != null) ? dur : Math.max(0, r.dt - openIn);
         openIn = null;
       }
     });
-    // trailing open 'in' with no 'out' at all (forgot to punch out) -> cut at scheduled end
+    // trailing open 'in' with no 'out' at all (forgot to punch out) -> credit full scheduled shift
     if(openIn){
-      const schedEnd = scheduledEndFor(emp, openIn);
-      if(schedEnd){
-        const dayIdx = (openIn.getDay() + 6) % 7;
-        hours[emp][dayIdx] += Math.max(0, schedEnd - openIn);
-      }
+      const dayIdx = (openIn.getDay() + 6) % 7;
+      const shift = scheduledShiftFor(emp, openIn);
+      const dur = scheduledDurationMs(shift);
+      if(dur != null) hours[emp][dayIdx] += dur;
     }
   });
   return hours;
