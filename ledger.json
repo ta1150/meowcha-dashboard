@@ -59,6 +59,16 @@
       "category": "อุปกรณ์",
       "reported_by": "D. Marcio",
       "raw_note": "โอนผ่าน MyMo by GSB, ref AgJhEhGFJDeRRzgwYyUYeRRz"
+    },
+    {
+      "id": "02235ad6-3786-479f-b6c6-1f16f9f7b8a8",
+      "ts": "2026-11-22T23:21:00+07:00",
+      "amount": 672.0,
+      "vendor": "น.ส. ดวงฤดี ไชยวรรณา",
+      "items": "ค่าแรงพนักงาน",
+      "category": "ค่าแรง",
+      "reported_by": "D. Marcio",
+      "raw_note": "โอนผ่าน MyMo by GSB, รหัสอ้างอิง 632623126326I000024B9790"
     }
   ],
   "income": [],
