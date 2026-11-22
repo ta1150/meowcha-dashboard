@@ -174,6 +174,7 @@
     .recipe-box select, .recipe-box input.qty-edit{min-height:36px;}
   }
 </style>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
 </head>
 <body>
 
@@ -189,6 +190,7 @@
   <div class="toolbar">
     <input type="search" id="search" placeholder="ค้นหา...">
     <button class="btn" id="exportBtn">⬇ Export JSON</button>
+    <button class="btn" id="exportExcelBtn">📊 ดาวน์โหลด Excel</button>
     <button class="btn" id="resetBtn">↺ รีเซ็ตเป็นข้อมูลเดิม</button>
     <span id="syncStatus" style="font-size:12px;color:var(--ink-muted);white-space:nowrap;">●</span>
   </div>
@@ -1096,6 +1098,49 @@ document.getElementById('exportBtn').addEventListener('click', () => {
   a.href = URL.createObjectURL(blob);
   a.download = 'meowcha_data_export.json';
   a.click();
+});
+document.getElementById('exportExcelBtn').addEventListener('click', () => {
+  if(typeof XLSX === 'undefined'){ alert('โหลดไลบรารี Excel ไม่สำเร็จ ลองรีเฟรชหน้าแล้วกดใหม่'); return; }
+  // Sheet 1: Menu + cost/margin breakdown (matches what's shown on screen)
+  const menuRows = menu.map(it => {
+    const bd = menuCostBreakdown(it);
+    const pct = costPct(it);
+    return {
+      'หมวด': it.cat,
+      'เมนู': it.name,
+      'ราคาขาย': it.price,
+      'ต้นทุนวัตถุดิบ': Math.round(bd.ing*100)/100,
+      'ต้นทุนแพ็กเกจจิ้ง': Math.round(bd.pkg*100)/100,
+      'ต้นทุนรวม': Math.round(bd.total*100)/100,
+      'กำไร/แก้ว': Math.round((it.price-bd.total)*100)/100,
+      '%ต้นทุน': Math.round(pct*10)/10,
+      'Margin%': Math.round((100-pct)*10)/10,
+      'หมายเหตุ': it.note || '',
+    };
+  });
+  // Sheet 2: Raw materials / stock
+  const rawRows = raw.map(r => ({
+    'รหัส': r.id,
+    'ชื่อวัตถุดิบ': r.name || r.id,
+    'ราคาต่อแพ็ค': r.packPrice,
+    'ขนาดแพ็ค': r.packSize || '',
+    'หน่วย': r.packUnit || '',
+    'ปริมาตร(มล.)': r.yieldMl || '',
+  }));
+  // Sheet 3: Recipes (ingredient list per menu item)
+  const recipeRows = [];
+  Object.keys(recipes).forEach(name => {
+    (recipes[name] || []).forEach(row => {
+      recipeRows.push({ 'เมนู': name, 'วัตถุดิบ': row.ing, 'ปริมาณ': row.qty });
+    });
+  });
+
+  const wb = XLSX.utils.book_new();
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(menuRows), 'เมนู-ต้นทุน');
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(rawRows), 'วัตถุดิบ');
+  XLSX.utils.book_append_sheet(wb, XLSX.utils.json_to_sheet(recipeRows), 'สูตรเมนู');
+  const today = new Date().toISOString().slice(0,10);
+  XLSX.writeFile(wb, `meowcha_ตนทุน_${today}.xlsx`);
 });
 document.getElementById('resetBtn').addEventListener('click', () => {
   if(!confirm('รีเซ็ตข้อมูลทั้งหมดกลับเป็นค่าเดิมที่ดึงจากชีต? (การแก้ไขที่ทำในเว็บนี้ และที่ซิงก์ไว้จะหายไป)')) return;
