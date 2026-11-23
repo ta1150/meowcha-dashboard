@@ -592,6 +592,39 @@
       "net": 68.41,
       "netPct": 86.6,
       "note": ""
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
+      "name": "เซตเดี่ยว ยากินิกุ (1 ท่าน)",
+      "price": 159,
+      "cost": 63.8,
+      "gross": 95.2,
+      "grossPct": 59.9,
+      "net": 95.2,
+      "netPct": 59.9,
+      "note": "หมูสไลซ์120g+ไก่สไลซ์80g+ข้าว+ซอส+กิมจิ+ถ่าน"
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
+      "name": "เซตคู่ ยากินิกุ (2 ท่าน)",
+      "price": 299,
+      "cost": 126.0,
+      "gross": 173.0,
+      "grossPct": 57.9,
+      "net": 173.0,
+      "netPct": 57.9,
+      "note": "หมู200g+เนื้อวัว100g+ไก่120g+ข้าว2+ซอส2+กิมจิสลัด+ถ่าน"
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
+      "name": "เซตกลุ่ม ยากินิกุ (3-4 ท่าน)",
+      "price": 549,
+      "cost": 277.0,
+      "gross": 272.0,
+      "grossPct": 49.5,
+      "net": 272.0,
+      "netPct": 49.5,
+      "note": "หมู350g+เนื้อวัว250g+ไก่200g+ไส้กรอก150g+ข้าว4+ซอส4+กิมจิสลัดใหญ่+ถ่าน"
     }
   ],
   "stock": [
@@ -1857,6 +1890,96 @@
         "ing": "mitrpholCaneSyrup",
         "qty": 20
       }
+    ],
+    "เซตเดี่ยว ยากินิกุ (1 ท่าน)": [
+      {
+        "ing": "porkSliceYakiniku",
+        "qty": 120
+      },
+      {
+        "ing": "chickenSliceYakiniku",
+        "qty": 80
+      },
+      {
+        "ing": "riceServing",
+        "qty": 1
+      },
+      {
+        "ing": "yakinikuSauceCup",
+        "qty": 1
+      },
+      {
+        "ing": "kimchiSmall",
+        "qty": 1
+      },
+      {
+        "ing": "charcoalFuelTable",
+        "qty": 1
+      }
+    ],
+    "เซตคู่ ยากินิกุ (2 ท่าน)": [
+      {
+        "ing": "porkSliceYakiniku",
+        "qty": 200
+      },
+      {
+        "ing": "beefSliceYakiniku",
+        "qty": 100
+      },
+      {
+        "ing": "chickenSliceYakiniku",
+        "qty": 120
+      },
+      {
+        "ing": "riceServing",
+        "qty": 2
+      },
+      {
+        "ing": "yakinikuSauceCup",
+        "qty": 2
+      },
+      {
+        "ing": "kimchiSaladSet",
+        "qty": 1
+      },
+      {
+        "ing": "charcoalFuelTable",
+        "qty": 1
+      }
+    ],
+    "เซตกลุ่ม ยากินิกุ (3-4 ท่าน)": [
+      {
+        "ing": "porkSliceYakiniku",
+        "qty": 350
+      },
+      {
+        "ing": "beefSliceYakiniku",
+        "qty": 250
+      },
+      {
+        "ing": "chickenSliceYakiniku",
+        "qty": 200
+      },
+      {
+        "ing": "sausageGerman",
+        "qty": 150
+      },
+      {
+        "ing": "riceServing",
+        "qty": 4
+      },
+      {
+        "ing": "yakinikuSauceCup",
+        "qty": 4
+      },
+      {
+        "ing": "kimchiSaladSetBig",
+        "qty": 1
+      },
+      {
+        "ing": "charcoalFuelTable",
+        "qty": 1
+      }
     ]
   },
   "raw": [
@@ -2344,6 +2467,96 @@
       "packPrice": 46,
       "packSize": 800,
       "packUnit": "ml",
+      "yieldMl": null
+    },
+    {
+      "id": "porkSliceYakiniku",
+      "label": "หมูสไลซ์ (ยากินิกุ)",
+      "type": "solid",
+      "packPrice": 190,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "beefSliceYakiniku",
+      "label": "เนื้อวัวสไลซ์ (ยากินิกุ)",
+      "type": "solid",
+      "packPrice": 280,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "chickenSliceYakiniku",
+      "label": "ไก่สไลซ์หมักซีอิ๊ว (ยากินิกุ)",
+      "type": "solid",
+      "packPrice": 100,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "sausageGerman",
+      "label": "ไส้กรอกเยอรมัน/ซาลามิ",
+      "type": "solid",
+      "packPrice": 250,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "riceServing",
+      "label": "ข้าวสวย/ข้าวญี่ปุ่น (ต่อที่)",
+      "type": "solid",
+      "packPrice": 5,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "yakinikuSauceCup",
+      "label": "ซอสยากินิกุ (ต่อถ้วย)",
+      "type": "solid",
+      "packPrice": 5,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "kimchiSmall",
+      "label": "กิมจิ (ที่เล็ก)",
+      "type": "solid",
+      "packPrice": 10,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "kimchiSaladSet",
+      "label": "กิมจิ+สลัด (1 ชุด)",
+      "type": "solid",
+      "packPrice": 15,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "kimchiSaladSetBig",
+      "label": "กิมจิ+สลัด (ชุดใหญ่)",
+      "type": "solid",
+      "packPrice": 30,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "charcoalFuelTable",
+      "label": "ถ่าน+เชื้อเพลิง (ต่อโต๊ะ)",
+      "type": "solid",
+      "packPrice": 13,
+      "packSize": 1,
+      "packUnit": "serving",
       "yieldMl": null
     }
   ],
