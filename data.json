@@ -607,32 +607,32 @@
       "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
       "name": "เซตเดี่ยว ยากินิกุ (1 ท่าน)",
       "price": 159,
-      "cost": 63.8,
-      "gross": 95.2,
-      "grossPct": 59.9,
-      "net": 95.2,
-      "netPct": 59.9,
+      "cost": 68.8,
+      "gross": 90.2,
+      "grossPct": 56.7,
+      "net": 90.2,
+      "netPct": 56.7,
       "note": "หมูสไลซ์120g+ไก่สไลซ์80g+ข้าว+ซอส+กิมจิ+ถ่าน"
     },
     {
       "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
       "name": "เซตคู่ ยากินิกุ (2 ท่าน)",
       "price": 299,
-      "cost": 126,
-      "gross": 173,
-      "grossPct": 57.9,
-      "net": 173,
-      "netPct": 57.9,
+      "cost": 131.0,
+      "gross": 168.0,
+      "grossPct": 56.2,
+      "net": 168.0,
+      "netPct": 56.2,
       "note": "หมู200g+เนื้อวัว100g+ไก่120g+ข้าว2+ซอส2+กิมจิสลัด+ถ่าน"
     },
     {
       "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
       "name": "เซตกลุ่ม ยากินิกุ (3-4 ท่าน)",
       "price": 549,
-      "cost": 277,
-      "gross": 272,
+      "cost": 277.0,
+      "gross": 272.0,
       "grossPct": 49.5,
-      "net": 272,
+      "net": 272.0,
       "netPct": 49.5,
       "note": "หมู350g+เนื้อวัว250g+ไก่200g+ไส้กรอก150g+ข้าว4+ซอส4+กิมจิสลัดใหญ่+ถ่าน"
     }
@@ -1919,11 +1919,15 @@
         "qty": 1
       },
       {
-        "ing": "kimchiSmall",
+        "ing": "charcoalFuelTable",
         "qty": 1
       },
       {
-        "ing": "charcoalFuelTable",
+        "ing": "kimchiCup",
+        "qty": 1
+      },
+      {
+        "ing": "spicySauceCup",
         "qty": 1
       }
     ],
@@ -1949,12 +1953,16 @@
         "qty": 2
       },
       {
-        "ing": "kimchiSaladSet",
+        "ing": "charcoalFuelTable",
         "qty": 1
       },
       {
-        "ing": "charcoalFuelTable",
+        "ing": "kimchiCup",
         "qty": 1
+      },
+      {
+        "ing": "spicySauceCup",
+        "qty": 2
       }
     ],
     "เซตกลุ่ม ยากินิกุ (3-4 ท่าน)": [
@@ -1983,12 +1991,16 @@
         "qty": 4
       },
       {
-        "ing": "kimchiSaladSetBig",
+        "ing": "charcoalFuelTable",
         "qty": 1
       },
       {
-        "ing": "charcoalFuelTable",
+        "ing": "kimchiCup",
         "qty": 1
+      },
+      {
+        "ing": "spicySauceCup",
+        "qty": 4
       }
     ]
   },
@@ -2565,6 +2577,24 @@
       "label": "ถ่าน+เชื้อเพลิง (ต่อโต๊ะ)",
       "type": "solid",
       "packPrice": 13,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "spicySauceCup",
+      "label": "น้ำจิ้มรสแซ่บ (ต่อถ้วย)",
+      "type": "solid",
+      "packPrice": 5,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "kimchiCup",
+      "label": "กิมจิ (1 ถ้วย)",
+      "type": "solid",
+      "packPrice": 10,
       "packSize": 1,
       "packUnit": "serving",
       "yieldMl": null
