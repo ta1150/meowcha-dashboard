@@ -635,36 +635,102 @@
     },
     {
       "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
-      "name": "เซตเดี่ยว ยากินิกุ (1 ท่าน)",
-      "price": 159,
-      "cost": 72.28,
-      "gross": 86.72,
-      "grossPct": 54.5,
-      "net": 86.72,
-      "netPct": 54.5,
-      "note": "หมูสไลซ์120g+ไก่สไลซ์80g+ข้าว+ซอส+กิมจิ+ถ่าน"
+      "name": "เซตเล็ก ยากินิกุ (1-2 ท่าน)",
+      "price": 270,
+      "cost": 129.7,
+      "gross": 140.3,
+      "grossPct": 52.0,
+      "net": 140.3,
+      "netPct": 52.0,
+      "note": "หมู180g+ไส้กรอกไก่100g+ข้าว2+ซอส2+กิมจิ+ยำสาหร่าย+ถ่าน"
     },
     {
       "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
-      "name": "เซตคู่ ยากินิกุ (2 ท่าน)",
-      "price": 299,
-      "cost": 136.8,
-      "gross": 162.2,
-      "grossPct": 54.2,
-      "net": 162.2,
-      "netPct": 54.2,
-      "note": "หมู200g+เนื้อวัว100g+ไก่120g+ข้าว2+ซอส2+กิมจิสลัด+ถ่าน"
+      "name": "เซตใหญ่ ยากินิกุ (3-4 ท่าน)",
+      "price": 475,
+      "cost": 229.1,
+      "gross": 245.9,
+      "grossPct": 51.8,
+      "net": 245.9,
+      "netPct": 51.8,
+      "note": "หมู350g+ไส้กรอกไก่200g+ข้าว4+ซอส4+กิมจิ+ยำสาหร่ายx2+ถ่าน"
     },
     {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
-      "name": "เซตกลุ่ม ยากินิกุ (3-4 ท่าน)",
-      "price": 549,
-      "cost": 287.15,
-      "gross": 261.85,
-      "grossPct": 47.7,
-      "net": 261.85,
-      "netPct": 47.7,
-      "note": "หมู350g+เนื้อวัว250g+ไก่200g+ไส้กรอก150g+ข้าว4+ซอส4+กิมจิสลัดใหญ่+ถ่าน"
+      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
+      "name": "เพิ่มเนื้อชาวีเล่ส์เสียบไม้ (4 ไม้)",
+      "price": 89,
+      "cost": 47.7,
+      "gross": 41.3,
+      "grossPct": 46.4,
+      "net": 41.3,
+      "netPct": 46.4,
+      "note": ""
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
+      "name": "เพิ่มเนื้อสันแหลม ARO สไลซ์ (100g)",
+      "price": 89,
+      "cost": 45.0,
+      "gross": 44.0,
+      "grossPct": 49.4,
+      "net": 44.0,
+      "netPct": 49.4,
+      "note": ""
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
+      "name": "เพิ่ม Snow Beef พรีเมียม (100g)",
+      "price": 169,
+      "cost": 79.9,
+      "gross": 89.1,
+      "grossPct": 52.7,
+      "net": 89.1,
+      "netPct": 52.7,
+      "note": ""
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
+      "name": "เพิ่มหมูสไลซ์ (100g)",
+      "price": 39,
+      "cost": 21.9,
+      "gross": 17.1,
+      "grossPct": 43.8,
+      "net": 17.1,
+      "netPct": 43.8,
+      "note": ""
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
+      "name": "เพิ่มไส้กรอกไก่ (100g)",
+      "price": 35,
+      "cost": 16.4,
+      "gross": 18.6,
+      "grossPct": 53.1,
+      "net": 18.6,
+      "netPct": 53.1,
+      "note": ""
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
+      "name": "เพิ่มข้าวสวย (1 ที่)",
+      "price": 15,
+      "cost": 5.0,
+      "gross": 10.0,
+      "grossPct": 66.7,
+      "net": 10.0,
+      "netPct": 66.7,
+      "note": ""
+    },
+    {
+      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
+      "name": "เพิ่มกิมจิ (1 ถ้วย)",
+      "price": 29,
+      "cost": 15.0,
+      "gross": 14.0,
+      "grossPct": 48.3,
+      "net": 14.0,
+      "netPct": 48.3,
+      "note": ""
     }
   ],
   "stock": [
@@ -1931,50 +1997,16 @@
         "qty": 20
       }
     ],
-    "เซตเดี่ยว ยากินิกุ (1 ท่าน)": [
+    "เซตเล็ก ยากินิกุ (1-2 ท่าน)": [
       {
         "ing": "porkSliceYakiniku",
-        "qty": 120
+        "qty": 180
       },
       {
-        "ing": "chickenSliceYakiniku",
-        "qty": 80
-      },
-      {
-        "ing": "riceServing",
-        "qty": 1
-      },
-      {
-        "ing": "yakinikuSauceCup",
-        "qty": 1
-      },
-      {
-        "ing": "charcoalFuelTable",
-        "qty": 1
-      },
-      {
-        "ing": "kimchiCup",
-        "qty": 1
-      },
-      {
-        "ing": "spicySauceCup",
-        "qty": 1
-      }
-    ],
-    "เซตคู่ ยากินิกุ (2 ท่าน)": [
-      {
-        "ing": "porkSliceYakiniku",
-        "qty": 200
-      },
-      {
-        "ing": "beefSliceYakiniku",
+        "ing": "sausageGerman",
         "qty": 100
       },
       {
-        "ing": "chickenSliceYakiniku",
-        "qty": 120
-      },
-      {
         "ing": "riceServing",
         "qty": 2
       },
@@ -1983,34 +2015,30 @@
         "qty": 2
       },
       {
-        "ing": "charcoalFuelTable",
-        "qty": 1
+        "ing": "spicySauceCup",
+        "qty": 2
       },
       {
         "ing": "kimchiCup",
         "qty": 1
       },
       {
-        "ing": "spicySauceCup",
-        "qty": 2
+        "ing": "seaweedSalad",
+        "qty": 1
+      },
+      {
+        "ing": "charcoalFuelTable",
+        "qty": 1
       }
     ],
-    "เซตกลุ่ม ยากินิกุ (3-4 ท่าน)": [
+    "เซตใหญ่ ยากินิกุ (3-4 ท่าน)": [
       {
         "ing": "porkSliceYakiniku",
         "qty": 350
       },
       {
-        "ing": "beefSliceYakiniku",
-        "qty": 250
-      },
-      {
-        "ing": "chickenSliceYakiniku",
-        "qty": 200
-      },
-      {
         "ing": "sausageGerman",
-        "qty": 150
+        "qty": 200
       },
       {
         "ing": "riceServing",
@@ -2021,16 +2049,62 @@
         "qty": 4
       },
       {
-        "ing": "charcoalFuelTable",
-        "qty": 1
+        "ing": "spicySauceCup",
+        "qty": 4
       },
       {
         "ing": "kimchiCup",
         "qty": 1
       },
       {
-        "ing": "spicySauceCup",
+        "ing": "seaweedSalad",
+        "qty": 2
+      },
+      {
+        "ing": "charcoalFuelTable",
+        "qty": 1
+      }
+    ],
+    "เพิ่มเนื้อชาวีเล่ส์เสียบไม้ (4 ไม้)": [
+      {
+        "ing": "beefSkewerBudget",
         "qty": 4
+      }
+    ],
+    "เพิ่มเนื้อสันแหลม ARO สไลซ์ (100g)": [
+      {
+        "ing": "beefSliceMid",
+        "qty": 100
+      }
+    ],
+    "เพิ่ม Snow Beef พรีเมียม (100g)": [
+      {
+        "ing": "beefSlicePremium",
+        "qty": 100
+      }
+    ],
+    "เพิ่มหมูสไลซ์ (100g)": [
+      {
+        "ing": "porkSliceYakiniku",
+        "qty": 100
+      }
+    ],
+    "เพิ่มไส้กรอกไก่ (100g)": [
+      {
+        "ing": "sausageGerman",
+        "qty": 100
+      }
+    ],
+    "เพิ่มข้าวสวย (1 ที่)": [
+      {
+        "ing": "riceServing",
+        "qty": 1
+      }
+    ],
+    "เพิ่มกิมจิ (1 ถ้วย)": [
+      {
+        "ing": "kimchiCup",
+        "qty": 1
       }
     ]
   },
@@ -2550,9 +2624,9 @@
     },
     {
       "id": "sausageGerman",
-      "label": "ไส้กรอกเยอรมัน/ซาลามิ",
+      "label": "ไส้กรอกไก่รมควัน (BKP)",
       "type": "solid",
-      "packPrice": 250,
+      "packPrice": 164,
       "packSize": 1000,
       "packUnit": "g",
       "yieldMl": null
@@ -2613,9 +2687,9 @@
     },
     {
       "id": "spicySauceCup",
-      "label": "น้ำจิ้มรสแซ่บ (ต่อถ้วย)",
+      "label": "น้ำจิ้มซีฟู้ด (CP, ต่อถ้วย)",
       "type": "solid",
-      "packPrice": 5,
+      "packPrice": 3,
       "packSize": 1,
       "packUnit": "serving",
       "yieldMl": null
@@ -2624,9 +2698,45 @@
       "id": "kimchiCup",
       "label": "กิมจิ (1 ถ้วย)",
       "type": "solid",
-      "packPrice": 10,
+      "packPrice": 15,
       "packSize": 1,
       "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "seaweedSalad",
+      "label": "ยำสาหร่ายญี่ปุ่น (คิงเชฟ, ต่อที่ 50g)",
+      "type": "solid",
+      "packPrice": 19.83,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "beefSkewerBudget",
+      "label": "เนื้อชาวีเล่ส์เสียบไม้ (ต่อไม้)",
+      "type": "solid",
+      "packPrice": 11.93,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "beefSliceMid",
+      "label": "เนื้อสันแหลม ARO สไลซ์ (ต่อ g)",
+      "type": "solid",
+      "packPrice": 450,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "beefSlicePremium",
+      "label": "Snow Beef พรีเมียม ฉีดไขมัน (ต่อ g)",
+      "type": "solid",
+      "packPrice": 799,
+      "packSize": 1000,
+      "packUnit": "g",
       "yieldMl": null
     }
   ],
