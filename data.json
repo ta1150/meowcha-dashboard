@@ -133,28 +133,6 @@
   ],
   "menu": [
     {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
-      "name": "เซตเดี่ยว (กินคนเดียว)",
-      "price": 210,
-      "cost": 99.4,
-      "gross": 110.6,
-      "grossPct": 52.7,
-      "net": 110.6,
-      "netPct": 52.7,
-      "note": "เนื้อ yakiniku slice มาร์บลิ่ง 150g+ข้าว+ซอสยากินิกุ+น้ำจิ้มซีฟู้ด+กิมจิ/ยำสาหร่ายถ้วยเล็ก+ถ่าน"
-    },
-    {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น (ปิ้งเอง)",
-      "name": "เซตคู่ (2 ท่าน)",
-      "price": 390,
-      "cost": 185.7,
-      "gross": 204.3,
-      "grossPct": 52.4,
-      "net": 204.3,
-      "netPct": 52.4,
-      "note": "เนื้อ yakiniku slice มาร์บลิ่ง 300g+ข้าวx2+ซอสยากินิกุx2+น้ำจิ้มซีฟู้ดx2+กิมจิ/ยำสาหร่ายถ้วยเล็กx2+ถ่าน"
-    },
-    {
       "cat": "☕ กาแฟ",
       "name": "Americano",
       "price": 65,
@@ -650,83 +628,6 @@
       "note": ""
     },
     {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
-      "name": "เพิ่มเนื้อชาวีเล่ส์เสียบไม้ (4 ไม้)",
-      "price": 89,
-      "cost": 47.7,
-      "gross": 41.3,
-      "grossPct": 46.4,
-      "net": 41.3,
-      "netPct": 46.4,
-      "note": ""
-    },
-    {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
-      "name": "เพิ่มเนื้อสันแหลม ARO สไลซ์ (100g)",
-      "price": 89,
-      "cost": 45.0,
-      "gross": 44.0,
-      "grossPct": 49.4,
-      "net": 44.0,
-      "netPct": 49.4,
-      "note": ""
-    },
-    {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
-      "name": "เพิ่ม Snow Beef พรีเมียม (100g)",
-      "price": 169,
-      "cost": 79.9,
-      "gross": 89.1,
-      "grossPct": 52.7,
-      "net": 89.1,
-      "netPct": 52.7,
-      "note": ""
-    },
-    {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
-      "name": "เพิ่มหมูสไลซ์ (100g)",
-      "price": 39,
-      "cost": 21.9,
-      "gross": 17.1,
-      "grossPct": 43.8,
-      "net": 17.1,
-      "netPct": 43.8,
-      "note": ""
-    },
-    {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
-      "name": "เพิ่มไส้กรอกไก่ (100g)",
-      "price": 35,
-      "cost": 16.4,
-      "gross": 18.6,
-      "grossPct": 53.1,
-      "net": 18.6,
-      "netPct": 53.1,
-      "note": ""
-    },
-    {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
-      "name": "เพิ่มข้าวสวย (1 ที่)",
-      "price": 15,
-      "cost": 5.0,
-      "gross": 10.0,
-      "grossPct": 66.7,
-      "net": 10.0,
-      "netPct": 66.7,
-      "note": ""
-    },
-    {
-      "cat": "🥩 เนื้อย่างญี่ปุ่น - เมนูเสริม",
-      "name": "เพิ่มกิมจิ (1 ถ้วย)",
-      "price": 29,
-      "cost": 15.0,
-      "gross": 14.0,
-      "grossPct": 48.3,
-      "net": 14.0,
-      "netPct": 48.3,
-      "note": ""
-    },
-    {
       "cat": "☕ กาแฟ",
       "name": "เอสเย็น",
       "price": 65,
@@ -780,6 +681,39 @@
       "net": 35.49,
       "netPct": 78.9,
       "note": "ชาใส ไม่ใส่นม + ครีมชีสทอปบน - ใบชามะลิ 8g+น้ำ 150g+น้ำเชื่อม 15g+เบสโฟมครีมชีส 20g"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เซตหมาล่าปิ้งย่าง (10 ไม้)",
+      "price": 179,
+      "cost": 0,
+      "gross": 0,
+      "grossPct": 0,
+      "net": 0,
+      "netPct": 0,
+      "note": "หมู3+ไก่2+ลูกชิ้นหมู2+ไส้กรอกอีสาน1+ผักรวม1+เห็ด1 = 10 ไม้ | น้ำจิ้มฟรี (เลือกมาล่า/ซีฟู้ด ไม่จำกัดรีฟิล) + ถ่าน"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้ปิ้งย่าง (พื้นฐาน: หมู/ไก่/ลูกชิ้น/ไส้กรอก/ผัก/เห็ด)",
+      "price": 15,
+      "cost": 0,
+      "gross": 0,
+      "grossPct": 0,
+      "net": 0,
+      "netPct": 0,
+      "note": "ต่อไม้ สั่งเพิ่มได้ไม่จำกัด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้เนื้อวัวชาวีเล่ส์ (พรีเมียม)",
+      "price": 25,
+      "cost": 11.93,
+      "gross": 13.07,
+      "grossPct": 52.3,
+      "net": 13.07,
+      "netPct": 52.3,
+      "note": "ต่อไม้ เนื้อวัวชาวีเล่ส์"
     }
   ],
   "stock": [
@@ -2062,108 +1996,6 @@
         "qty": 20
       }
     ],
-    "เพิ่มเนื้อชาวีเล่ส์เสียบไม้ (4 ไม้)": [
-      {
-        "ing": "beefSkewerBudget",
-        "qty": 4
-      }
-    ],
-    "เพิ่มเนื้อสันแหลม ARO สไลซ์ (100g)": [
-      {
-        "ing": "beefSliceMid",
-        "qty": 100
-      }
-    ],
-    "เพิ่ม Snow Beef พรีเมียม (100g)": [
-      {
-        "ing": "beefSlicePremium",
-        "qty": 100
-      }
-    ],
-    "เพิ่มหมูสไลซ์ (100g)": [
-      {
-        "ing": "porkSliceYakiniku",
-        "qty": 100
-      }
-    ],
-    "เพิ่มไส้กรอกไก่ (100g)": [
-      {
-        "ing": "sausageGerman",
-        "qty": 100
-      }
-    ],
-    "เพิ่มข้าวสวย (1 ที่)": [
-      {
-        "ing": "riceServing",
-        "qty": 1
-      }
-    ],
-    "เพิ่มกิมจิ (1 ถ้วย)": [
-      {
-        "ing": "kimchiCup",
-        "qty": 1
-      }
-    ],
-    "เซตเดี่ยว (กินคนเดียว)": [
-      {
-        "ing": "yakinikuSliceMarbled",
-        "qty": 150
-      },
-      {
-        "ing": "riceServing",
-        "qty": 1
-      },
-      {
-        "ing": "yakinikuSauceCup",
-        "qty": 1
-      },
-      {
-        "ing": "spicySauceCup",
-        "qty": 1
-      },
-      {
-        "ing": "kimchiCup",
-        "qty": 0.5
-      },
-      {
-        "ing": "seaweedSalad",
-        "qty": 0.6
-      },
-      {
-        "ing": "charcoalFuelTable",
-        "qty": 1
-      }
-    ],
-    "เซตคู่ (2 ท่าน)": [
-      {
-        "ing": "yakinikuSliceMarbled",
-        "qty": 300
-      },
-      {
-        "ing": "riceServing",
-        "qty": 2
-      },
-      {
-        "ing": "yakinikuSauceCup",
-        "qty": 2
-      },
-      {
-        "ing": "spicySauceCup",
-        "qty": 2
-      },
-      {
-        "ing": "kimchiCup",
-        "qty": 1
-      },
-      {
-        "ing": "seaweedSalad",
-        "qty": 1.2
-      },
-      {
-        "ing": "charcoalFuelTable",
-        "qty": 1
-      }
-    ],
     "เอสเย็น": [
       {
         "ing": "coffeeBeans",
@@ -2236,6 +2068,72 @@
       {
         "ing": "base_cheesefoam",
         "qty": 20
+      }
+    ],
+    "เซตหมาล่าปิ้งย่าง (10 ไม้)": [
+      {
+        "ing": "porkSliceYakiniku",
+        "qty": 105
+      },
+      {
+        "ing": "sausageGerman",
+        "qty": 70
+      },
+      {
+        "ing": "porkMeatballSkewer",
+        "qty": 2
+      },
+      {
+        "ing": "isaanSausageSkewer",
+        "qty": 1
+      },
+      {
+        "ing": "mixedVegSkewer",
+        "qty": 1
+      },
+      {
+        "ing": "mushroomSkewer",
+        "qty": 1
+      },
+      {
+        "ing": "malaSauceCup",
+        "qty": 1
+      },
+      {
+        "ing": "charcoalFuelTable",
+        "qty": 1
+      }
+    ],
+    "เพิ่มไม้ปิ้งย่าง (พื้นฐาน: หมู/ไก่/ลูกชิ้น/ไส้กรอก/ผัก/เห็ด)": [
+      {
+        "ing": "porkSliceYakiniku",
+        "qty": 10.5
+      },
+      {
+        "ing": "sausageGerman",
+        "qty": 7
+      },
+      {
+        "ing": "porkMeatballSkewer",
+        "qty": 0.2
+      },
+      {
+        "ing": "isaanSausageSkewer",
+        "qty": 0.1
+      },
+      {
+        "ing": "mixedVegSkewer",
+        "qty": 0.1
+      },
+      {
+        "ing": "mushroomSkewer",
+        "qty": 0.1
+      }
+    ],
+    "เพิ่มไม้เนื้อวัวชาวีเล่ส์ (พรีเมียม)": [
+      {
+        "ing": "beefSkewerBudget",
+        "qty": 1
       }
     ]
   },
@@ -2904,6 +2802,51 @@
       "packPrice": 140,
       "packSize": 500,
       "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "porkMeatballSkewer",
+      "label": "ลูกชิ้นหมูเสียบไม้ (ต่อไม้)",
+      "type": "solid",
+      "packPrice": 4,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "isaanSausageSkewer",
+      "label": "ไส้กรอกอีสานเสียบไม้ (ต่อไม้)",
+      "type": "solid",
+      "packPrice": 9,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "mixedVegSkewer",
+      "label": "ผักรวมเสียบไม้ (ต่อไม้)",
+      "type": "solid",
+      "packPrice": 3,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "mushroomSkewer",
+      "label": "เห็ดเสียบไม้ (ต่อไม้)",
+      "type": "solid",
+      "packPrice": 3,
+      "packSize": 1,
+      "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "malaSauceCup",
+      "label": "น้ำจิ้มมาล่าปิ้งย่าง (ต่อถ้วย)",
+      "type": "solid",
+      "packPrice": 14,
+      "packSize": 1,
+      "packUnit": "serving",
       "yieldMl": null
     }
   ],
