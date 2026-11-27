@@ -99,6 +99,26 @@
       "category": "อื่นๆ",
       "reported_by": "D. Marcio",
       "raw_note": "โอนผ่าน MyMo by GSB (เติมเงินพร้อมเพย์), รหัสอ้างอิง 632913076456I000004B9790"
+    },
+    {
+      "id": "386f0f31-60c9-4c77-bfa7-6e80b9229e66",
+      "ts": "2026-11-27T19:21:00+07:00",
+      "amount": 1200.0,
+      "vendor": "นางสาว กมลชญา บุญกอบ",
+      "items": "ค่าแรงพนักงาน",
+      "category": "ค่าแรง",
+      "reported_by": "D. Marcio",
+      "raw_note": "โอนผ่าน MyMo by GSB, รหัสอ้างอิง 633119620064I000021B9790"
+    },
+    {
+      "id": "ed3eb681-da7c-4c2d-8700-508e28e9fc7c",
+      "ts": "2026-11-27T19:54:00+07:00",
+      "amount": 604.0,
+      "vendor": "ชำระสินค้า Shopee (ค่าไม้ถู)",
+      "items": "ไม้ถูพื้น",
+      "category": "อุปกรณ์",
+      "reported_by": "D. Marcio",
+      "raw_note": "โอนผ่าน MyMo by GSB, รหัสธุรกรรม APIC1795784013052HJC"
     }
   ],
   "income": [],
