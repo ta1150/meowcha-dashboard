@@ -139,6 +139,26 @@
       "category": "อุปกรณ์",
       "reported_by": "D. Marcio",
       "raw_note": "สั่งซื้อผ่าน Shopee (คาดว่าจะได้รับ 29 พ.ย. - 1 ธ.ค.)"
+    },
+    {
+      "id": "38bfa27a-4c51-4502-a514-aaf15b8ecf19",
+      "ts": "2026-11-28T00:06:00+07:00",
+      "amount": 69.0,
+      "vendor": "Shopee - SMALL HAVEN",
+      "items": "แผ่นตาข่ายกรองกาแฟ สเตนเลส 51MM 58mm/1.7mm x2",
+      "category": "อุปกรณ์",
+      "reported_by": "D. Marcio",
+      "raw_note": "สั่งซื้อผ่าน Shopee (คาดว่าจะได้รับ 29 พ.ย. - 1 ธ.ค.)"
+    },
+    {
+      "id": "f83af047-5895-4f3e-bf07-00c4ad534716",
+      "ts": "2026-11-28T00:06:00+07:00",
+      "amount": 314.0,
+      "vendor": "Shopee - Heng Dee 72",
+      "items": "อะไหล่กล่องเก็บฝุ่นเครื่องชงกาแฟ (กระบอก+ไส้กรองดำ) x1",
+      "category": "อุปกรณ์",
+      "reported_by": "D. Marcio",
+      "raw_note": "สั่งซื้อผ่าน Shopee (คาดว่าจะได้รับ 29 พ.ย. - 1 ธ.ค.)"
     }
   ],
   "income": [],
