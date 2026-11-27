@@ -169,11 +169,11 @@
       "cat": "☕ กาแฟ",
       "name": "Coconut Americano",
       "price": 80,
-      "cost": 13.9,
-      "gross": 46.45,
-      "grossPct": 58.1,
-      "net": 44.78,
-      "netPct": 56,
+      "cost": 14.48,
+      "gross": 65.52,
+      "grossPct": 81.9,
+      "net": 63.02,
+      "netPct": 78.8,
       "note": ""
     },
     {
@@ -1435,6 +1435,10 @@
       {
         "ing": "coconutWaterBottle",
         "qty": 100
+      },
+      {
+        "ing": "mitrpholCaneSyrup",
+        "qty": 10
       }
     ],
     "Americano Peach Soda": [
