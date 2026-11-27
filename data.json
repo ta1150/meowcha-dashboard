@@ -731,6 +731,17 @@
       "net": 14.0,
       "netPct": 48.3,
       "note": ""
+    },
+    {
+      "cat": "☕ กาแฟ",
+      "name": "เอสเย็น",
+      "price": 65,
+      "cost": 16.27,
+      "gross": 48.73,
+      "grossPct": 75.0,
+      "net": 46.23,
+      "netPct": 71.1,
+      "note": "เมล็ด18g+นมผสม80g+นมสด40g"
     }
   ],
   "stock": [
@@ -2109,6 +2120,20 @@
       {
         "ing": "charcoalFuelTable",
         "qty": 1
+      }
+    ],
+    "เอสเย็น": [
+      {
+        "ing": "coffeeBeans",
+        "qty": 18
+      },
+      {
+        "ing": "base_milkmix",
+        "qty": 80
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 40
       }
     ]
   },
