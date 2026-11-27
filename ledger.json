@@ -119,6 +119,26 @@
       "category": "อุปกรณ์",
       "reported_by": "D. Marcio",
       "raw_note": "โอนผ่าน MyMo by GSB, รหัสธุรกรรม APIC1795784013052HJC"
+    },
+    {
+      "id": "edf9eb8d-05bd-4a25-a577-e08e9815b036",
+      "ts": "2026-11-28T00:06:00+07:00",
+      "amount": 146.0,
+      "vendor": "Shopee - TH-kingkong",
+      "items": "ถ้วยช็อตเอสเพรสโซ่ 100 มล. x2",
+      "category": "อุปกรณ์",
+      "reported_by": "D. Marcio",
+      "raw_note": "สั่งซื้อผ่าน Shopee (คาดว่าจะได้รับ 29 พ.ย. - 1 ธ.ค.)"
+    },
+    {
+      "id": "9bba4a41-ab15-4db2-b8b3-e8380a89ce19",
+      "ts": "2026-11-28T00:06:00+07:00",
+      "amount": 62.0,
+      "vendor": "Shopee - DaraHome",
+      "items": "กระปุกโรยผง สแตนเลส x1",
+      "category": "อุปกรณ์",
+      "reported_by": "D. Marcio",
+      "raw_note": "สั่งซื้อผ่าน Shopee (คาดว่าจะได้รับ 29 พ.ย. - 1 ธ.ค.)"
     }
   ],
   "income": [],
