@@ -606,12 +606,6 @@
       "note": ""
     },
     {
-      "id": "fresh_strawberry_milk",
-      "name": "นมสดสตรอว์เบอร์รี่",
-      "price": 69,
-      "cat": "🧋 ชา/นมสด"
-    },
-    {
       "id": "blend_ชาไทยปั่น",
       "name": "ชาไทยปั่น",
       "price": 69,
@@ -753,6 +747,28 @@
       "net": 58.0,
       "netPct": 77.3,
       "note": "เมล็ด18g+น้ำส้ม100g"
+    },
+    {
+      "cat": "🧋 ชา/นมสด",
+      "name": "ชามะลิ",
+      "price": 59,
+      "cost": 0,
+      "gross": 0,
+      "grossPct": 0,
+      "net": 0,
+      "netPct": 0,
+      "note": "ชามะลิ 8g+เบสโฟมครีมชีส 20g+นมสด 10g+นมผสม 60g"
+    },
+    {
+      "cat": "🧋 ชา/นมสด",
+      "name": "ชาพีช",
+      "price": 59,
+      "cost": 0,
+      "gross": 0,
+      "grossPct": 0,
+      "net": 0,
+      "netPct": 0,
+      "note": "ชาดำ(ชาไทยแดง) 8g+ไซรัปพีช 20g+โซดา 100g"
     }
   ],
   "stock": [
@@ -2160,6 +2176,38 @@
         "ing": "orangeJuiceBottle",
         "qty": 100
       }
+    ],
+    "ชามะลิ": [
+      {
+        "ing": "jasmineTeaLeaf",
+        "qty": 8
+      },
+      {
+        "ing": "base_cheesefoam",
+        "qty": 20
+      },
+      {
+        "ing": "freshMilk",
+        "qty": 10
+      },
+      {
+        "ing": "base_milkmix",
+        "qty": 60
+      }
+    ],
+    "ชาพีช": [
+      {
+        "ing": "chaTraMueOriginal",
+        "qty": 8
+      },
+      {
+        "ing": "peachSyrup",
+        "qty": 20
+      },
+      {
+        "ing": "sodaWater",
+        "qty": 100
+      }
     ]
   },
   "raw": [
@@ -2818,6 +2866,15 @@
       "packPrice": 55,
       "packSize": 1000,
       "packUnit": "ml",
+      "yieldMl": null
+    },
+    {
+      "id": "jasmineTeaLeaf",
+      "label": "ใบชามะลิ (ชาเขียวมะลิ)",
+      "type": "solid",
+      "packPrice": 140,
+      "packSize": 500,
+      "packUnit": "g",
       "yieldMl": null
     }
   ],
