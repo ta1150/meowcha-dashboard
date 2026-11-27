@@ -742,6 +742,17 @@
       "net": 46.23,
       "netPct": 71.1,
       "note": "เมล็ด18g+นมผสม80g+นมสด40g"
+    },
+    {
+      "cat": "☕ กาแฟ",
+      "name": "อเมริกาโน่ส้ม",
+      "price": 75,
+      "cost": 14.5,
+      "gross": 60.5,
+      "grossPct": 80.7,
+      "net": 58.0,
+      "netPct": 77.3,
+      "note": "เมล็ด18g+น้ำส้ม100g"
     }
   ],
   "stock": [
@@ -2139,6 +2150,16 @@
         "ing": "freshMilk",
         "qty": 40
       }
+    ],
+    "อเมริกาโน่ส้ม": [
+      {
+        "ing": "coffeeBeans",
+        "qty": 18
+      },
+      {
+        "ing": "orangeJuiceBottle",
+        "qty": 100
+      }
     ]
   },
   "raw": [
@@ -2787,6 +2808,15 @@
       "type": "liquid",
       "packPrice": 75,
       "packSize": 700,
+      "packUnit": "ml",
+      "yieldMl": null
+    },
+    {
+      "id": "orangeJuiceBottle",
+      "label": "น้ำส้มคั้น/น้ำส้ม 100% (ขวด 1000ml)",
+      "type": "liquid",
+      "packPrice": 55,
+      "packSize": 1000,
       "packUnit": "ml",
       "yieldMl": null
     }
