@@ -706,89 +706,122 @@
       "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
       "name": "เซตหมาล่าปิ้งย่าง (10 ไม้)",
       "price": 179,
-      "cost": 84.48,
-      "gross": 94.52,
-      "grossPct": 52.8,
-      "net": 94.52,
-      "netPct": 52.8,
-      "note": "เลือกคละได้ 7 ชนิด (หมู/ไก่/ลูกชิ้นหมู/ไส้กรอกอีสาน/ผักรวม/เห็ด/เนื้อวัวชาวีเล่ส์) รวม 10 ไม้ ไม่เสียเพิ่ม | น้ำจิ้มฟรี (มาล่า/ซีฟู้ด ไม่จำกัดรีฟิล) + ถ่าน"
+      "cost": 72.93,
+      "gross": 106.07,
+      "grossPct": 59.3,
+      "net": 106.07,
+      "netPct": 59.3,
+      "note": "เลือกคละได้ 10 ชนิดใหม่ (เห็ดออรินจิ/บร็อคโคลี่/ไส้กรอกแดง/กระเจียบ/ปลาหมึกกรอบ/วากาเมะพันสามชั้น/เข็มทองพันสามชั้น/หมูสามชั้น/ไส้อ่อนหมู/เนื้อเสียบไม้) 1 ไม้/ชนิด รวม 10 ไม้ ไม่เสียเพิ่ม | น้ำจิ้มฟรี (มาล่า/ซีฟู้ด ไม่จำกัดรีฟิล) + ถ่าน"
     },
     {
       "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
-      "name": "เพิ่มไม้เนื้อวัวชาวีเล่ส์",
-      "price": 18,
+      "name": "เพิ่มไม้เห็ดออรินจิ",
+      "price": 10,
+      "cost": 2.36,
+      "gross": 7.64,
+      "grossPct": 76.4,
+      "net": 7.64,
+      "netPct": 76.4,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้บร็อคโคลี่",
+      "price": 10,
+      "cost": 2.66,
+      "gross": 7.34,
+      "grossPct": 73.4,
+      "net": 7.34,
+      "netPct": 73.4,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้ไส้กรอกแดง",
+      "price": 10,
+      "cost": 3.0,
+      "gross": 7.0,
+      "grossPct": 70.0,
+      "net": 7.0,
+      "netPct": 70.0,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้กระเจียบ",
+      "price": 10,
+      "cost": 3.9,
+      "gross": 6.1,
+      "grossPct": 61.0,
+      "net": 6.1,
+      "netPct": 61.0,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้ปลาหมึกกรอบ",
+      "price": 10,
+      "cost": 4.77,
+      "gross": 5.23,
+      "grossPct": 52.3,
+      "net": 5.23,
+      "netPct": 52.3,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้วากาเมะพันสามชั้น",
+      "price": 10,
+      "cost": 5.27,
+      "gross": 4.73,
+      "grossPct": 47.3,
+      "net": 4.73,
+      "netPct": 47.3,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้เข็มทองพันสามชั้น",
+      "price": 10,
+      "cost": 5.41,
+      "gross": 4.59,
+      "grossPct": 45.9,
+      "net": 4.59,
+      "netPct": 45.9,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้หมูสามชั้นเสียบไม้",
+      "price": 10,
+      "cost": 5.82,
+      "gross": 4.18,
+      "grossPct": 41.8,
+      "net": 4.18,
+      "netPct": 41.8,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้ไส้อ่อนหมู",
+      "price": 10,
+      "cost": 6.24,
+      "gross": 3.76,
+      "grossPct": 37.6,
+      "net": 3.76,
+      "netPct": 37.6,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
+    },
+    {
+      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
+      "name": "เพิ่มไม้เนื้อเสียบไม้ชาวีเล่ส์",
+      "price": 10,
       "cost": 6.5,
-      "gross": 11.5,
-      "grossPct": 63.9,
-      "net": 11.5,
-      "netPct": 63.9,
-      "note": "ต่อไม้ เนื้อวัวชาวีเล่ส์"
-    },
-    {
-      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
-      "name": "เพิ่มไม้ผักรวม",
-      "price": 10,
-      "cost": 3,
-      "gross": 7,
-      "grossPct": 70,
-      "net": 7,
-      "netPct": 70,
-      "note": "ต่อไม้ ขายแยกได้"
-    },
-    {
-      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
-      "name": "เพิ่มไม้เห็ด",
-      "price": 10,
-      "cost": 3,
-      "gross": 7,
-      "grossPct": 70,
-      "net": 7,
-      "netPct": 70,
-      "note": "ต่อไม้ ขายแยกได้"
-    },
-    {
-      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
-      "name": "เพิ่มไม้ลูกชิ้นหมู",
-      "price": 10,
-      "cost": 4,
-      "gross": 6,
-      "grossPct": 60,
-      "net": 6,
-      "netPct": 60,
-      "note": "ต่อไม้ ขายแยกได้"
-    },
-    {
-      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
-      "name": "เพิ่มไม้ไก่หมัก",
-      "price": 15,
-      "cost": 5.74,
-      "gross": 9.26,
-      "grossPct": 61.7,
-      "net": 9.26,
-      "netPct": 61.7,
-      "note": "ต่อไม้ ขายแยกได้"
-    },
-    {
-      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
-      "name": "เพิ่มไม้หมูสไลซ์",
-      "price": 18,
-      "cost": 7.67,
-      "gross": 10.33,
-      "grossPct": 57.4,
-      "net": 10.33,
-      "netPct": 57.4,
-      "note": "ต่อไม้ ขายแยกได้"
-    },
-    {
-      "cat": "🍢 หมาล่าปิ้งย่างเสียบไม้",
-      "name": "เพิ่มไม้ไส้กรอกอีสาน",
-      "price": 20,
-      "cost": 9,
-      "gross": 11,
-      "grossPct": 55,
-      "net": 11,
-      "netPct": 55,
-      "note": "ต่อไม้ ขายแยกได้"
+      "gross": 3.5,
+      "grossPct": 35.0,
+      "net": 3.5,
+      "netPct": 35.0,
+      "note": "ต่อไม้ ขายแยกได้ 10฿ ทุกชนิด"
     }
   ],
   "stock": [
@@ -2147,27 +2180,51 @@
     ],
     "เซตหมาล่าปิ้งย่าง (10 ไม้)": [
       {
-        "ing": "porkSliceYakiniku",
-        "qty": 105
+        "ing": "kingOysterMushroom",
+        "qty": 40
       },
       {
-        "ing": "sausageGerman",
-        "qty": 70
+        "ing": "broccoli",
+        "qty": 45
       },
       {
-        "ing": "porkMeatballSkewer",
-        "qty": 2
+        "ing": "redCocktailSausage",
+        "qty": 40
       },
       {
-        "ing": "isaanSausageSkewer",
-        "qty": 1
+        "ing": "okra",
+        "qty": 60
       },
       {
-        "ing": "mixedVegSkewer",
-        "qty": 1
+        "ing": "crispySquid",
+        "qty": 30
       },
       {
-        "ing": "mushroomSkewer",
+        "ing": "porkBellySliceFresh",
+        "qty": 18
+      },
+      {
+        "ing": "wakameSeaweed",
+        "qty": 1.5
+      },
+      {
+        "ing": "porkBellySliceFresh",
+        "qty": 20
+      },
+      {
+        "ing": "enokiMushroom",
+        "qty": 14
+      },
+      {
+        "ing": "porkBellySliceFresh",
+        "qty": 27
+      },
+      {
+        "ing": "porkIntestine",
+        "qty": 40
+      },
+      {
+        "ing": "beefSkewerBudget",
         "qty": 1
       },
       {
@@ -2179,46 +2236,72 @@
         "qty": 1
       }
     ],
-    "เพิ่มไม้เนื้อวัวชาวีเล่ส์": [
+    "เพิ่มไม้เห็ดออรินจิ": [
+      {
+        "ing": "kingOysterMushroom",
+        "qty": 40
+      }
+    ],
+    "เพิ่มไม้บร็อคโคลี่": [
+      {
+        "ing": "broccoli",
+        "qty": 45
+      }
+    ],
+    "เพิ่มไม้ไส้กรอกแดง": [
+      {
+        "ing": "redCocktailSausage",
+        "qty": 40
+      }
+    ],
+    "เพิ่มไม้กระเจียบ": [
+      {
+        "ing": "okra",
+        "qty": 60
+      }
+    ],
+    "เพิ่มไม้ปลาหมึกกรอบ": [
+      {
+        "ing": "crispySquid",
+        "qty": 30
+      }
+    ],
+    "เพิ่มไม้วากาเมะพันสามชั้น": [
+      {
+        "ing": "porkBellySliceFresh",
+        "qty": 18
+      },
+      {
+        "ing": "wakameSeaweed",
+        "qty": 1.5
+      }
+    ],
+    "เพิ่มไม้เข็มทองพันสามชั้น": [
+      {
+        "ing": "porkBellySliceFresh",
+        "qty": 20
+      },
+      {
+        "ing": "enokiMushroom",
+        "qty": 14
+      }
+    ],
+    "เพิ่มไม้หมูสามชั้นเสียบไม้": [
+      {
+        "ing": "porkBellySliceFresh",
+        "qty": 27
+      }
+    ],
+    "เพิ่มไม้ไส้อ่อนหมู": [
+      {
+        "ing": "porkIntestine",
+        "qty": 40
+      }
+    ],
+    "เพิ่มไม้เนื้อเสียบไม้ชาวีเล่ส์": [
       {
         "ing": "beefSkewerBudget",
         "qty": 1
-      }
-    ],
-    "เพิ่มไม้ผักรวม": [
-      {
-        "ing": "mixedVegSkewer",
-        "qty": 1
-      }
-    ],
-    "เพิ่มไม้เห็ด": [
-      {
-        "ing": "mushroomSkewer",
-        "qty": 1
-      }
-    ],
-    "เพิ่มไม้ลูกชิ้นหมู": [
-      {
-        "ing": "porkMeatballSkewer",
-        "qty": 1
-      }
-    ],
-    "เพิ่มไม้ไส้กรอกอีสาน": [
-      {
-        "ing": "isaanSausageSkewer",
-        "qty": 1
-      }
-    ],
-    "เพิ่มไม้ไก่หมัก": [
-      {
-        "ing": "sausageGerman",
-        "qty": 35
-      }
-    ],
-    "เพิ่มไม้หมูสไลซ์": [
-      {
-        "ing": "porkSliceYakiniku",
-        "qty": 35
       }
     ]
   },
@@ -2932,6 +3015,87 @@
       "packPrice": 14,
       "packSize": 1,
       "packUnit": "serving",
+      "yieldMl": null
+    },
+    {
+      "id": "enokiMushroom",
+      "label": "เห็ดเข็มทองไทย (ต่อ g)",
+      "type": "solid",
+      "packPrice": 75,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "wakameSeaweed",
+      "label": "สาหร่ายวากาเมะ เอโร่ (ต่อ g)",
+      "type": "solid",
+      "packPrice": 900,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "porkBellySliceFresh",
+      "label": "สามชั้นหมูสดสไลซ์ (ต่อ g)",
+      "type": "solid",
+      "packPrice": 218,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "broccoli",
+      "label": "บร็อคโคลี่ (ต่อ g)",
+      "type": "solid",
+      "packPrice": 59,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "okra",
+      "label": "กระเจี๊ยบ เอโร่ (ต่อ g)",
+      "type": "solid",
+      "packPrice": 65,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "kingOysterMushroom",
+      "label": "เห็ดนางรมหลวง/ออรินจิ (ต่อ g)",
+      "type": "solid",
+      "packPrice": 59,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "porkIntestine",
+      "label": "ไส้อ่อนหมูแช่แข็ง (ต่อ g)",
+      "type": "solid",
+      "packPrice": 156,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "crispySquid",
+      "label": "ขจร หมึกกรอบเล็กหั่น (ต่อ g)",
+      "type": "solid",
+      "packPrice": 159,
+      "packSize": 1000,
+      "packUnit": "g",
+      "yieldMl": null
+    },
+    {
+      "id": "redCocktailSausage",
+      "label": "คุ้มค่า ไส้กรอกคอกเทลไก่ (ต่อ g)",
+      "type": "solid",
+      "packPrice": 75,
+      "packSize": 1000,
+      "packUnit": "g",
       "yieldMl": null
     }
   ],
