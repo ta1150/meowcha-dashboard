@@ -179,6 +179,16 @@
       "category": "วัตถุดิบ",
       "reported_by": "D. Marcio",
       "raw_note": "เลขที่ ST6911023569"
+    },
+    {
+      "id": "7b196203-6df2-445e-b7d6-7627b8c6c788",
+      "ts": "2026-11-29T20:54:00+07:00",
+      "amount": 268.18,
+      "vendor": "TikTok Shop - TopChoice อาซัน หม่าล่า",
+      "items": "ซอสหม่าล่า อาซันหม่าล่า 1 กก. x1",
+      "category": "วัตถุดิบ",
+      "reported_by": "D. Marcio",
+      "raw_note": "หมายเลขคำสั่งซื้อ 587443092472235739, ชำระผ่าน PromptPay (ยืนยันจ่ายแล้วโดยบอส)"
     }
   ],
   "income": [],
