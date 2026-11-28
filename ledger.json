@@ -159,6 +159,16 @@
       "category": "อุปกรณ์",
       "reported_by": "D. Marcio",
       "raw_note": "สั่งซื้อผ่าน Shopee (คาดว่าจะได้รับ 29 พ.ย. - 1 ธ.ค.)"
+    },
+    {
+      "id": "e7b7d7e3-1933-45a4-9d51-5c53f4bd10f3",
+      "ts": "2026-11-28T15:11:00+07:00",
+      "amount": 289.0,
+      "vendor": "ชำระสินค้า Shopee",
+      "items": "ค่าซื้อของ",
+      "category": "อื่นๆ",
+      "reported_by": "D. Marcio",
+      "raw_note": "รหัสธุรกรรม APIC1795853430509P5W, รหัสร้านค้า KB000001989230"
     }
   ],
   "income": [],
