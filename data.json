@@ -2144,8 +2144,8 @@
     ],
     "ชานมมะลิ": [
       {
-        "ing": "jasmineTeaLeaf",
-        "qty": 8
+        "ing": "base_jasminetea",
+        "qty": 133
       },
       {
         "ing": "base_cheesefoam",
@@ -2162,12 +2162,8 @@
     ],
     "ชามะลิใส": [
       {
-        "ing": "jasmineTeaLeaf",
-        "qty": 8
-      },
-      {
-        "ing": "waterTank18_9L",
-        "qty": 150
+        "ing": "base_jasminetea",
+        "qty": 133
       },
       {
         "ing": "mitrpholCaneSyrup",
@@ -3261,6 +3257,19 @@
         {
           "ing": "",
           "qty": 400
+        }
+      ]
+    },
+    "base_jasminetea": {
+      "name": "เบสชามะลิ",
+      "rows": [
+        {
+          "ing": "jasmineTeaLeaf",
+          "qty": 60
+        },
+        {
+          "ing": "",
+          "qty": 1000
         }
       ]
     }
